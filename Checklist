@@ -1,0 +1,9 @@
+Ordine di lavoro per la realizzazione del progetto:
+1. Progettazione e realizzazione del database
+2. Sviluppo e testing della comunicazione con il database
+3. Sviluppo e testing della finestra di login
+
+Altro (da valutare):
+- Progettazione e sviluppo delle varie interfacce per ogni tipologia di utente
+- Progettazione e sviluppo di un interfaccia per il setup della connessione con il server
+- Test connessione del server che non è localizzato sullo stesso computer
