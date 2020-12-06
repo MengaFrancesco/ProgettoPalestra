@@ -1,0 +1,16 @@
+﻿<Window x:Class="Progetto_Palestra.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Progetto_Palestra"
+        mc:Ignorable="d"
+        Title="Fitness Center" Height="478.549" Width="456.606" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Immagini/Senza titolo-1.jpg">
+    <Grid Background="Black">
+        <Image HorizontalAlignment="Left" Height="359" Margin="10,0,0,0" VerticalAlignment="Top" Width="420" Source="Immagini/immaginePalestra.jpg"/>
+        <Button x:Name="ButtonAccedi" Content="Accedi" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Width="131" Height="67" FontSize="22" Click="ButtonAccedi_Click"/>
+        <Button x:Name="ButtonExit" Content="Esci" HorizontalAlignment="Left" Margin="299,364,0,0" VerticalAlignment="Top" Width="131" Height="67" FontSize="22" Click="ButtonExit_Click"/>
+        <Button x:Name="ButtonRegister" Content="Registrati" HorizontalAlignment="Left" Margin="154,364,0,0" VerticalAlignment="Top" Width="132" Height="67" FontSize="22" Click="ButtonRegister_Click"/>
+
+    </Grid>
+</Window>
