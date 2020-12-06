@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 18, 2020 alle 17:43
+-- Creato il: Dic 06, 2020 alle 23:04
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db palestra`
+-- Database: `db_palestra`
 --
 
 -- --------------------------------------------------------
@@ -36,6 +36,14 @@ CREATE TABLE `amministratori` (
   `Iscrizione` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `amministratori`
+--
+
+INSERT INTO `amministratori` (`ID_Amministratore`, `Username`, `Password`, `Nome`, `Cognome`, `Iscrizione`) VALUES
+(1, 'admin1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Amministratore', 'Tecnico', '2020-12-05'),
+(2, 'admin_menga', '0b798742e47cca27398944b4fad98be7', 'Francesco', 'Menga', '2020-12-05');
+
 -- --------------------------------------------------------
 
 --
@@ -49,9 +57,8 @@ CREATE TABLE `atleti` (
   `Nome` text NOT NULL,
   `Cognome` text NOT NULL,
   `Residenza` text NOT NULL,
-  `Attrezzo in Uso` tinyint(1) NOT NULL,
-  `ID_Attrezzo` int(11) NOT NULL,
-  `Data Iscrizione` date NOT NULL
+  `Data Iscrizione` date NOT NULL,
+  `Sesso` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,6 +75,18 @@ CREATE TABLE `attrezzatura` (
   `Manutenzione Richiesta` tinyint(1) NOT NULL,
   `Manutenzione In Corso` tinyint(1) NOT NULL,
   `Link Foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `attrezzi_in_uso`
+--
+
+CREATE TABLE `attrezzi_in_uso` (
+  `ID` int(11) NOT NULL,
+  `ID_Atleta` int(32) NOT NULL,
+  `ID_Attrezzo` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -128,14 +147,21 @@ ALTER TABLE `amministratori`
 -- Indici per le tabelle `atleti`
 --
 ALTER TABLE `atleti`
-  ADD PRIMARY KEY (`ID_Atleta`),
-  ADD KEY `Rel_Att` (`ID_Attrezzo`);
+  ADD PRIMARY KEY (`ID_Atleta`);
 
 --
 -- Indici per le tabelle `attrezzatura`
 --
 ALTER TABLE `attrezzatura`
   ADD PRIMARY KEY (`ID_Attrezzo`);
+
+--
+-- Indici per le tabelle `attrezzi_in_uso`
+--
+ALTER TABLE `attrezzi_in_uso`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Rel_ID_Atleta` (`ID_Atleta`),
+  ADD KEY `Rel_ID_Attrezzo` (`ID_Attrezzo`);
 
 --
 -- Indici per le tabelle `controllore`
@@ -166,7 +192,7 @@ ALTER TABLE `meccanico`
 -- AUTO_INCREMENT per la tabella `amministratori`
 --
 ALTER TABLE `amministratori`
-  MODIFY `ID_Amministratore` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Amministratore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `atleti`
@@ -203,10 +229,11 @@ ALTER TABLE `meccanico`
 --
 
 --
--- Limiti per la tabella `atleti`
+-- Limiti per la tabella `attrezzi_in_uso`
 --
-ALTER TABLE `atleti`
-  ADD CONSTRAINT `Rel_Att` FOREIGN KEY (`ID_Attrezzo`) REFERENCES `attrezzatura` (`ID_Attrezzo`);
+ALTER TABLE `attrezzi_in_uso`
+  ADD CONSTRAINT `Rel_ID_Atleta` FOREIGN KEY (`ID_Atleta`) REFERENCES `atleti` (`ID_Atleta`),
+  ADD CONSTRAINT `Rel_ID_Attrezzo` FOREIGN KEY (`ID_Attrezzo`) REFERENCES `atleti` (`ID_Atleta`);
 
 --
 -- Limiti per la tabella `elenco segnalazioni`
