@@ -26,9 +26,7 @@ namespace Progetto_Palestra
          */
         public MainWindow()
         {
-            InitializeComponent(); //Inizializza componenti
-
-            
+            InitializeComponent(); //Inizializza componenti 
         }
 
         /**
@@ -51,7 +49,43 @@ namespace Progetto_Palestra
          */
         private void ButtonAccedi_Click(object sender, RoutedEventArgs e)
         {
+            this.Visibility = Visibility.Hidden; //Nasconde finestra principale
 
+            LoginWindow lw = new LoginWindow();
+            lw.ShowDialog();
+
+            if(lw.Login)
+            {
+                MessageBox.Show(lw.Tipologia);
+                switch(lw.Tipologia)
+                {
+                    case "Amministratore":
+                        AdministratorWindow aw = new AdministratorWindow(lw.Username);
+                        aw.ShowDialog();
+                        break;
+                    case "Atleta":
+                        UserWindow uw = new UserWindow(lw.Username);
+                        uw.ShowDialog();
+                        break;
+                    case "Controllore":
+                        ControlloreWindow cw = new ControlloreWindow(lw.Username);
+                        cw.ShowDialog();
+                        break;
+                    case "Meccanico":
+                        MeccanicoWindow mw = new MeccanicoWindow(lw.Username);
+                        mw.ShowDialog();
+                        break;
+                        break;
+                }
+                
+                
+
+
+            }
+            //L'esecuzione ritorna alla chiusura della finestra
+            this.Visibility = Visibility.Visible; //Visualizza finestra principale
+        
+        
         }
 
         /**
@@ -60,10 +94,14 @@ namespace Progetto_Palestra
          */
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
+            this.Visibility = Visibility.Hidden;
+
             RegistrationWindow rw = new RegistrationWindow();
             rw.ShowDialog();
 
             //L'esecuzione ritorna alla chiusura della finestra
+            this.Visibility = Visibility.Visible; //Visualizza finestra principale
+
         }
     }
 }

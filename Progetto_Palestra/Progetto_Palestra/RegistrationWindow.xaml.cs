@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Progetto_Palestra.Classi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -29,6 +30,7 @@ namespace Progetto_Palestra
         public bool Visible1;
         public bool Visible2;
         public bool Registrazione;
+        public string Residenza;
 
         /**
          * @brief Costruttore senza parametri
@@ -49,6 +51,7 @@ namespace Progetto_Palestra
             Visible1 = false;
             Visible2 = false;
             Registrazione = false;
+            Residenza = "";
         }
 
         /**
@@ -116,10 +119,11 @@ namespace Progetto_Palestra
             if (InputOK && PwUguali && PwSuff)
             {
                 Nome = TextNome.Text;
-                Cognome = TextUsername.Text;
+                Cognome = TextCognome.Text;
                 Username = TextUsername.Text;
                 Password = TextPassword.Password;
                 DataDiNascita = DataNascita.SelectedDate.Value;
+                Residenza = TextCitta.Text;
                 if (RadioM.IsChecked.Value)
                     Sesso = "M";
                 else
@@ -127,6 +131,12 @@ namespace Progetto_Palestra
                 Registrazione = true; //Registrazione effettuata
                 ConvertMD5(TextPassword.Password); //Converte password in MD5
                 MessageBox.Show("Registrazione effettuata con successo!", "Attenzione!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                //Creazione ed inserimento nel database
+                CAtleta Atleta = new CAtleta(Username,Password,Nome,Cognome,Residenza,DateTime.Today,Sesso,DateTime.Today.AddDays(-1), DataDiNascita);
+                MySQLdatabase db = new MySQLdatabase();
+                db.InserisciAtleta(Atleta);
+                
                 this.Close();
             }
 

@@ -1,0 +1,20 @@
+﻿<Window x:Class="Progetto_Palestra.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Progetto_Palestra"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="477" Width="454.625">
+    <Grid>
+        <Button x:Name="ButtonAccedi" Content="Accedi" HorizontalAlignment="Left" Margin="74,398,0,0" VerticalAlignment="Top" Width="111" Height="38" Click="ButtonAccedi_Click"/>
+        <Button x:Name="ButtonEsci" Content="Esci" HorizontalAlignment="Left" Margin="266,398,0,0" VerticalAlignment="Top" Width="112" Height="38" Click="Button_Click"/>
+        <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Height="22" Margin="162,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130"/>
+        <PasswordBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="162,290,0,0" VerticalAlignment="Top" Width="130" Height="21"/>
+        <Label Content="Usename:" HorizontalAlignment="Left" Margin="74,249,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="74,285,0,0" VerticalAlignment="Top" Width="73"/>
+        <ComboBox x:Name="ComboTipo" HorizontalAlignment="Left" Margin="162,329,0,0" VerticalAlignment="Top" Width="130"/>
+        <Label Content="Tipologia utente:" HorizontalAlignment="Left" Margin="48,329,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

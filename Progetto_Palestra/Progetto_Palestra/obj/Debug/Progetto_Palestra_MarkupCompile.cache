@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\App.xaml
-2-1442674848
+6-204868686
 
-8898822146
+13-1080606590
 351773429357
-MainWindow.xaml;RegistrationWindow.xaml;
+AdministratorWindow.xaml;ControlloreWindow.xaml;LoginWindow.xaml;MainWindow.xaml;RegistrationWindow.xaml;UserWindow.xaml;
 
 False
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
+using Progetto_Palestra.Classi;
 
 namespace Progetto_Palestra
 {
@@ -148,6 +149,46 @@ namespace Progetto_Palestra
             else
             {
                 return lista; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Metodo che ritorna una lista con username e password
+         * @details Esegue la query per ottenere l'elenco di username e password
+         */
+        public List<string> GetAtleti()
+        {
+            string query = "SELECT Username,Password FROM atleti"; //Crea stringa query
+            List<string> lista = new List<string>(); //Creazione lista da restituire
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                while (dataReader.Read()) //Read the data and store them in the list
+                {
+                    lista.Add(dataReader["Username"] + ";" + dataReader["Password"]); //Aggiunge alla lista il record
+                }
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return lista;            //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return lista; //Ritorna la lista vuota
+            }
+        }
+
+        public void InserisciAtleta(CAtleta Atleta)
+        {
+            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(Atleta.InsertQuery(), connection);
+                cmd.ExecuteNonQuery(); //Execute command
+                this.CloseConnection(); //close connection
             }
         }
 
