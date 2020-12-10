@@ -1,0 +1,54 @@
+﻿<Window x:Class="Progetto_Palestra.Interfacce.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Progetto_Palestra"
+        mc:Ignorable="d"
+        Title="RegistrationWindow" Height="678.252" Width="507.721">
+    <Grid>
+        <Label Content="Inserisci le informazioni richieste:" HorizontalAlignment="Center" Margin="190,216,65,0" VerticalAlignment="Top" Width="245" RenderTransformOrigin="0.5,0.5" FontSize="16">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.236"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Image Height="184" Margin="111,10,90,0" VerticalAlignment="Top" Width="221" Source="/Progetto_Palestra;component/Immagini/immaginePalestra.jpg" HorizontalAlignment="Center"/>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="119,248,0,0" VerticalAlignment="Top" FontSize="16" Width="56"/>
+        <Label Content="Cognome:" HorizontalAlignment="Left" Margin="94,288,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="92,328,0,0" VerticalAlignment="Top" Width="83" FontSize="16"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="97,368,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Data di nascita:" HorizontalAlignment="Left" Margin="59,448,0,0" VerticalAlignment="Top" Width="116" FontSize="16"/>
+        <Button x:Name="ButtonRegistra" Content="Registrati" HorizontalAlignment="Left" Margin="176,582,0,0" VerticalAlignment="Top" Width="145" Click="ButtonRegistra_Click" Height="42" BorderBrush="#FF3A00FF" Background="#FF2F2FFD" Foreground="#DDFFFFFF"/>
+        <Button x:Name="ButtonAnnulla" Content="Annulla" HorizontalAlignment="Left" Margin="326,582,0,0" VerticalAlignment="Top" Width="145" Height="42" BorderBrush="White" Background="White" Foreground="#DD000000" Click="ButtonAnnulla_Click"/>
+        <Label Content="Sesso:" HorizontalAlignment="Left" Margin="124,527,0,0" VerticalAlignment="Top" Width="51" FontSize="16"/>
+        <Label Content="Città di residenza:" HorizontalAlignment="Left" Margin="42,488,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="TextNome" HorizontalAlignment="Left" Height="35" Margin="190,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontSize="16" BorderBrush="#FF2F2FFD" CaretBrush="Blue"/>
+        <TextBox x:Name="TextCognome" HorizontalAlignment="Left" Height="35" Margin="190,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontSize="16" BorderBrush="#FF2F2FFD" CaretBrush="Blue"/>
+        <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Height="35" Margin="190,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontSize="16" BorderBrush="Blue" CaretBrush="Blue"/>
+        <RadioButton x:Name="RadioM" Content="M" HorizontalAlignment="Left" Margin="233,539,0,0" VerticalAlignment="Top" GroupName="Sesso" Height="23" Width="62" FontSize="16" BorderBrush="#FF2F2FFD" Background="#FF2F2FFD"/>
+        <RadioButton x:Name="RadioF" Content="F" HorizontalAlignment="Left" Margin="316,539,0,0" VerticalAlignment="Top" GroupName="Sesso" Height="23" Width="87" FontSize="16" BorderBrush="#FF2F2FFD" Background="#FF2F2FFD"/>
+        <TextBox x:Name="TextCitta" HorizontalAlignment="Left" Height="35" Margin="190,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontSize="16" BorderBrush="#FF2F2FFD" CaretBrush="#FF2F2FFD"/>
+        <DatePicker x:Name="DataNascita" HorizontalAlignment="Left" Margin="190,448,0,0" VerticalAlignment="Top" Width="250" Height="35" FontSize="16" BorderBrush="#FF2F2FFD"/>
+        <Label Content="Conferma password:" HorizontalAlignment="Left" Margin="23,408,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <PasswordBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="190,368,0,0" VerticalAlignment="Top" Width="250" Height="35" FontSize="16" BorderBrush="Blue" CaretBrush="Blue"/>
+        <PasswordBox x:Name="TextConferma" HorizontalAlignment="Left" Margin="190,408,0,0" VerticalAlignment="Top" Width="250" Height="35" FontSize="16" BorderBrush="#FF2F2FFD" CaretBrush="Blue"/>
+        <TextBox x:Name="TextPassword2" IsReadOnly="True" HorizontalAlignment="Left" Height="35" Margin="190,367,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"  Width="250"  Visibility="Hidden"/>
+        <Button x:Name="ButtonShow1" Content="" HorizontalAlignment="Left" Margin="448,374,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="ButtonShow1_Click" BorderBrush="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Progetto_Palestra;component/Immagini/eye.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ButtonShow2" Content="" HorizontalAlignment="Left" Margin="448,414,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="ButtonShow2_Click" BorderBrush="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Progetto_Palestra;component/Immagini/eye.png"/>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="TextConferma2" IsReadOnly="True"  HorizontalAlignment="Left" Height="35" Margin="190,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Visibility="Hidden" FontSize="16" />
+
+    </Grid>
+</Window>

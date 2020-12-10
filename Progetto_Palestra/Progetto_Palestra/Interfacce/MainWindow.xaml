@@ -1,0 +1,20 @@
+﻿<Window x:Class="Progetto_Palestra.Interfacce.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Progetto_Palestra"
+        mc:Ignorable="d"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Fitness Center" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Progetto_Palestra;component/Immagini/Senza titolo-1.jpg">
+    <Grid Background="Black">
+        <Image Height="451" Margin="149,10,128,0" VerticalAlignment="Top" Width="517" Source="/Progetto_Palestra;component/Immagini/immaginePalestra.jpg" HorizontalAlignment="Center"/>
+        <Button x:Name="ButtonAccedi" Content="Accedi" HorizontalAlignment="Left" Margin="84,466,0,0" VerticalAlignment="Top" Width="178" Height="67" FontSize="22" Click="ButtonAccedi_Click" BorderBrush="#FF3B32FF" Foreground="#DDFFFFFF" Background="#FF3B32FF"/>
+        <Button x:Name="ButtonExit" Content="Esci" HorizontalAlignment="Left" Margin="533,466,0,0" VerticalAlignment="Top" Width="180" Height="67" FontSize="22" Click="ButtonExit_Click" Background="White" BorderBrush="#DD023BFF" Foreground="#DD023BFF"/>
+        <Button x:Name="ButtonRegister" Content="Registrati" HorizontalAlignment="Left" Margin="310,466,0,0" VerticalAlignment="Top" Width="180" Height="67" FontSize="22" Click="ButtonRegister_Click" Background="#FF3B32FF" BorderBrush="#FF3B32FF" Foreground="#DDFFFFFF"/>
+
+
+
+    </Grid>
+</Window>
