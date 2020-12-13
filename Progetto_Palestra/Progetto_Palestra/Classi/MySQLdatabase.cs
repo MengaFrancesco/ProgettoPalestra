@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Progetto_Palestra.Classi;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace Progetto_Palestra
 {
@@ -181,6 +175,9 @@ namespace Progetto_Palestra
             }
         }
 
+        /**
+         * @brief Aggiunge atleta dato come parametro alla lista
+         */
         public void InserisciAtleta(CAtleta Atleta)
         {
             if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
@@ -192,6 +189,213 @@ namespace Progetto_Palestra
             }
         }
 
+        /**
+         * @brief Ritorna stringa con le informazioni dell'amministratore parametro
+         */
+        public string GetAdmin(string Username)
+        {
+            string query = "SELECT * FROM amministratori WHERE Username=\""+Username+"\""; //Crea stringa query
+            string ris = ""; //Creazione lista da restituire
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+                
+                    ris = (dataReader["ID_Amministratore"]+";"+ dataReader["Username"] +";"+ dataReader["Password"] + ";" + dataReader["Nome"] + ";" + dataReader["Cognome"] + ";" + dataReader["Iscrizione"] + ";" + dataReader["Link_foto"]+"");  //Aggiunge alla lista il record
+                
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Ritorna il numero totale di atleti
+         */
+        public int GetNumAthlete()
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM atleti"; //Crea stringa query
+            
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"]+"" ;
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @Ritorna il numero di atleti registrati questa settimana
+         */
+        public int GetNumAthleteWeek()
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM atleti WHERE YEARWEEK(Data_Iscrizione) = YEARWEEK(NOW())"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Ritorna il numero di abbonati attivi
+         */
+        public int GetNumAbbonati()
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM atleti WHERE atleti.Scandenza_abbonamento>=NOW()"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Ritorna il numero di abbonamenti scaduti
+         */
+        public int GetNumScaduti()
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM atleti WHERE atleti.Scandenza_abbonamento<NOW()"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Ritorna il numero di visite totali
+         */
+        public int GetNumVisite()
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM elenco_visite"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Ritorna il numero di visite di questa settimana
+         */
+        public int GetNumVisiteWeek()
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM elenco_visite WHERE YEARWEEK(elenco_visite.Data) = YEARWEEK(NOW())"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
     }
 }
 

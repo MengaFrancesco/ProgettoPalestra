@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
         mc:Ignorable="d"
-        Title="MeccanicoWindow" Height="450" Width="800">
+        Title="MeccanicoWindow" Height="450" Width="594.737">
     <Grid>
-        
+        <Button x:Name="ButtonRipara" Content="Ripara Attrezzo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button Content="Modifica Informazioni" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="ButtonVisualizza" Content="Visualizza attrezzi da riparare" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="226"/>
+
     </Grid>
 </Window>

@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800">
+        Title="UserWindow" Height="450" Width="683">
     <Grid>
-        
+        <Button x:Name="ButtonRinnova" Content="Rinnova abbonamento" HorizontalAlignment="Left" Margin="298,43,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonInizia" Content="Inizia Allenamento" HorizontalAlignment="Left" Margin="298,80,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonSegnala" Content="Segnala Attrezzo" HorizontalAlignment="Left" Margin="298,117,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonCambia" Content="Cambia Informazioni Personali" HorizontalAlignment="Left" Margin="298,154,0,0" VerticalAlignment="Top" Width="233"/>
+        <Button x:Name="ButtonPassword" Content="Cambia Password" HorizontalAlignment="Left" Margin="298,191,0,0" VerticalAlignment="Top" Width="179"/>
+
     </Grid>
 </Window>

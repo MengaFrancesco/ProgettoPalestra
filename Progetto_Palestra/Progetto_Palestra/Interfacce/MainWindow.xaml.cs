@@ -1,4 +1,5 @@
-﻿using Progetto_Palestra.Interfacce;
+﻿using Progetto_Palestra.Classi;
+using Progetto_Palestra.Interfacce;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,11 +58,12 @@ namespace Progetto_Palestra.Interfacce
 
             if(lw.Login)
             {
-                MessageBox.Show(lw.Tipologia);
-                switch(lw.Tipologia)
+                MySQLdatabase db = new MySQLdatabase();
+                switch (lw.Tipologia)
                 {
                     case "Amministratore":
-                        AdministratorWindow aw = new AdministratorWindow(lw.Username);
+                        
+                        AdministratorWindow aw = new AdministratorWindow(ToAmministratore(db.GetAdmin(lw.Username)));
                         aw.ShowDialog();
                         break;
                     case "Atleta":
@@ -75,7 +77,6 @@ namespace Progetto_Palestra.Interfacce
                     case "Meccanico":
                         MeccanicoWindow mw = new MeccanicoWindow(lw.Username);
                         mw.ShowDialog();
-                        break;
                         break;
                 }
                 
@@ -103,6 +104,26 @@ namespace Progetto_Palestra.Interfacce
             //L'esecuzione ritorna alla chiusura della finestra
             this.Visibility = Visibility.Visible; //Visualizza finestra principale
 
+        }
+
+        private CAmministratore ToAmministratore(string s)
+        {
+            string[] list = s.Split(';');
+            int id = Int32.Parse(list.ElementAt(0));
+            string username = list.ElementAt(1);
+            string password = list.ElementAt(2);
+            string nome = list.ElementAt(3);
+            string cognome = list.ElementAt(4);
+            string[] data = list.ElementAt(5).Split('/');
+            int giorno = Int32.Parse(data.ElementAt(0));
+            int mese = Int32.Parse(data.ElementAt(1));
+            int anno = Int32.Parse(data.ElementAt(2).Substring(0,4));
+            DateTime isc = new DateTime(anno, mese, giorno);
+            string link = list.ElementAt(6);
+
+
+            CAmministratore admin = new CAmministratore(id, username, password, nome, cognome, isc, link);
+            return admin;
         }
     }
 }

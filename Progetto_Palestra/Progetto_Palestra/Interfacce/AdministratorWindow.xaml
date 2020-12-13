@@ -1,12 +1,109 @@
-﻿<Window x:Class="Progetto_Palestra.Interfacce.AdministratorWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
-        mc:Ignorable="d"
-        Title="AdministratorWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Progetto_Palestra.Interfacce.AdministratorWindow"
+        mc:Ignorable="d" Height="504.75" Width="870.625">
     <Grid>
-        
+        <Button x:Name="ButtonRegistra" Content="Registra Utente" HorizontalAlignment="Left" Margin="-21,-175,0,0" VerticalAlignment="Top" Width="154" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonModifica" Content="Modifica Utente" HorizontalAlignment="Left" Margin="-21,-136,0,0" VerticalAlignment="Top" Width="154" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonModificaOrario" Content="Modifica Orario" HorizontalAlignment="Left" Margin="-21,-97,0,0" VerticalAlignment="Top" Width="154" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonRegistraControllore" Content="Registra Controllore" HorizontalAlignment="Left" Margin="138,-175,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Button Content="Modifica Controllore" HorizontalAlignment="Left" Margin="138,-136,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonModificaAttrezzatura" Content="Modifica Attrezzatura" HorizontalAlignment="Left" Margin="295,-175,0,0" VerticalAlignment="Top" Width="156" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonAggiungiAttrezzatura" Content="Aggiungi Attrezzatura" HorizontalAlignment="Left" Margin="295,-136,0,0" VerticalAlignment="Top" Width="156" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonRegistraMeccanico" Content="Registra Meccanico" HorizontalAlignment="Left" Margin="456,-175,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" TextOptions.TextHintingMode="Fixed" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Button x:Name="ButtonModificaMeccanico" Content="Modifica Meccanico" HorizontalAlignment="Left" Margin="456,-136,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" TextOptions.TextHintingMode="Fixed" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="870" StrokeThickness="0.5" Margin="-7,0,0,0"/>
+        <Label Content="Amministratore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="499,7,0,0" VerticalAlignment="Top" Width="364" Foreground="#FF7D7C83"/>
+        <Rectangle Fill="#FF0066FF" HorizontalAlignment="Left" Height="437" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="255" StrokeThickness="0.5" Margin="0,37,0,0"/>
+
+        <Button x:Name="BTHome" HorizontalAlignment="Left" Margin="46,42,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" Content="Dashboard" HorizontalContentAlignment="Left" Click="BTHome_Click"/>
+        <Button x:Name="BTUtente" Content="Modifiche Utenti" HorizontalAlignment="Left" Margin="46,87,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="44" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTUtente_Click"/>
+        <Button x:Name="BTOrario" Content="Modifiche Orario" HorizontalAlignment="Left" Margin="46,131,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTOrario_Click"/>
+        <Button x:Name="BTControllori" Content="Modifiche Controllore" HorizontalAlignment="Left" Margin="46,176,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTControllori_Click"/>
+        <Button x:Name="BTAttrezzi" Content="Modifiche Attrezzi" HorizontalAlignment="Left" Margin="46,221,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="44" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTAttrezzi_Click"/>
+        <Button x:Name="BTMeccanici" Content="Modifiche Meccanici" HorizontalAlignment="Left" Margin="46,265,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="46" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTMeccanici_Click"/>
+        <Button x:Name="BTLogout" Content="Logout" HorizontalAlignment="Left" Margin="46,311,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTLogout_Click"/>
+        <Image HorizontalAlignment="Left" Height="26" Margin="10,52,0,0" VerticalAlignment="Top" Width="28" Source="/Progetto_Palestra;component/Immagini/home.png"/>
+        <Image HorizontalAlignment="Left" Height="26" Margin="10,96,0,0" VerticalAlignment="Top" Width="25" Source="/Progetto_Palestra;component/Immagini/user.png"/>
+        <Image HorizontalAlignment="Left" Height="25" Margin="10,140,0,0" VerticalAlignment="Top" Width="25" Source="/Progetto_Palestra;component/Immagini/clock.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="8,185,0,0" VerticalAlignment="Top" Width="30" Source="/Progetto_Palestra;component/Immagini/qr-code.png"/>
+        <Image HorizontalAlignment="Left" Height="41" Margin="2,223,0,0" VerticalAlignment="Top" Width="42" Source="/Progetto_Palestra;component/Immagini/barbel.png" RenderTransformOrigin="0.5,0.5">
+
+        </Image>
+        <Image HorizontalAlignment="Left" Height="29" Margin="8,277,0,0" VerticalAlignment="Top" Width="27" Source="/Progetto_Palestra;component/Immagini/wrench.png"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="8,319,0,0" VerticalAlignment="Top" Width="30" Source="/Progetto_Palestra;component/Immagini/logout.png"/>
+        <Grid x:Name="GridHome" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601">
+            <Label Content="Home / Dashboard" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="135" Foreground="#FF7D7C83"/>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="90" Width="169">
+                <materialDesign:Card.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF6EC6F7" Offset="0"/>
+                        <GradientStop Color="#FF2171FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </materialDesign:Card.Background>
+            </materialDesign:Card>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="206,36,0,0" VerticalAlignment="Top" Height="90" Width="169">
+                <materialDesign:Card.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4EFF7E" Offset="0"/>
+                        <GradientStop Color="#FF0AAA36" Offset="1"/>
+                    </LinearGradientBrush>
+                </materialDesign:Card.Background>
+            </materialDesign:Card>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="401,36,0,0" VerticalAlignment="Top" Height="90" Width="169">
+                <materialDesign:Card.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFFD64A" Offset="0"/>
+                        <GradientStop Color="#FFFF9700" Offset="1"/>
+                    </LinearGradientBrush>
+                </materialDesign:Card.Background>
+            </materialDesign:Card>
+            <Label Content="CLIENTI TOTALI" HorizontalAlignment="Left" Margin="14,40,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="/Progetto_Palestra;component/#Inter" Width="113"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="118,42,0,0" VerticalAlignment="Top" Width="55" Source="/Progetto_Palestra;component/user.png"/>
+            <Label x:Name="LabelNumAtleti" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="14,62,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
+            <Label x:Name="LabelNumAtletiW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="14,97,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="310,42,0,0" VerticalAlignment="Top" Width="56" Source="/Progetto_Palestra;component/Immagini/subscription.png"/>
+            <Label Content="ABBONATI" HorizontalAlignment="Left" Margin="211,40,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="/Progetto_Palestra;component/#Inter" Width="109"/>
+            <Label x:Name="LabelNumAbbonati" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="211,62,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
+            <Label x:Name="LabelNumScaduti" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="211,97,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
+            <Label Content="VISITE" HorizontalAlignment="Left" Margin="406,40,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="/Progetto_Palestra;component/#Inter" Width="110"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="506,42,0,0" VerticalAlignment="Top" Width="56" Source="/Progetto_Palestra;component/Immagini/visitor.png"/>
+            <Label x:Name="LabelNumVisite" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="406,62,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
+            <Label x:Name="LabelNumVisiteW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="406,97,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Height="204" Width="261"/>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="309,147,0,0" VerticalAlignment="Top" Height="204" Width="261"/>
+            <Label HorizontalContentAlignment="Center" Content="Iscritti" HorizontalAlignment="Left" Margin="102,153,0,0" VerticalAlignment="Top" Foreground="#DD000000" FontFamily="/Progetto_Palestra;component/#Inter" Width="77" FontWeight="Light"/>
+            <Label HorizontalContentAlignment="Center" Content="Fasce di età" HorizontalAlignment="Left" Margin="401,153,0,0" VerticalAlignment="Top" Foreground="#DD000000" FontFamily="/Progetto_Palestra;component/#Inter" Width="77" FontWeight="Light"/>
+        </Grid>
+
+        <Grid x:Name="GridUtente" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+            <Label Content="Home / Modifiche Utente" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridOrario" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+            <Label Content="Home / Modifiche Orario" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridControllore" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+            <Label Content="Home / Modifiche Controllore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridAttrezzi" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+            <Label Content="Home / Modifiche Attrezzi" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridMeccanici" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+            <Label Content="Home / Modifiche Meccanici" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridLogout" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+            <Label Content="Home / Logout" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="150" Foreground="#FF7D7C83"/>
+        </Grid>
+
     </Grid>
 </Window>

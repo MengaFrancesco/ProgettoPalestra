@@ -41,7 +41,7 @@ namespace Progetto_Palestra.Classi
          */
         public string InsertQuery()
         {
-            string s = "INSERT INTO `atleti` (`ID_Atleta`, `Username`, `Password`, `Nome`, `Cognome`, `Residenza`, `Data Iscrizione`, `Data_nascita`, `Sesso`, `Scandenza_abbonamento`)"
+            string s = "INSERT INTO `atleti` (`ID_Atleta`, `Username`, `Password`, `Nome`, `Cognome`, `Residenza`, `Data_Iscrizione`, `Data_nascita`, `Sesso`, `Scandenza_abbonamento`)"
                 + " VALUES(NULL, '"+Username+"', '"+Password+"', '"+Nome+ "', '" + Cognome + "', '" + Residenza + "', '"+DataIscrizione.Year+ "-" + DataIscrizione.Month + "-" + DataIscrizione.Day + "', '" + DataNascita.Year + "-" + DataNascita.Month + "-" + DataNascita.Day + "', '" + Sesso + "', '" + DataScadenza.Year + "-" + DataScadenza.Month + "-" + DataScadenza.Day + "')";
 
             return s;

@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="ControlloreWindow" Height="450" Width="563.75">
     <Grid>
-        
+        <Button x:Name="ButtonScansiona" Content="Scansiona codice" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="167"/>
+        <Button x:Name="ButtonCreaCodice" Content="Crea codice" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="167"/>
+        <Button x:Name="ButtonModificaInfo" Content="Modifica Informazioni Personali" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="246"/>
+
     </Grid>
 </Window>
