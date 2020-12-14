@@ -5,39 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Progetto_Palestra.Interfacce.AdministratorWindow"
-        mc:Ignorable="d" Height="504.75" Width="870.625">
+        mc:Ignorable="d" Height="598.75" Width="1148.75">
     <Grid>
-        <Button x:Name="ButtonRegistra" Content="Registra Utente" HorizontalAlignment="Left" Margin="-21,-175,0,0" VerticalAlignment="Top" Width="154" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Height="34"/>
-        <Button x:Name="ButtonModifica" Content="Modifica Utente" HorizontalAlignment="Left" Margin="-21,-136,0,0" VerticalAlignment="Top" Width="154" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Height="34"/>
-        <Button x:Name="ButtonModificaOrario" Content="Modifica Orario" HorizontalAlignment="Left" Margin="-21,-97,0,0" VerticalAlignment="Top" Width="154" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Button x:Name="ButtonRegistraControllore" Content="Registra Controllore" HorizontalAlignment="Left" Margin="138,-175,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Button Content="Modifica Controllore" HorizontalAlignment="Left" Margin="138,-136,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Button x:Name="ButtonModificaAttrezzatura" Content="Modifica Attrezzatura" HorizontalAlignment="Left" Margin="295,-175,0,0" VerticalAlignment="Top" Width="156" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Button x:Name="ButtonAggiungiAttrezzatura" Content="Aggiungi Attrezzatura" HorizontalAlignment="Left" Margin="295,-136,0,0" VerticalAlignment="Top" Width="156" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Button x:Name="ButtonRegistraMeccanico" Content="Registra Meccanico" HorizontalAlignment="Left" Margin="456,-175,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" TextOptions.TextHintingMode="Fixed" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Button x:Name="ButtonModificaMeccanico" Content="Modifica Meccanico" HorizontalAlignment="Left" Margin="456,-136,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" TextOptions.TextHintingMode="Fixed" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="870" StrokeThickness="0.5" Margin="-7,0,0,0"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="1148" StrokeThickness="0.5" Margin="-7,0,0,0"/>
         <Label Content="Amministratore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
-        <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="499,7,0,0" VerticalAlignment="Top" Width="364" Foreground="#FF7D7C83"/>
-        <Rectangle Fill="#FF0066FF" HorizontalAlignment="Left" Height="437" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="255" StrokeThickness="0.5" Margin="0,37,0,0"/>
+        <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="777,7,0,0" VerticalAlignment="Top" Width="364" Foreground="#FF7D7C83"/>
 
-        <Button x:Name="BTHome" HorizontalAlignment="Left" Margin="46,42,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" Content="Dashboard" HorizontalContentAlignment="Left" Click="BTHome_Click"/>
-        <Button x:Name="BTUtente" Content="Modifiche Utenti" HorizontalAlignment="Left" Margin="46,87,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="44" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTUtente_Click"/>
-        <Button x:Name="BTOrario" Content="Modifiche Orario" HorizontalAlignment="Left" Margin="46,131,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTOrario_Click"/>
-        <Button x:Name="BTControllori" Content="Modifiche Controllore" HorizontalAlignment="Left" Margin="46,176,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTControllori_Click"/>
-        <Button x:Name="BTAttrezzi" Content="Modifiche Attrezzi" HorizontalAlignment="Left" Margin="46,221,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="44" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTAttrezzi_Click"/>
-        <Button x:Name="BTMeccanici" Content="Modifiche Meccanici" HorizontalAlignment="Left" Margin="46,265,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="46" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTMeccanici_Click"/>
-        <Button x:Name="BTLogout" Content="Logout" HorizontalAlignment="Left" Margin="46,311,0,0" VerticalAlignment="Top" Width="207" Background="#FF0066FF" BorderBrush="#FF0066FF" FontWeight="Light" FontFamily="/Progetto_Palestra;component/#Inter" Height="45" BorderThickness="1" HorizontalContentAlignment="Left" Click="BTLogout_Click"/>
-        <Image HorizontalAlignment="Left" Height="26" Margin="10,52,0,0" VerticalAlignment="Top" Width="28" Source="/Progetto_Palestra;component/Immagini/home.png"/>
-        <Image HorizontalAlignment="Left" Height="26" Margin="10,96,0,0" VerticalAlignment="Top" Width="25" Source="/Progetto_Palestra;component/Immagini/user.png"/>
-        <Image HorizontalAlignment="Left" Height="25" Margin="10,140,0,0" VerticalAlignment="Top" Width="25" Source="/Progetto_Palestra;component/Immagini/clock.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="8,185,0,0" VerticalAlignment="Top" Width="30" Source="/Progetto_Palestra;component/Immagini/qr-code.png"/>
-        <Image HorizontalAlignment="Left" Height="41" Margin="2,223,0,0" VerticalAlignment="Top" Width="42" Source="/Progetto_Palestra;component/Immagini/barbel.png" RenderTransformOrigin="0.5,0.5">
 
-        </Image>
-        <Image HorizontalAlignment="Left" Height="29" Margin="8,277,0,0" VerticalAlignment="Top" Width="27" Source="/Progetto_Palestra;component/Immagini/wrench.png"/>
-        <Image HorizontalAlignment="Left" Height="32" Margin="8,319,0,0" VerticalAlignment="Top" Width="30" Source="/Progetto_Palestra;component/Immagini/logout.png"/>
-        <Grid x:Name="GridHome" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601">
+        <Grid x:Name="GridDashboard" HorizontalAlignment="Left" Visibility="Hidden" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="601">
             <Label Content="Home / Dashboard" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="135" Foreground="#FF7D7C83"/>
             <materialDesign:Card HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="90" Width="169">
                 <materialDesign:Card.Background>
@@ -81,29 +62,145 @@
             <Label HorizontalContentAlignment="Center" Content="Fasce di età" HorizontalAlignment="Left" Margin="401,153,0,0" VerticalAlignment="Top" Foreground="#DD000000" FontFamily="/Progetto_Palestra;component/#Inter" Width="77" FontWeight="Light"/>
         </Grid>
 
-        <Grid x:Name="GridUtente" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+        <Grid x:Name="GridAtleti" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Modifiche Utente" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+            <DataGrid x:Name="DataGridAtleti" IsReadOnly="True" HorizontalAlignment="Left" Height="450" Margin="10,71,0,0" VerticalAlignment="Top" Width="514" SelectionChanged="DataGridAtleti_SelectionChanged"/>
+            <Label Content="Elenco Atleti:" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+            <Label Content="ID:" HorizontalAlignment="Left" Margin="529,71,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Username:" HorizontalAlignment="Left" Margin="529,100,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Password:" HorizontalAlignment="Left" Margin="529,129,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="TB_ID" IsReadOnly="True" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Height="24" Margin="617,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Username" HorizontalAlignment="Left" Height="24" Margin="617,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Password" HorizontalAlignment="Left" Height="24" Margin="617,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" CaretBrush="#FF0066FF"/>
+            <Label Content="Nome:" HorizontalAlignment="Left" Margin="529,158,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Cognome:" HorizontalAlignment="Left" Margin="529,187,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Residenza:" HorizontalAlignment="Left" Margin="529,216,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Iscrizione:" HorizontalAlignment="Left" Margin="529,245,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="TB_Nome" HorizontalAlignment="Left" Height="24" Margin="617,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Cognome" HorizontalAlignment="Left" Height="24" Margin="617,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Residenza" HorizontalAlignment="Left" Height="24" Margin="617,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" CaretBrush="#FF0066FF"/>
+            <DatePicker x:Name="DP_Iscrizione" HorizontalAlignment="Left" Margin="617,245,0,0" VerticalAlignment="Top" Height="24" Width="210"/>
+            <Label Content="Nascita:" HorizontalAlignment="Left" Margin="529,274,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <DatePicker x:Name="DP_Nascita" HorizontalAlignment="Left" Margin="617,274,0,0" VerticalAlignment="Top" Height="24" Width="210"/>
+            <Label Content="Sesso:" HorizontalAlignment="Left" Margin="529,303,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Scadenza:" HorizontalAlignment="Left" Margin="529,332,0,0" VerticalAlignment="Top" Width="83" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <DatePicker x:Name="DP_Scadenza" HorizontalAlignment="Left" Margin="617,332,0,0" VerticalAlignment="Top" Height="24" Width="210"/>
+            <RadioButton GroupName="Sesso" x:Name="M" Content="Maschio" HorizontalAlignment="Left" Margin="617,303,0,0" VerticalAlignment="Top" Height="24" Width="101"/>
+            <RadioButton  GroupName="Sesso" x:Name="F" Content="Femmina" HorizontalAlignment="Left" Margin="726,303,0,0" VerticalAlignment="Top" Height="24" Width="101"/>
+            <Button x:Name="BT_Aggiungi" Content="Aggiungi record" HorizontalAlignment="Left" Margin="617,373,0,0" VerticalAlignment="Top" Width="210" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Aggiungi_Click"/>
+            <Button x:Name="BT_Aggiorna" Content="Aggiorna record" HorizontalAlignment="Left" Margin="617,410,0,0" VerticalAlignment="Top" Width="210" BorderBrush="#FF0066FF" Background="#FF0066FF" Click="BT_Aggiorna_Click"/>
+            <Button x:Name="BT_Elimina" Content="Elimina selezionato" HorizontalAlignment="Left" Margin="617,447,0,0" VerticalAlignment="Top" Width="210" BorderBrush="#FF0066FF" Background="#FF0066FF" Click="BT_Elimina_Click"/>
+            <Button x:Name="BT_Annulla" Content="Annulla selezione" HorizontalAlignment="Left" Margin="617,484,0,0" VerticalAlignment="Top" Width="210" Background="White" BorderBrush="White" Foreground="#FF7D7C83" Click="BT_Annulla_Click"/>
+
         </Grid>
 
-        <Grid x:Name="GridOrario" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+        <Grid x:Name="GridOrario" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Visible">
             <Label Content="Home / Modifiche Orario" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+            <materialDesign:TimePicker x:Name="TP_AperturaM" HorizontalAlignment="Left" Margin="169,94,0,0" VerticalAlignment="Top" Width="160" />
+            <materialDesign:TimePicker x:Name="TP_ChiusuraM" HorizontalAlignment="Left" Margin="169,124,0,0" VerticalAlignment="Top" Width="160" />
+            <materialDesign:TimePicker x:Name="TP_AperturaP" HorizontalAlignment="Left" Margin="169,154,0,0" VerticalAlignment="Top" Width="160"/>
+            <Label Content="Apertura Mattina:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="154" Height="26"/>
+            <Label Content="Chiusura Mattina:" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Width="154" Height="26"/>
+            <Label Content="Apertura Pomeriggio:" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="154" Height="26"/>
+            <materialDesign:TimePicker x:Name="TP_ChiusuraP" HorizontalAlignment="Left" Margin="169,186,0,0" VerticalAlignment="Top" Width="160"/>
+            <Label Content="Chiusura Pomeriggio:" HorizontalAlignment="Left" Margin="10,186,0,0" VerticalAlignment="Top" Width="154" Height="26"/>
+            <CheckBox x:Name="CB_Pomeriggio" Content="Chiuso" HorizontalAlignment="Left" Margin="356,155,0,0" VerticalAlignment="Top" Height="26" Width="127" Click="CB_Pomeriggio_Click"/>
+            <CheckBox x:Name="CB_Mattina" Content="Chiuso" HorizontalAlignment="Left" Margin="356,93,0,0" VerticalAlignment="Top" Height="26" Width="127" Click="CB_Mattina_Click"/>
+            <Label Content="Giorno selezionato:" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="154" Height="26"/>
+            <ComboBox x:Name="CB_Giorni" HorizontalAlignment="Left" Margin="169,49,0,0" VerticalAlignment="Top" Width="160" Initialized="CB_Giorni_Initialized" SelectionChanged="CB_Giorni_SelectionChanged"/>
+            <DataGrid x:Name="DataGridOrario" IsReadOnly="True" HorizontalAlignment="Left" Height="249" Margin="11,272,0,0" VerticalAlignment="Top" Width="816" Initialized="DataGridOrario_Initialized" SelectionChanged="DataGridOrario_SelectionChanged"/>
+            <Label Content="Nota: l'inserimento di orari di apertura e chiusura&#xA;uguali indica che la  palestra sarà chiusa durante &#xD;&#xA;la parte della giornata corrispondente." HorizontalAlignment="Left" Margin="501,131,0,0" VerticalAlignment="Top" Width="300" Height="79"/>
+            <Button x:Name="BT_AggiornaOrario" Content="Aggiorna Orario" HorizontalAlignment="Left" Margin="169,222,0,0" VerticalAlignment="Top" Width="160" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_AggiornaOrario_Click"/>
         </Grid>
 
-        <Grid x:Name="GridControllore" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+        <Grid x:Name="GridControllore" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Modifiche Controllore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
         </Grid>
 
-        <Grid x:Name="GridAttrezzi" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+        <Grid x:Name="GridAttrezzi" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Modifiche Attrezzi" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
         </Grid>
 
-        <Grid x:Name="GridMeccanici" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+        <Grid x:Name="GridMeccanici" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Modifiche Meccanici" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
         </Grid>
 
-        <Grid x:Name="GridLogout" HorizontalAlignment="Left" Height="437" Margin="255,37,0,0" VerticalAlignment="Top" Width="601"  Visibility="Hidden">
+        <Grid x:Name="GridLogout" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Logout" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="150" Foreground="#FF7D7C83"/>
+            <Button x:Name="BT_Logout" Content="Disconnettiti" HorizontalAlignment="Left" Margin="141,334,0,0" VerticalAlignment="Top" Width="207" Height="56" FontSize="24" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Logout_Click"/>
+            <Button x:Name="BT_Close" Content="Chiudi programma" HorizontalAlignment="Left" Margin="395,334,0,0" VerticalAlignment="Top" Width="273" Height="56" FontSize="24" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Close_Click"/>
+            <Button x:Name="BT_Ret_Dashboard" Content="Torna alla dashboard" HorizontalAlignment="Left" Margin="564,470,0,0" VerticalAlignment="Top" Width="263" Height="51" FontSize="24" FontWeight="Light" Background="White" BorderBrush="White" Foreground="#DD000000" Click="BT_Ret_Dashboard_Click"/>
+            <Image HorizontalAlignment="Left" Height="207" Margin="141,103,0,0" VerticalAlignment="Top" Width="207" Source="/Progetto_Palestra;component/Immagini/logout(1).png"/>
+            <Image HorizontalAlignment="Left" Height="207" Margin="432,103,0,0" VerticalAlignment="Top" Width="236" Source="/Progetto_Palestra;component/Immagini/close-window.png"/>
         </Grid>
+
+        <Grid x:Name="GridAdmin" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
+            <Label Content="Home / Modifiche amministratori" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="150" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridMenu" Width="294" HorizontalAlignment="Left" Background="#FF0066FF" RenderTransformOrigin="0.5,0.5" Margin="0,37,0,0">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                    <ListViewItem x:Name="LWDashboard" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWDashboard_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/dashboard.png"/>
+                            <TextBlock Text="Dashboard" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWAtleti" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWAtleti_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/user.png"/>
+                            <TextBlock Margin="10" Foreground="White"><Run Text="Modifiche "/><Run Text="Atleti"/></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWOrario" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWOrario_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/clock.png"/>
+                            <TextBlock Text="Modifiche Orario" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWControllori" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWControllori_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/qr-code.png"/>
+                            <TextBlock Margin="10" Foreground="White"><Run Text="Modifiche Controllor"/><Run Text="i"/></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWAttrezzi" Height="45" Padding="0" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWAttrezzi_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/barbel.png"/>
+                            <TextBlock Text="Modifiche Attrezzi" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWMeccanici" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWMeccanici_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/wrench.png"/>
+                            <TextBlock Text="Modifiche Meccanici" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWAmministratori" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWAmministratori_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/management.png"/>
+                            <TextBlock Text="Modifiche Amministratori" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LWLogout" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWLogout_MouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="34" Width="35" Source="/Progetto_Palestra;component/Immagini/logout.png"/>
+                            <TextBlock Text="Logout" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+
 
     </Grid>
 </Window>

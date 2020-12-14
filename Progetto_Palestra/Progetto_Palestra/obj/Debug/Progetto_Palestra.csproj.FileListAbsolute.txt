@@ -53,7 +53,6 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.Nume
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.ValueTuple.xml
-C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csprojAssemblyReference.cache
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.exe.config
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\AdministratorWindow.g.cs
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\ControlloreWindow.g.cs
@@ -79,3 +78,7 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Pa
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csproj.CopyComplete
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.exe
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.pdb
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csprojAssemblyReference.cache
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\NodaTime.dll
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\NodaTime.pdb
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\NodaTime.xml

@@ -123,7 +123,7 @@ namespace Progetto_Palestra.Interfacce
                 MessageBox.Show("Registrazione effettuata con successo!", "Attenzione!", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 //Creazione ed inserimento nel database
-                CAtleta Atleta = new CAtleta(Username,Password,Nome,Cognome,Residenza,DateTime.Today,Sesso,DateTime.Today.AddDays(-1), DataDiNascita);
+                CAtleta Atleta = new CAtleta(0,Username,Password,Nome,Cognome,Residenza,DateTime.Today,Sesso,DateTime.Today.AddDays(-1), DataDiNascita);
                 MySQLdatabase db = new MySQLdatabase();
                 db.InserisciAtleta(Atleta);
                 

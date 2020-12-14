@@ -100,7 +100,7 @@ namespace Progetto_Palestra.Interfacce
 
                         break;
                     case "Atleta":
-                        List<string> atleti = db.GetAtleti();
+                        List<string> atleti = db.GetUsPwAtleti();
                         for (int i = 0; i < atleti.Count; i++) //Per ogni atleta
                         {
                             string[] array = atleti.ElementAt(i).Split(';');

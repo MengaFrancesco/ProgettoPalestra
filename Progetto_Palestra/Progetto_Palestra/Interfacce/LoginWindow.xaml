@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="477" Width="454.625">
+        Height="423" Width="454.625">
     <Grid>
-        <Button x:Name="ButtonAccedi" Content="Accedi" HorizontalAlignment="Left" Margin="74,398,0,10" Width="111" Height="Auto" Click="ButtonAccedi_Click" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
-        <Button x:Name="ButtonEsci" Content="Esci" HorizontalAlignment="Left" Margin="266,398,0,0" VerticalAlignment="Top" Width="112" Height="38" Click="Button_Click" Background="White" BorderBrush="White" Foreground="#DD000000"/>
-        <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Height="22" Margin="162,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" CaretBrush="#FF0066FF"/>
-        <PasswordBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="162,290,0,0" VerticalAlignment="Top" Width="130" Height="21" CaretBrush="#FF0066FF"/>
-        <Label Content="Usename:" HorizontalAlignment="Left" Margin="74,249,0,0" VerticalAlignment="Top" Width="73"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="74,285,0,0" VerticalAlignment="Top" Width="73"/>
-        <ComboBox x:Name="ComboTipo" HorizontalAlignment="Left" Margin="162,329,0,0" VerticalAlignment="Top" Width="130"/>
-        <Label Content="Tipologia utente:" HorizontalAlignment="Left" Margin="48,329,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonEsci" Content="Esci" HorizontalAlignment="Left" Margin="266,335,0,0" VerticalAlignment="Top" Width="112" Height="38" Click="Button_Click" Background="White" BorderBrush="White" Foreground="#DD000000"/>
+        <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Height="29" Margin="162,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" CaretBrush="#FF0066FF"/>
+        <PasswordBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="162,184,0,0" VerticalAlignment="Top" Width="216" Height="29" CaretBrush="#FF0066FF"/>
+        <Label Content="Usename:" HorizontalAlignment="Left" Margin="52,121,0,0" VerticalAlignment="Top" Width="96" FontSize="16" HorizontalContentAlignment="Right"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="52,184,0,0" VerticalAlignment="Top" Width="96" FontSize="16" HorizontalContentAlignment="Right"/>
+        <ComboBox x:Name="ComboTipo" HorizontalAlignment="Left" Margin="162,244,0,0" VerticalAlignment="Top" Width="216" Height="29"/>
+        <Label Content="Tipologia utente:" HorizontalAlignment="Left" Margin="21,244,0,0" VerticalAlignment="Top" FontSize="16" HorizontalContentAlignment="Right"/>
+        <Label HorizontalContentAlignment="Center" Content="LOGIN" HorizontalAlignment="Center" Margin="162,10,155,0" VerticalAlignment="Top" FontSize="36" FontWeight="Medium" Foreground="#FF7D7C83" Width="130"/>
+        <Button x:Name="ButtonAccedi" Content="Accedi" HorizontalAlignment="Left" Margin="75,335,0,0"  VerticalAlignment="Top" Width="111" Height="38" Click="ButtonAccedi_Click" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using NodaTime;
 using Progetto_Palestra.Classi;
 using System;
 using System.Collections.Generic;
@@ -64,57 +65,6 @@ namespace Progetto_Palestra
         }
 
         /**
-         * @brief Metodo per inserire record nel database 
-         * @param[in] queryInsert stringa contenente la query di inserimento
-         */
-        public void Insert(string queryInsert)
-        {
-            //string query = "INSERT INTO tableinfo (name, age) VALUES('John Smith', '33')";
-             
-            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(queryInsert, connection);
-                cmd.ExecuteNonQuery(); //Execute command
-                this.CloseConnection(); //close connection
-            }
-        }
-
-        /**
-         * @brief Metodo per aggiornare record nel database 
-         * @param[in] queryUpdate stringa contenente la query di aggiornamento
-         */
-        public void Update(string queryUpdate)
-        {
-            //string query = "UPDATE tableinfo SET name='Joe', age='22' WHERE name='John Smith'";
-
-            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
-            {
-                MySqlCommand cmd = new MySqlCommand(); //create mysql command
-                cmd.CommandText = queryUpdate; //Assign the query using CommandText
-                cmd.Connection = connection; //Assign the connection using Connection
-                cmd.ExecuteNonQuery(); //Execute query
-                this.CloseConnection(); //close connection
-            }
-        }
-
-        /**
-         * @brief Metodo per eliminare record nel database 
-         * @param[in] queryDelete stringa contenente la query di eliminazione
-         */
-        public void Delete(string queryDelete)
-        {
-            //string query = "DELETE FROM tableinfo WHERE name='John Smith'";
-
-            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
-            {
-                MySqlCommand cmd = new MySqlCommand(queryDelete, connection);
-                cmd.ExecuteNonQuery();
-                this.CloseConnection();
-            }
-        }
-
-        /**
          * @brief Metodo che riceve dal database la lista degli amministratori
          * @details Utilizza la connessione con il database per ritorare una stringa con username e 
          *          password di tutti gli amministratori
@@ -150,7 +100,7 @@ namespace Progetto_Palestra
          * @brief Metodo che ritorna una lista con username e password
          * @details Esegue la query per ottenere l'elenco di username e password
          */
-        public List<string> GetAtleti()
+        public List<string> GetUsPwAtleti()
         {
             string query = "SELECT Username,Password FROM atleti"; //Crea stringa query
             List<string> lista = new List<string>(); //Creazione lista da restituire
@@ -220,7 +170,7 @@ namespace Progetto_Palestra
         /**
          * @brief Ritorna il numero totale di atleti
          */
-        public int GetNumAthlete()
+        public int GetNumAtleti()
         {
             int ris = 0;
 
@@ -250,7 +200,7 @@ namespace Progetto_Palestra
         /**
          * @Ritorna il numero di atleti registrati questa settimana
          */
-        public int GetNumAthleteWeek()
+        public int GetNumAtletiWeek()
         {
             int ris = 0;
 
@@ -284,7 +234,7 @@ namespace Progetto_Palestra
         {
             int ris = 0;
 
-            string query = "SELECT COUNT(*) FROM atleti WHERE atleti.Scandenza_abbonamento>=NOW()"; //Crea stringa query
+            string query = "SELECT COUNT(*) FROM atleti WHERE atleti.Scadenza_abbonamento>=NOW()"; //Crea stringa query
 
 
             if (this.OpenConnection() == true) //Prova ad aprire la connessione
@@ -314,7 +264,7 @@ namespace Progetto_Palestra
         {
             int ris = 0;
 
-            string query = "SELECT COUNT(*) FROM atleti WHERE atleti.Scandenza_abbonamento<NOW()"; //Crea stringa query
+            string query = "SELECT COUNT(*) FROM atleti WHERE atleti.Scadenza_abbonamento<NOW()"; //Crea stringa query
 
 
             if (this.OpenConnection() == true) //Prova ad aprire la connessione
@@ -367,6 +317,27 @@ namespace Progetto_Palestra
             }
         }
 
+        public void RimuoviAtleta(int ID)
+        {
+            try
+            {
+                string query = "DELETE FROM Atleti WHERE Atleti.ID_Atleta="+ID+";"; //Crea stringa query
+
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Impossibile rimuovere atleta, errore:" + ex.Message);
+            }
+        }
+
         /**
          * @brief Ritorna il numero di visite di questa settimana
          */
@@ -395,6 +366,169 @@ namespace Progetto_Palestra
             {
                 return ris; //Ritorna la lista vuota
             }
+        }
+
+        public List<CAtleta> GetInfoAtleti()
+        {
+            string query = "SELECT * FROM atleti"; //Crea stringa query
+            List<CAtleta> lista = new List<CAtleta>(); //Creazione lista da restituire
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                while (dataReader.Read()) //Read the data and store them in the list
+                {
+                    string queryRes = "";
+                    int numC = dataReader.FieldCount;
+                    for (int i = 0; i < numC; i++)
+                    {
+                        queryRes += dataReader[i] + ";";
+                    }
+                    lista.Add(new CAtleta(queryRes)); //Aggiunge alla lista il record
+                }
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return lista;            //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return lista; //Ritorna la lista vuota
+            }
+        }
+
+        /**
+         * @brief Metodo che aggiorna un atleta dato come parametro
+         */
+        public void AggiornaAtleta(CAtleta atleta)
+        {
+            try
+            {
+                string query = "UPDATE Atleti "; //Crea stringa query       
+                query += "SET Username=\'" + atleta.Username + "\'";
+                query += ", Password=\'" + atleta.Password + "\'";
+                query += ", Nome=\'" + atleta.Nome + "\'";
+                query += ", Cognome=\'" + atleta.Cognome + "\'";
+                query += ", Residenza=\'" + atleta.Residenza + "\'";
+                query += ", Data_Iscrizione=\'" + atleta.DataIscrizione.Year + "-" + atleta.DataIscrizione.Month + "-" + atleta.DataIscrizione.Day + "\'";
+                query += ", Data_Nascita=\'" + atleta.DataNascita.Year + "-" + atleta.DataNascita.Month + "-" + atleta.DataNascita.Day + "\'";
+                query += ", Scadenza_Abbonamento=\'" + atleta.DataScadenza.Year + "-" + atleta.DataScadenza.Month + "-" + atleta.DataScadenza.Day + "\'";
+                query += ", Sesso=\'" + atleta.Sesso + "\'";
+                query += " WHERE ID_Atleta=" + atleta.ID + ";";
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Impossibile aggiornare il record");
+            }
+        }
+
+        public List<COrario> GetOrario()
+        {
+            try
+            {
+                List<COrario> orario = new List<COrario>();
+
+                string query = "SELECT * FROM orari";
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    
+                    while(dataReader.Read())
+                    {
+                        COrario row = new COrario();
+                        row.ID = Int32.Parse(dataReader["ID"] + "");
+                        row.Giorno = dataReader["Giorno"] + "";
+                        
+
+                        //Converte stringhe in localtime
+                        string complex = dataReader["DalleM"] + "";
+                        int ora = Int32.Parse(complex.Substring(0, 2));
+                        int minuti = Int32.Parse(complex.Substring(3, 2));
+                        row.DalleM = new LocalTime(ora, minuti);
+
+                        complex = dataReader["AlleM"] + "";
+                        ora = Int32.Parse(complex.Substring(0, 2));
+                        minuti = Int32.Parse(complex.Substring(3, 2));
+                        row.AlleM = new LocalTime(ora, minuti);
+
+                        complex = dataReader["DalleP"] + "";
+                        ora = Int32.Parse(complex.Substring(0, 2));
+                        minuti = Int32.Parse(complex.Substring(3, 2));
+                        row.DalleP = new LocalTime(ora, minuti);
+
+                        complex = dataReader["AlleP"] + "";
+                        ora = Int32.Parse(complex.Substring(0, 2));
+                        minuti = Int32.Parse(complex.Substring(3, 2));
+                        row.AlleP = new LocalTime(ora, minuti);
+
+                        orario.Add(row);
+                    }
+                    
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+
+
+                return orario;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Impossibile caricare orario.");
+                return new List<COrario>();
+            }
+        }
+
+        public void AggiornaOrario(string giorno,DateTime orario1M, DateTime orario2M, DateTime orario1P, DateTime orario2P)
+        {
+            try
+            {
+                
+
+                string query = "UPDATE orari "; //Crea stringa query       
+                query += "SET DalleM=\'" + OrarioToQuery(orario1M) + "\'";
+                query += ", AlleM=\'" + OrarioToQuery(orario2M) + "\'";
+                query += ", DalleP=\'" + OrarioToQuery(orario1P) + "\'";
+                query += ", AlleP=\'" + OrarioToQuery(orario2P) + "\'";
+                query += " WHERE Giorno=\"" + giorno+ "\";";
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Impossibile aggiornare l'orario, errore:"+ex.Message);
+            }
+            
+
+        }
+
+        private string OrarioToQuery(DateTime orario)
+        {
+            string s = "";
+            if (orario.Hour < 10)
+                s += "0";
+            s += orario.Hour + ":";
+            if (orario.Minute < 10)
+                s += "0";
+            s += orario.Minute + ":00.000000";
+            return s;
         }
     }
 }

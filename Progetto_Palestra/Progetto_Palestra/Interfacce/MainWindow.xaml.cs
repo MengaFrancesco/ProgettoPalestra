@@ -1,19 +1,7 @@
 ﻿using Progetto_Palestra.Classi;
-using Progetto_Palestra.Interfacce;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Progetto_Palestra.Interfacce
 {
@@ -65,18 +53,23 @@ namespace Progetto_Palestra.Interfacce
                         
                         AdministratorWindow aw = new AdministratorWindow(ToAmministratore(db.GetAdmin(lw.Username)));
                         aw.ShowDialog();
+                        if (!aw.Logout) this.Close();
+                        else this.Visibility = Visibility.Visible; //Visualizza finestra principale
                         break;
                     case "Atleta":
                         UserWindow uw = new UserWindow(lw.Username);
                         uw.ShowDialog();
+                        this.Visibility = Visibility.Visible; //Visualizza finestra principale
                         break;
                     case "Controllore":
                         ControlloreWindow cw = new ControlloreWindow(lw.Username);
                         cw.ShowDialog();
+                        this.Visibility = Visibility.Visible; //Visualizza finestra principale
                         break;
                     case "Meccanico":
                         MeccanicoWindow mw = new MeccanicoWindow(lw.Username);
                         mw.ShowDialog();
+                        this.Visibility = Visibility.Visible; //Visualizza finestra principale
                         break;
                 }
                 
@@ -84,8 +77,7 @@ namespace Progetto_Palestra.Interfacce
 
 
             }
-            //L'esecuzione ritorna alla chiusura della finestra
-            this.Visibility = Visibility.Visible; //Visualizza finestra principale
+            
         
         
         }
