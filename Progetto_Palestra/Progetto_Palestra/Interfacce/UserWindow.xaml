@@ -1,17 +1,120 @@
-﻿<Window x:Class="Progetto_Palestra.Interfacce.UserWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Progetto_Palestra.Interfacce.UserWindow"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="683">
+        Title="UserWindow" Height="526.5" Width="896">
     <Grid>
-        <Button x:Name="ButtonRinnova" Content="Rinnova abbonamento" HorizontalAlignment="Left" Margin="298,43,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="ButtonInizia" Content="Inizia Allenamento" HorizontalAlignment="Left" Margin="298,80,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="ButtonSegnala" Content="Segnala Attrezzo" HorizontalAlignment="Left" Margin="298,117,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="ButtonCambia" Content="Cambia Informazioni Personali" HorizontalAlignment="Left" Margin="298,154,0,0" VerticalAlignment="Top" Width="233"/>
-        <Button x:Name="ButtonPassword" Content="Cambia Password" HorizontalAlignment="Left" Margin="298,191,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonRinnova" Content="Rinnova abbonamento" HorizontalAlignment="Left" Margin="0,-232,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonInizia" Content="Inizia Allenamento" HorizontalAlignment="Left" Margin="0,-194,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonSegnala" Content="Segnala Attrezzo" HorizontalAlignment="Left" Margin="0,-158,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="ButtonCambia" Content="Cambia Informazioni Personali" HorizontalAlignment="Left" Margin="0,-120,0,0" VerticalAlignment="Top" Width="233"/>
+        <Button x:Name="ButtonPassword" Content="Cambia Password" HorizontalAlignment="Left" Margin="0,-84,0,0" VerticalAlignment="Top" Width="179"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="1148" StrokeThickness="0.5" Margin="-7,0,0,0"/>
+        <Label Content="Atleta" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="295,7,0,0" VerticalAlignment="Top" Width="649" Foreground="#FF7D7C83"/>
+
+
+
+        <Grid x:Name="GridMenu" Width="294" HorizontalAlignment="Left" Background="#FF0066FF" RenderTransformOrigin="0.5,0.5" Margin="0,37,0,0">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                    <ListViewItem x:Name="LWDashboard" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/dashboard.png"/>
+                            <TextBlock Text="Dashboard" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVInfo" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/user.png"/>
+                            <TextBlock Margin="10" Foreground="White"><Run Text="Informazioni personali"/></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVAbbonamento" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/subscription.png"/>
+                            <TextBlock Text="Gestione Abbonamento" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVAllenamento" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/barbel.png"/>
+                            <TextBlock Text="Nuovo Allenamento" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVAllenamentoPrec" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/calendar.png"/>
+                            <TextBlock Text="Allenamenti precedenti" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVSegnala" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/flag.png"/>
+                            <TextBlock Text="Segnala attrezzo" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVLogout" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/logout.png"/>
+                            <TextBlock Text="Logout" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridDashboard" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593">
+            <Label Content="Atleta / Dashboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Height="90" Width="169">
+                <materialDesign:Card.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF6EC6F7" Offset="0"/>
+                        <GradientStop Color="#FF2171FF" Offset="1"/>
+                    </LinearGradientBrush>
+                </materialDesign:Card.Background>
+            </materialDesign:Card>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="206,45,0,0" VerticalAlignment="Top" Height="90" Width="169">
+                <materialDesign:Card.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4EFF7E" Offset="0"/>
+                        <GradientStop Color="#FF0AAA36" Offset="1"/>
+                    </LinearGradientBrush>
+                </materialDesign:Card.Background>
+            </materialDesign:Card>
+            <materialDesign:Card HorizontalAlignment="Left" Margin="401,45,0,0" VerticalAlignment="Top" Height="90" Width="169">
+                <materialDesign:Card.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFFD64A" Offset="0"/>
+                        <GradientStop Color="#FFFF9700" Offset="1"/>
+                    </LinearGradientBrush>
+                </materialDesign:Card.Background>
+            </materialDesign:Card>
+            <Label Content="ALLENAMENTI" HorizontalAlignment="Left" Margin="14,47,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="/Progetto_Palestra;component/#Inter" Width="113"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="111,51,0,0" VerticalAlignment="Top" Width="55" Source="/Progetto_Palestra;component/Immagini/barbel.png"/>
+            <Label x:Name="LabelNumAllenamenti" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="14,69,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
+            <Label x:Name="LabelNumAllenamentiW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="14,104,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="303,51,0,0" VerticalAlignment="Top" Width="56" Source="/Progetto_Palestra;component/Immagini/flag.png"/>
+            <Label Content="SEGNALAZIONI" HorizontalAlignment="Left" Margin="211,47,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="/Progetto_Palestra;component/#Inter" Width="109"/>
+            <Label x:Name="LabelSegnalazioni" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="211,69,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
+            <Label x:Name="LabelSegnalazioniW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="211,104,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
+            <Label Content="VISITE" HorizontalAlignment="Left" Margin="406,47,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="/Progetto_Palestra;component/#Inter" Width="110"/>
+            <Image HorizontalAlignment="Left" Height="55" Margin="499,51,0,0" VerticalAlignment="Top" Width="56" Source="/Progetto_Palestra;component/Immagini/visitor.png"/>
+            <Label x:Name="LabelNumVisite" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="406,69,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
+            <Label x:Name="LabelNumVisiteW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="406,104,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
+        </Grid>
+
 
     </Grid>
 </Window>

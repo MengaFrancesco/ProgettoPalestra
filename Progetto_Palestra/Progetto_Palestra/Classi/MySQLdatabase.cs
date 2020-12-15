@@ -9,7 +9,7 @@ namespace Progetto_Palestra
 {
     class MySQLdatabase
     {
-        private MySqlConnection connection; 
+        private MySqlConnection connection;
 
         //Constructor
         public MySQLdatabase()
@@ -17,7 +17,7 @@ namespace Progetto_Palestra
             Initialize();
         }
 
-        
+
         /**
          *  @brief Costruttore senza parametri
          *  @details Inizializza il valore degli attributi \c server, \c database, \c uid
@@ -25,7 +25,7 @@ namespace Progetto_Palestra
          */
         private void Initialize()
         {
-            string connectionString="Server=localhost;Database=db_palestra;Uid=root;Pwd=;"; //Inizializza la stringa di connessione
+            string connectionString = "Server=localhost;Database=db_palestra;Uid=root;Pwd=;"; //Inizializza la stringa di connessione
             connection = new MySqlConnection(connectionString); //Invia la stringa al server
         }
 
@@ -42,7 +42,7 @@ namespace Progetto_Palestra
             catch (MySqlException ex)
             {
                 //Visualizza messaggio di errore se la connessione con il server è fallita
-                MessageBox.Show(ex.ToString()+", error:" + ex.Number.ToString());
+                MessageBox.Show(ex.ToString() + ", error:" + ex.Number.ToString());
                 return false;
             }
         }
@@ -64,37 +64,9 @@ namespace Progetto_Palestra
             }
         }
 
-        /**
-         * @brief Metodo che riceve dal database la lista degli amministratori
-         * @details Utilizza la connessione con il database per ritorare una stringa con username e 
-         *          password di tutti gli amministratori
-         * @return  lista oggetto \c List contenente la lista di username e password di tutti gli
-         *          amministratori
-         */
-        public List<string> GetAdministrators()
-        {
-            string query = "SELECT Username,Password FROM amministratori"; //Crea stringa query
-            List<string> lista = new List<string>(); //Creazione lista da restituire
 
-            if (this.OpenConnection() == true) //Prova ad aprire la connessione
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
-                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
-                 
-                while (dataReader.Read()) //Read the data and store them in the list
-                {
-                    lista.Add(dataReader["Username"] + ";" + dataReader["Password"]); //Aggiunge alla lista il record
-                }
-
-                dataReader.Close();     //close Data Reader
-                this.CloseConnection(); //close Connection
-                return lista;            //Ritorna la lista con l'elenco degli amministratori
-            }
-            else
-            {
-                return lista; //Ritorna la lista vuota
-            }
-        }
+        ////QUERY ATLETI
+        ////QUERY SELECT
 
         /**
          * @brief Metodo che ritorna una lista con username e password
@@ -126,56 +98,14 @@ namespace Progetto_Palestra
         }
 
         /**
-         * @brief Aggiunge atleta dato come parametro alla lista
-         */
-        public void InserisciAtleta(CAtleta Atleta)
-        {
-            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(Atleta.InsertQuery(), connection);
-                cmd.ExecuteNonQuery(); //Execute command
-                this.CloseConnection(); //close connection
-            }
-        }
-
-        /**
-         * @brief Ritorna stringa con le informazioni dell'amministratore parametro
-         */
-        public string GetAdmin(string Username)
-        {
-            string query = "SELECT * FROM amministratori WHERE Username=\""+Username+"\""; //Crea stringa query
-            string ris = ""; //Creazione lista da restituire
-
-            if (this.OpenConnection() == true) //Prova ad aprire la connessione
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
-                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
-
-                dataReader.Read(); //Read the data and store them in the list
-                
-                    ris = (dataReader["ID_Amministratore"]+";"+ dataReader["Username"] +";"+ dataReader["Password"] + ";" + dataReader["Nome"] + ";" + dataReader["Cognome"] + ";" + dataReader["Iscrizione"] + ";" + dataReader["Link_foto"]+"");  //Aggiunge alla lista il record
-                
-
-                dataReader.Close();     //close Data Reader
-                this.CloseConnection(); //close Connection
-                return ris;             //Ritorna la lista con l'elenco degli amministratori
-            }
-            else
-            {
-                return ris; //Ritorna la lista vuota
-            }
-        }
-
-        /**
-         * @brief Ritorna il numero totale di atleti
-         */
+        * @brief Ritorna il numero totale di atleti
+        */
         public int GetNumAtleti()
         {
             int ris = 0;
 
             string query = "SELECT COUNT(*) FROM atleti"; //Crea stringa query
-            
+
 
             if (this.OpenConnection() == true) //Prova ad aprire la connessione
             {
@@ -184,7 +114,7 @@ namespace Progetto_Palestra
 
                 dataReader.Read(); //Read the data and store them in the list
 
-                string risS = dataReader["COUNT(*)"]+"" ;
+                string risS = dataReader["COUNT(*)"] + "";
                 ris = Int32.Parse(risS);
 
                 dataReader.Close();     //close Data Reader
@@ -316,57 +246,35 @@ namespace Progetto_Palestra
                 return ris; //Ritorna la lista vuota
             }
         }
-
-        public void RimuoviAtleta(int ID)
-        {
-            try
+        /**
+             * @brief Ritorna il numero di visite di questa settimana
+             */
+        public int GetNumVisiteWeek()
             {
-                string query = "DELETE FROM Atleti WHERE Atleti.ID_Atleta="+ID+";"; //Crea stringa query
+                int ris = 0;
+
+                string query = "SELECT COUNT(*) FROM elenco_visite WHERE YEARWEEK(elenco_visite.Data) = YEARWEEK(NOW())"; //Crea stringa query
 
 
                 if (this.OpenConnection() == true) //Prova ad aprire la connessione
                 {
                     MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
                     MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    dataReader.Read(); //Read the data and store them in the list
+
+                    string risS = dataReader["COUNT(*)"] + "";
+                    ris = Int32.Parse(risS);
+
                     dataReader.Close();     //close Data Reader
                     this.CloseConnection(); //close Connection
+                    return ris;             //Ritorna la lista con l'elenco degli amministratori
+                }
+                else
+                {
+                    return ris; //Ritorna la lista vuota
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Impossibile rimuovere atleta, errore:" + ex.Message);
-            }
-        }
-
-        /**
-         * @brief Ritorna il numero di visite di questa settimana
-         */
-        public int GetNumVisiteWeek()
-        {
-            int ris = 0;
-
-            string query = "SELECT COUNT(*) FROM elenco_visite WHERE YEARWEEK(elenco_visite.Data) = YEARWEEK(NOW())"; //Crea stringa query
-
-
-            if (this.OpenConnection() == true) //Prova ad aprire la connessione
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
-                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
-
-                dataReader.Read(); //Read the data and store them in the list
-
-                string risS = dataReader["COUNT(*)"] + "";
-                ris = Int32.Parse(risS);
-
-                dataReader.Close();     //close Data Reader
-                this.CloseConnection(); //close Connection
-                return ris;             //Ritorna la lista con l'elenco degli amministratori
-            }
-            else
-            {
-                return ris; //Ritorna la lista vuota
-            }
-        }
 
         public List<CAtleta> GetInfoAtleti()
         {
@@ -398,6 +306,104 @@ namespace Progetto_Palestra
                 return lista; //Ritorna la lista vuota
             }
         }
+
+        public int GetNumAllenamenti(int ID)
+        {
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                int ris = 0;
+                string query = "SELECT COUNT(*) FROM elenco_allenamenti WHERE Atleta=" + ID + ";";
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data
+
+                ris = Int32.Parse(dataReader[0] + "");
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;            //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+                return 0;
+        }
+
+        /**
+         * @brief Metodo che ritorna l'atleta dall'username 
+         */
+        public CAtleta GetAtleta(string Username)
+        {
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+
+                string query = "SELECT * FROM atleti WHERE Username=\"" + Username + "\";";
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data
+
+                /* Legge le colonne, le inserisce in una stringa */
+                string queryRes = "";
+                int numC = dataReader.FieldCount;
+                for (int i = 0; i < numC; i++)
+                {
+                    queryRes += dataReader[i] + ";";
+                }
+                CAtleta atleta = new CAtleta(queryRes); //Crea oggetto atleta
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return atleta;            //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+                return null;
+        }
+
+        public int GetNumAllenamentiW(int ID)
+        {
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                int ris = 0;
+                string query = "SELECT COUNT(*) FROM elenco_allenamenti WHERE Atleta=" + ID + " AND YEARWEEK(NOW())=YEARWEEK(elenco_allenamenti.Data);";
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data
+
+                ris = Int32.Parse(dataReader[0] + "");
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;            //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+                return 0;
+        }
+
+
+        ////QUERY DELETE
+        public void RimuoviAtleta(int ID)
+        {
+            try
+            {
+                string query = "DELETE FROM Atleti WHERE Atleti.ID_Atleta=" + ID + ";"; //Crea stringa query
+
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Impossibile rimuovere atleta, errore:" + ex.Message);
+            }
+        }
+
+        ////QUERY UPDATE
 
         /**
          * @brief Metodo che aggiorna un atleta dato come parametro
@@ -432,6 +438,88 @@ namespace Progetto_Palestra
             }
         }
 
+        ////QUERY INSERT
+        /**
+         * @brief Aggiunge atleta dato come parametro alla lista
+         */
+        public void InserisciAtleta(CAtleta Atleta)
+        {
+            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(Atleta.InsertQuery(), connection);
+                cmd.ExecuteNonQuery(); //Execute command
+                this.CloseConnection(); //close connection
+            }
+        }
+
+
+        /**
+         * @brief Metodo che riceve dal database la lista degli amministratori
+         * @details Utilizza la connessione con il database per ritorare una stringa con username e 
+         *          password di tutti gli amministratori
+         * @return  lista oggetto \c List contenente la lista di username e password di tutti gli
+         *          amministratori
+         */
+        public List<string> GetAdministrators()
+        {
+            string query = "SELECT Username,Password FROM amministratori"; //Crea stringa query
+            List<string> lista = new List<string>(); //Creazione lista da restituire
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                while (dataReader.Read()) //Read the data and store them in the list
+                {
+                    lista.Add(dataReader["Username"] + ";" + dataReader["Password"]); //Aggiunge alla lista il record
+                }
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return lista;            //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return lista; //Ritorna la lista vuota
+            }
+        }
+
+        
+
+        
+
+        /**
+         * @brief Ritorna stringa con le informazioni dell'amministratore parametro
+         */
+        public string GetAdmin(string Username)
+        {
+            string query = "SELECT * FROM amministratori WHERE Username=\"" + Username + "\""; //Crea stringa query
+            string ris = ""; //Creazione lista da restituire
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                ris = (dataReader["ID_Amministratore"] + ";" + dataReader["Username"] + ";" + dataReader["Password"] + ";" + dataReader["Nome"] + ";" + dataReader["Cognome"] + ";" + dataReader["Iscrizione"] + ";" + dataReader["Link_foto"] + "");  //Aggiunge alla lista il record
+
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+       
+
         public List<COrario> GetOrario()
         {
             try
@@ -444,13 +532,13 @@ namespace Progetto_Palestra
                 {
                     MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
                     MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
-                    
-                    while(dataReader.Read())
+
+                    while (dataReader.Read())
                     {
                         COrario row = new COrario();
                         row.ID = Int32.Parse(dataReader["ID"] + "");
                         row.Giorno = dataReader["Giorno"] + "";
-                        
+
 
                         //Converte stringhe in localtime
                         string complex = dataReader["DalleM"] + "";
@@ -475,7 +563,7 @@ namespace Progetto_Palestra
 
                         orario.Add(row);
                     }
-                    
+
                     dataReader.Close();     //close Data Reader
                     this.CloseConnection(); //close Connection
                 }
@@ -490,18 +578,18 @@ namespace Progetto_Palestra
             }
         }
 
-        public void AggiornaOrario(string giorno,DateTime orario1M, DateTime orario2M, DateTime orario1P, DateTime orario2P)
+        public void AggiornaOrario(string giorno, DateTime orario1M, DateTime orario2M, DateTime orario1P, DateTime orario2P)
         {
             try
             {
-                
+
 
                 string query = "UPDATE orari "; //Crea stringa query       
                 query += "SET DalleM=\'" + OrarioToQuery(orario1M) + "\'";
                 query += ", AlleM=\'" + OrarioToQuery(orario2M) + "\'";
                 query += ", DalleP=\'" + OrarioToQuery(orario1P) + "\'";
                 query += ", AlleP=\'" + OrarioToQuery(orario2P) + "\'";
-                query += " WHERE Giorno=\"" + giorno+ "\";";
+                query += " WHERE Giorno=\"" + giorno + "\";";
 
                 if (this.OpenConnection() == true) //Prova ad aprire la connessione
                 {
@@ -513,9 +601,9 @@ namespace Progetto_Palestra
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Impossibile aggiornare l'orario, errore:"+ex.Message);
+                MessageBox.Show("Impossibile aggiornare l'orario, errore:" + ex.Message);
             }
-            
+
 
         }
 
@@ -530,6 +618,8 @@ namespace Progetto_Palestra
             s += orario.Minute + ":00.000000";
             return s;
         }
+
+        
     }
 }
 

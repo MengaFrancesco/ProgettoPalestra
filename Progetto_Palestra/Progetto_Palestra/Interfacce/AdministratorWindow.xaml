@@ -18,7 +18,7 @@
         <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="777,7,0,0" VerticalAlignment="Top" Width="364" Foreground="#FF7D7C83"/>
 
 
-        <Grid x:Name="GridDashboard" HorizontalAlignment="Left" Visibility="Hidden" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="601">
+        <Grid x:Name="GridDashboard" HorizontalAlignment="Left" Visibility="Visible" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837">
             <Label Content="Home / Dashboard" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="135" Foreground="#FF7D7C83"/>
             <materialDesign:Card HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="90" Width="169">
                 <materialDesign:Card.Background>
@@ -94,7 +94,7 @@
 
         </Grid>
 
-        <Grid x:Name="GridOrario" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Visible">
+        <Grid x:Name="GridOrario" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Modifiche Orario" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
             <materialDesign:TimePicker x:Name="TP_AperturaM" HorizontalAlignment="Left" Margin="169,94,0,0" VerticalAlignment="Top" Width="160" />
             <materialDesign:TimePicker x:Name="TP_ChiusuraM" HorizontalAlignment="Left" Margin="169,124,0,0" VerticalAlignment="Top" Width="160" />

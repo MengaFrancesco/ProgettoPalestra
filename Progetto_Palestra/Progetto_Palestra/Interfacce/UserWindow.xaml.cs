@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Progetto_Palestra.Classi;
+using System.Windows;
 
 namespace Progetto_Palestra.Interfacce
 {
@@ -9,6 +10,8 @@ namespace Progetto_Palestra.Interfacce
     {
         //Properties
         public string Username { get; set; }
+        private CAtleta atleta { get; set; }
+        private MySQLdatabase db;
 
         /**
          * @brief Costruttore con parametri
@@ -19,7 +22,26 @@ namespace Progetto_Palestra.Interfacce
             InitializeComponent();
 
             this.Username = Username;
-            MessageBox.Show(Username);
+            db = new MySQLdatabase();
+
+            /* Inizializza atleta */
+            atleta = db.GetAtleta(Username);
+            
+            /* Inizializza la dashboard */
+            UpdateDashboard();
+        }
+
+        public void UpdateDashboard()
+        {
+            /* Rende visibile solo la dashboard */
+            GridDashboard.Visibility = Visibility.Visible;
+
+            /* Inserisce dati nelle label */
+
+            int numAll = db.GetNumAllenamenti(atleta.ID);
+            int numAllW = db.GetNumAllenamentiW(atleta.ID);
+            LabelNumAllenamenti.Content = numAll;
+            LabelNumAllenamentiW.Content = numAllW + " questa settimana";
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Progetto_Palestra.Interfacce
         //Properties
         public CAmministratore Admin;
         public bool Logout;
+        private MySQLdatabase db;
 
         /**
          * @brief Costruttore con parametri
@@ -27,8 +28,8 @@ namespace Progetto_Palestra.Interfacce
             InitializeComponent();
 
             this.Admin = Admin;
-
             Logout = false;
+            db = new MySQLdatabase();
 
             LabelBenvenuto.Content += " " + Admin.Nome;
 
@@ -53,7 +54,6 @@ namespace Progetto_Palestra.Interfacce
             GridAdmin.Visibility = Visibility.Hidden;
 
             //AGGIORNA DATI
-            MySQLdatabase db = new MySQLdatabase();
             int num = db.GetNumAtleti();
             int num2 = db.GetNumAtletiWeek();
             LabelNumAtleti.Content = num.ToString();
@@ -83,7 +83,6 @@ namespace Progetto_Palestra.Interfacce
             GridAdmin.Visibility = Visibility.Hidden;
 
             //Carica dati atleti
-            MySQLdatabase db = new MySQLdatabase();
             DataGridAtleti.ItemsSource = db.GetInfoAtleti();
         }
 
@@ -101,7 +100,6 @@ namespace Progetto_Palestra.Interfacce
 
             //Aggiorna datagrid
             List<COrario> orario = new List<COrario>();
-            MySQLdatabase db = new MySQLdatabase();
             orario = db.GetOrario();
             DataGridOrario.ItemsSource = orario;
             DataGridOrario.SelectedIndex = 0;
@@ -285,7 +283,6 @@ namespace Progetto_Palestra.Interfacce
 
                 CAtleta nuovo = new CAtleta(ID, Username, Password, Nome, Cognome, Residenza, DataIscrizione, Sesso, DataScadenza, DataNascita);
 
-                MySQLdatabase db = new MySQLdatabase();
                 db.InserisciAtleta(nuovo);
                 UpdateAtleti();
                 System.Windows.MessageBox.Show("Atleta inserito!");
@@ -371,7 +368,6 @@ namespace Progetto_Palestra.Interfacce
             //Se un elemento selezionato
             if (DataGridAtleti.SelectedIndex != -1)
             {
-                MySQLdatabase db = new MySQLdatabase();
                 db.RimuoviAtleta(((CAtleta)DataGridAtleti.SelectedItem).ID);
             }
             else
@@ -406,7 +402,6 @@ namespace Progetto_Palestra.Interfacce
 
                     CAtleta atleta = new CAtleta(ID, Username, Password, Nome, Cognome, Residenza, DataIscrizione, Sesso, DataScadenza, DataNascita);
 
-                    MySQLdatabase db = new MySQLdatabase();
                     db.AggiornaAtleta(atleta);
                     UpdateAtleti();
                 }
@@ -449,7 +444,6 @@ namespace Progetto_Palestra.Interfacce
         private void DataGridOrario_Initialized(object sender, EventArgs e)
         {
             List<COrario> orario = new List<COrario>();
-            MySQLdatabase db = new MySQLdatabase();
             orario = db.GetOrario();
             DataGridOrario.ItemsSource = orario;
             DataGridOrario.SelectedIndex = 0;
@@ -558,16 +552,20 @@ namespace Progetto_Palestra.Interfacce
             }
             else
             {
-                MySQLdatabase db = new MySQLdatabase();
+                /* Aggiorna orario del database e ricarica la pagina */
                 db.AggiornaOrario(CB_Giorni.SelectedItem.ToString() ,orario1M, orario2M, orario1P, orario2P);
                 UpdateOrario();
             }
         }
 
+        /**
+         * @brief Metodo eseguito quando cambia la selezione della combobox giorni
+         */
         private void CB_Giorni_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
+                /* Mantiene datagrid e combobox sincronizzati */
                 DataGridOrario.SelectedIndex = CB_Giorni.SelectedIndex;
             }
             catch (Exception)
@@ -575,5 +573,10 @@ namespace Progetto_Palestra.Interfacce
 
             }
         }
+    
+    
+    
+    
+    
     }
 }
