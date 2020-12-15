@@ -117,7 +117,20 @@ namespace Progetto_Palestra.Interfacce
                             MessageBox.Show("Username e password non corrispondono!", "Attenzione!", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                         break;
-                    case "Controllore": break;
+                    case "Controllore":
+                        if(db.CheckControllore(Username,Password))
+                        {
+                            MessageBox.Show("Login effettuato con successo!", "Attenzione!", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Login = true;
+                            this.Close();
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username e password non corrispondono!");
+                        }
+                        
+                        break;
                     case "Meccanico": break;
                 }
                 

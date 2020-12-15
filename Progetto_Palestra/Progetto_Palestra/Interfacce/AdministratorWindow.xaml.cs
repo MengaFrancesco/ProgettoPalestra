@@ -723,6 +723,5 @@ namespace Progetto_Palestra.Interfacce
             UpdateDashboard();
         }
 
-
     }
 }

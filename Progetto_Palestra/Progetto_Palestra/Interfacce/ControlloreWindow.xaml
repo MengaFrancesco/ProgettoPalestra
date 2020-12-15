@@ -5,11 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Progetto_Palestra"
         mc:Ignorable="d"
-        Title="ControlloreWindow" Height="450" Width="563.75">
+        Title="ControlloreWindow" Height="472.5" Width="857.375">
     <Grid>
-        <Button x:Name="ButtonScansiona" Content="Scansiona codice" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="167"/>
-        <Button x:Name="ButtonCreaCodice" Content="Crea codice" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="167"/>
-        <Button x:Name="ButtonModificaInfo" Content="Modifica Informazioni Personali" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="246"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="849" StrokeThickness="0.5"/>
+        <Label Content="Controllore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="516,7,0,0" VerticalAlignment="Top" Width="333" Foreground="#FF7D7C83"/>
 
+
+        <Grid x:Name="GridMenu" Width="294" HorizontalAlignment="Left" Background="#FF0066FF" RenderTransformOrigin="0.5,0.5" Margin="0,37,0,0">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                    <ListViewItem x:Name="LWDashboard" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/dashboard.png"/>
+                            <TextBlock Text="Dashboard" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="LVScan" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/qr-code(1).png"/>
+                            <TextBlock Margin="10" Foreground="White"><Run Text="Scansiona QR"/></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="LVCreate" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/qr-code.png"/>
+                            <TextBlock Margin="10" Foreground="White"><Run Text="Crea codice QR"/></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="LVProfilo" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="34" Width="35" Source="/Progetto_Palestra;component/user.png"/>
+                            <TextBlock Text="Profilo personale" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="LWLogout" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <Image Height="34" Width="35" Source="/Progetto_Palestra;component/Immagini/logout.png"/>
+                            <TextBlock Text="Logout" Margin="10" Foreground="White"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridDashboard" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="555" Visibility="Hidden">
+            <Label Content="Controllore / Dashboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
+        <Grid  x:Name="GridScanQR" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="555" Visibility="Visible">
+            <Label Content="Controllore / Scansiona QR" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+            <Button x:Name="BT_Scansiona" Content="Scansiona" HorizontalAlignment="Left" Margin="38,201,0,0" VerticalAlignment="Top" Width="152" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Scansiona_Click"/>
+            <Button x:Name="BT_Annulla_QR" Content="Annulla" HorizontalAlignment="Left" Margin="352,201,0,0" VerticalAlignment="Top" Width="152" Background="White" BorderBrush="White" Foreground="#FF0066FF" Click="BT_Annulla_QR_Click"/>
+            <Button x:Name="BT_Accedi" Content="Esegui accesso" HorizontalAlignment="Left" Margin="195,201,0,0" VerticalAlignment="Top" Width="152" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Accedi_Click"/>
+            <Image HorizontalAlignment="Left" Height="94" Margin="62,78,0,0" VerticalAlignment="Top" Width="100" Source="/Progetto_Palestra;component/Immagini/user-images.png"/>
+            <Label Content="Atleta selezionato:" HorizontalAlignment="Left" Margin="38,277,0,0" VerticalAlignment="Top" Width="188" Height="35" FontSize="20"/>
+            <TextBox x:Name="TB_Username_QR" HorizontalAlignment="Left" Height="32" Margin="226,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" FontSize="18" CaretBrush="#FF0066FF"/>
+            <Image HorizontalAlignment="Left" Height="94" Margin="226,78,0,0" VerticalAlignment="Top" Width="99" Source="/Progetto_Palestra;component/Immagini/key.png"/>
+            <Image HorizontalAlignment="Left" Height="72" Margin="391,91,0,0" VerticalAlignment="Top" Width="87" Source="/Progetto_Palestra;component/Immagini/undo-arrow.png" RenderTransformOrigin="0.483,0.486"/>
+        </Grid>
+        <Grid x:Name="GridCreateQR" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="555" Visibility="Hidden">
+            <Label Content="Controllore / Crea QR" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid  x:Name="GridProfile" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="555" Visibility="Hidden" >
+            <Label Content="Controllore / Profilo Personale" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid  x:Name="GridLogout" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="555" Visibility="Hidden" >
+            <Label Content="Controllore / Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
+        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </Window>

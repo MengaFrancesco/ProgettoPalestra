@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace Progetto_Palestra.Classi
 {
-    class CAtleta
+    public class CAtleta
     {
-        /* PROPERTIES DI ATLETA */
+        ////PROPERTIES
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -21,11 +21,10 @@ namespace Progetto_Palestra.Classi
         public DateTime DataScadenza { get; set; }
         public DateTime DataNascita { get; set; }
 
-
+        ////COSTRUTTORE CON PARAMETRO QUERY
         public CAtleta(string QueryResult)
         {
             string[] list= QueryResult.Split(';');
-            //MessageBox.Show(list.Length.ToString());
             if(list.Length==11)
             {
                 ID = Int32.Parse(list[0]);
@@ -47,10 +46,7 @@ namespace Progetto_Palestra.Classi
             }
         }
 
-        /**
-         * @brief Costruttore con parametri
-         * @details Inizializza tutte le properties utilizzando i parametri
-         */
+        ////COSTRUTTORE CON PARAMETRI
         public CAtleta(int ID ,string Username, string Password, string Nome, string Cognome, string Residenza, DateTime DataIscrizione, string Sesso, DateTime DataScadenza, DateTime DataNascita) 
         {
             this.ID = ID;
@@ -65,9 +61,7 @@ namespace Progetto_Palestra.Classi
             this.DataNascita = DataNascita;
         }
 
-        /**
-         * @brief Metodo che converte tutte le properties nella QUERY di inserimento
-         */
+        ////RITORNA UNA STRINGA IN FORMATO QUERY DELL'OGGETTO
         public string ToInsertQuery()
         {
             string s = "INSERT INTO `atleti` (`ID_Atleta`, `Username`, `Password`, `Nome`, `Cognome`, `Residenza`, `Data_Iscrizione`, `Data_nascita`, `Sesso`, `Scadenza_abbonamento`)"
@@ -76,6 +70,7 @@ namespace Progetto_Palestra.Classi
             return s;
         }
 
+        ////CONVERTE PARAMETRO STRINGA QUERY IN OGGETTO DATETIME
         public DateTime ToDateTime(string QueryRis)
         {
             try

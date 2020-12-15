@@ -3,35 +3,31 @@ using NodaTime;
 using Progetto_Palestra.Classi;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 
 namespace Progetto_Palestra
 {
     class MySQLdatabase
     {
+        ////OGGETTO MYSQLCONNECTION CHE PERMETTE LA CONNESSIONE
         private MySqlConnection connection;
 
-        //Constructor
+        ////COSTRUTTORE SENZA PARAMETRI
         public MySQLdatabase()
         {
             Initialize();
         }
 
-
-        /**
-         *  @brief Costruttore senza parametri
-         *  @details Inizializza il valore degli attributi \c server, \c database, \c uid
-         *           e \c password; inoltre inizializza la connessione con il database.
-         */
+        ////INIZIALIZZAZIONE DELLA CONNESSIONE CON IL SERVER
         private void Initialize()
         {
             string connectionString = "Server=localhost;Database=db_palestra;Uid=root;Pwd=;"; //Inizializza la stringa di connessione
             connection = new MySqlConnection(connectionString); //Invia la stringa al server
         }
 
-        /**
-         * @brief Apre la connessione con il database
-         */
+        ////TENTATIVO DI APERTURA DELLA CONNESSIONE CON IL SERVER
         private bool OpenConnection()
         {
             try
@@ -47,9 +43,7 @@ namespace Progetto_Palestra
             }
         }
 
-        /**
-         * @brief Chiude la connessione con il database 
-         */
+        ////TENTATIVO DI CHIUSURA DELLA CONNESSIONE CON IL SERVER
         private bool CloseConnection()
         {
             try
@@ -431,7 +425,44 @@ namespace Progetto_Palestra
             }
         }
 
+        ////CHECK ESISTENZA USERNAME ATLETA
+        public bool CheckUsernameAtleta(string Username)
+        {
+            bool ris = false;
 
+            try
+            {
+
+                string query = "SELECT COUNT(*) FROM atleti WHERE Username=\'" + Username + "\'";
+
+
+                if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    dataReader.Read(); //Fino a quando c'è da leggere
+
+                    string s = (dataReader[0] + "");
+                    if (s != "0")
+                        ris = true;      //Legge colonna
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+
+                    return ris;
+                }
+                else
+                    return ris;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+                return false;
+            }
+        }
+        
+        
         ////QUERY AMMINISTRATORI
 
         ////SELECT DI USERNAME E PASSWORD DI TUTTI GLI AMMINISTRATORI
@@ -593,6 +624,40 @@ namespace Progetto_Palestra
         ////QUERY CONTROLLORI
 
         ////SELECT OGNI COLONNA DEI CONTROLLORI
+        public CControllore GetControllore(string Username)
+        {
+            CControllore ris; //Inizializza nuova lista
+
+            try
+            {
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    string query = "SELECT * FROM controllori WHERE Username='" + Username + "';";
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    dataReader.Read();
+
+                    string lista = "";
+                    for (int i = 0; i < dataReader.FieldCount; i++)
+                    {
+                        lista += dataReader[i] + ";";
+                    }
+                    ris = new CControllore(lista);
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                    return ris;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        ////SELECT OGNI COLONNA DEI CONTROLLORI
         public List<string> GetControllori()
         {
             List<string> ris = new List<string>(); //Inizializza nuova lista
@@ -702,7 +767,45 @@ namespace Progetto_Palestra
             }
         }
 
-}
+        ////CHECK CONTROLLORE SE ESISTE
+        public bool CheckControllore(string Username, string Password)
+        {
+            bool ris = false;
+
+            try
+            {
+                string query = "SELECT COUNT(*) FROM controllori WHERE Username=\'" + Username + "\' AND Password=\'" + Password + "\'";
+                MessageBox.Show(query);
+
+                if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    dataReader.Read(); //Fino a quando c'è da leggere
+
+                    string s = (dataReader[0]+"");
+                    if (s!="0")
+                        ris = true;      //Legge colonna
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+
+
+                    return ris;
+                }
+                else
+                    return ris;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+                return false;
+            }
+        }
+
+        
+    }
 }
 
 

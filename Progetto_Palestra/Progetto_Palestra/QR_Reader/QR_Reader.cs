@@ -23,7 +23,7 @@ namespace Progetto_Palestra.QR_Reader
 
         private static System.Timers.Timer aTimer;
 
-        string QR_code;
+        public string QR_code { get; set; }
 
         public QR_Reader()
         {
@@ -86,11 +86,12 @@ namespace Progetto_Palestra.QR_Reader
 
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            BarcodeReader red = new BarcodeReader();
+            try
+            {
+                BarcodeReader red = new BarcodeReader();
             if (pictureBox1.Image != null)
             {
-                try
-                {
+                
                     Result res = red.Decode((Bitmap)pictureBox1.Image);
                     string dec = res.ToString();
                     if(QR_code=="")
@@ -100,18 +101,26 @@ namespace Progetto_Palestra.QR_Reader
                     aTimer.Stop();
                     aTimer.Dispose();
                 }
-                catch (Exception ex)
-                { }
+                
             }
+            catch (Exception ex)
+            { }
         }
 
         private void QR_Reader_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (finalframe != null)
-                if (finalframe.IsRunning == true)
-                {
-                    finalframe.Stop();
-                }
+            try
+            {
+                if (finalframe != null)
+                    if (finalframe.IsRunning == true)
+                    {
+                        finalframe.Stop();
+                    }
+            }
+            catch (Exception)
+            {
+            }
+            
         }
     }
 }
