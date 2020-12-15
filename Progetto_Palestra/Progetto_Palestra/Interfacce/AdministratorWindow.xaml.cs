@@ -18,10 +18,7 @@ namespace Progetto_Palestra.Interfacce
         public bool Logout;
         private MySQLdatabase db;
 
-        /**
-         * @brief Costruttore con parametri
-         * @details Inizializza AdministratorWindow e le properties utilizzando il parametro
-         */
+        ////COSTRUTTORE CON PARAMETRI
         public AdministratorWindow(CAmministratore Admin)
         {
 
@@ -38,9 +35,7 @@ namespace Progetto_Palestra.Interfacce
 
         }
 
-        /**
-         * @brief Metodo che visualizza e aggiorna le info della dashboard
-         */
+        ////AGGIORNA VISUALIZZAZIONE DASHBOARD
         public void UpdateDashboard()
         {
             //VISUALIZZA SOLO DASHBOARD
@@ -62,14 +57,9 @@ namespace Progetto_Palestra.Interfacce
             LabelNumScaduti.Content = db.GetNumScaduti() + " scaduti/non rinnovati";
             LabelNumVisite.Content = db.GetNumVisite();
             LabelNumVisiteW.Content = db.GetNumVisiteWeek() + " questa settimana";
-
-            //Inserisce dati nella datagrid
-
         }
 
-        /**
-         * @brief Metodo che visualizza e aggiorna le info della  sezione atleti
-         */
+        ////AGGIORNA VISUALIZZAZIONE ATLETI
         public void UpdateAtleti()
         {
             //Visualizza solo sezione atleti
@@ -86,6 +76,7 @@ namespace Progetto_Palestra.Interfacce
             DataGridAtleti.ItemsSource = db.GetInfoAtleti();
         }
 
+        ////AGGIORNA VISUALIZZAZIONE ORARIO
         public void UpdateOrario()
         {
             //Visualizza solo sezione orario
@@ -105,6 +96,7 @@ namespace Progetto_Palestra.Interfacce
             DataGridOrario.SelectedIndex = 0;
         }
 
+        ////AGGIORNA VISUALIZZAZIONE CONTROLLORI
         public void UpdateControllori()
         {
             //Visualizza solo sezione controllori
@@ -116,8 +108,22 @@ namespace Progetto_Palestra.Interfacce
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
             GridAdmin.Visibility = Visibility.Hidden;
+
+            //Aggiorna datagrid
+            try
+            {
+                List<string> lista = db.GetControllori();
+                List<CControllore> cc = new List<CControllore>();
+
+                for (int i = 0; i < lista.Count; i++)
+                    cc.Add(new CControllore(lista[i]));
+
+                DataGridControllori.ItemsSource = cc;
+            }
+            catch (Exception ex) { };
         }
 
+        ////AGGIORNA VISUALIZZAZIONE ATTREZZI
         public void UpdateAttrezzi()
         {
             //Visualizza solo sezione attrezzi
@@ -131,6 +137,7 @@ namespace Progetto_Palestra.Interfacce
             GridAdmin.Visibility = Visibility.Hidden;
         }
 
+        ////AGGIORNA VISUALIZZAZIONE MECCANICI
         public void UpdateMeccanici()
         {
             //Visualizza solo sezione meccanici
@@ -144,6 +151,7 @@ namespace Progetto_Palestra.Interfacce
             GridAdmin.Visibility = Visibility.Hidden;
         }
 
+        ////AGGIORNA VISUALIZZAZIONE AMMINISTRATORI
         public void UpdateAmministratori()
         {
             //Logout
@@ -157,6 +165,7 @@ namespace Progetto_Palestra.Interfacce
             GridAdmin.Visibility = Visibility.Visible;
         }
 
+        ////AGGIORNA VISUALIZZAZIONE LOGOUT
         public void UpdateLogout()
         {
             //Logout
@@ -170,49 +179,55 @@ namespace Progetto_Palestra.Interfacce
             GridAdmin.Visibility = Visibility.Hidden;
         }
 
-
-
+        ////LIST VIEW DASHBOARD
         private void LWDashboard_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateDashboard();
         }
 
+        ////LIST VIEW ATLETI
         private void LWAtleti_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateAtleti();
         }
 
+        ////LIST VIEW ORARIO
         private void LWOrario_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateOrario();
         }
 
+        ////LIST VIEW CONTROLLORI
         private void LWControllori_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateControllori();
         }
 
+        ////LIST VIEW ATTREZZI
         private void LWAttrezzi_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateAttrezzi();
         }
 
+        ////LIST VIEW MECCANICI
         private void LWMeccanici_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateMeccanici();
         }
 
+        ////LIST VIEW AMMINISTRATORI
         private void LWAmministratori_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateAmministratori();
         }
 
+        ////LIST VIEW LOGOUT
         private void LWLogout_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             UpdateLogout();
         }
 
-
+        ////CAMBIO SELEZIONE DATAGRID ATLETI
         private void DataGridAtleti_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DataGridAtleti.SelectedIndex != -1)
@@ -235,6 +250,7 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
+        ////CONTROLLO INSERIMENTO INTERI NELLA TEXTBOX
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             //Controlla inserimento numerico
@@ -242,12 +258,14 @@ namespace Progetto_Palestra.Interfacce
             e.Handled = regex.IsMatch(e.Text);
         }
 
+        ////ANNULLA SELEZIONE DATAGRID ATLETI
         private void BT_Annulla_Click(object sender, RoutedEventArgs e)
         {
             DataGridAtleti.UnselectAll();
             ClearDatiAtleti();
         }
 
+        ////SVUOTA CONTENUTO TEXTBOX ATLETI
         private void ClearDatiAtleti()
         {
             TB_ID.Text = "";
@@ -263,6 +281,7 @@ namespace Progetto_Palestra.Interfacce
             DP_Scadenza.SelectedDate = null;
         }
 
+        ////AGGIUNGI ATLETA ALLA LISTA
         private void BT_Aggiungi_Click(object sender, RoutedEventArgs e)
         {
             if (ControllaInsAtleta())
@@ -289,9 +308,7 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
-        /**
-         * @brief Metodo che controlla se sono state inserite informazioni dell'atleta
-         */
+        ////CONTROLLO INSERIMENTO INFORMAZIONI ATLETA
         private bool ControllaInsAtleta()
         {
             bool ris = true;
@@ -360,9 +377,7 @@ namespace Progetto_Palestra.Interfacce
             return ris;
         }
 
-        /**
-         * @brief Metodo eseguito alla pressione del bottone elimina record
-         */
+        ////ELIMINA ATLETA SELEZIONATO
         private void BT_Elimina_Click(object sender, RoutedEventArgs e)
         {
             //Se un elemento selezionato
@@ -377,9 +392,7 @@ namespace Progetto_Palestra.Interfacce
             UpdateAtleti(); //Aggiorna finestra
         }
 
-        /**
-         * @brief Metodo eseguito alla pressione del bottone aggiorna record
-         */
+        ////AGGIORNA ATLETA SELEZIONATO
         private void BT_Aggiorna_Click(object sender, RoutedEventArgs e)
         {
             if (ControllaInsAtleta()) //Se i dati sono inseriti ed è selezionato un elemento
@@ -408,22 +421,26 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
+        ////BOTTONE LOGOUT
         private void BT_Logout_Click(object sender, RoutedEventArgs e)
         {
             Logout = true;
             this.Close();
         }
 
+        ////BOTTONE CHIUDI PROGRAMMA
         private void BT_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        ////BOTTONE ANNULLA CHIUSURA
         private void BT_Ret_Dashboard_Click(object sender, RoutedEventArgs e)
         {
             UpdateDashboard();
         }
 
+        ////INIZIALIZZAZIONE COMBOBOX GIORNI
         private void CB_Giorni_Initialized(object sender, EventArgs e)
         {
             List<string> settimana = new List<string>();
@@ -438,17 +455,17 @@ namespace Progetto_Palestra.Interfacce
             CB_Giorni.SelectedIndex = 0;
         }
 
-        /**
-         * @brief Metodo eseguito all'inizializzazione di DataGridOrario
-         */
+        ////INIZIALIZZAZIONE DATAGRID ORARIO
         private void DataGridOrario_Initialized(object sender, EventArgs e)
         {
             List<COrario> orario = new List<COrario>();
+            db = new MySQLdatabase();
             orario = db.GetOrario();
             DataGridOrario.ItemsSource = orario;
             DataGridOrario.SelectedIndex = 0;
         }
 
+        ////CAMBIO SELEZIONE DATAGRID ORARIO
         private void DataGridOrario_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DataGridOrario.SelectedIndex != -1)
@@ -473,6 +490,7 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
+        ////CLICK CHECKBOX ORARIO MATTINA
         private void CB_Mattina_Click(object sender, RoutedEventArgs e)
         {
             if (CB_Mattina.IsChecked == true)
@@ -501,6 +519,7 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
+        ////CLICK CHECKBOX ORARIO POMERIGGIO
         private void CB_Pomeriggio_Click(object sender, RoutedEventArgs e)
         {
             if (CB_Pomeriggio.IsChecked == true)
@@ -529,10 +548,11 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
+        ////BOTTONE AGGIORNA ORARIO
         private void BT_AggiornaOrario_Click(object sender, RoutedEventArgs e)
         {
             //Orario apertura e chiusura mattina, orario apertura e chiusura pomeriggio
-            DateTime orario1M = TP_AperturaM.SelectedTime.Value; 
+            DateTime orario1M = TP_AperturaM.SelectedTime.Value;
             DateTime orario2M = TP_ChiusuraM.SelectedTime.Value;
             DateTime orario1P = TP_AperturaP.SelectedTime.Value;
             DateTime orario2P = TP_ChiusuraP.SelectedTime.Value;
@@ -553,14 +573,12 @@ namespace Progetto_Palestra.Interfacce
             else
             {
                 /* Aggiorna orario del database e ricarica la pagina */
-                db.AggiornaOrario(CB_Giorni.SelectedItem.ToString() ,orario1M, orario2M, orario1P, orario2P);
+                db.AggiornaOrario(CB_Giorni.SelectedItem.ToString(), orario1M, orario2M, orario1P, orario2P);
                 UpdateOrario();
             }
         }
 
-        /**
-         * @brief Metodo eseguito quando cambia la selezione della combobox giorni
-         */
+        ////CAMBIO SELEZIONATO COMBOBOX GIORNI
         private void CB_Giorni_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -568,15 +586,143 @@ namespace Progetto_Palestra.Interfacce
                 /* Mantiene datagrid e combobox sincronizzati */
                 DataGridOrario.SelectedIndex = CB_Giorni.SelectedIndex;
             }
+            catch (Exception ex) { }
+        }
+
+        ////INIZIALIZZAZIONE DATAGRID CONTROLLORI
+        private void DataGridControllori_Initialized(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> lista = db.GetControllori();
+                List<CControllore> cc = new List<CControllore>();
+
+                for (int i = 0; i < lista.Count; i++)
+                {
+                    cc.Add(new CControllore(lista[i]));
+                }
+
+                DataGridControllori.ItemsSource = cc;
+            }
+            catch (Exception ex) { }
+        }
+
+        ////CAMBIO SELEZIONATO DATAGRID CONTROLLORI
+        private void DataGridControllori_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = DataGridControllori.SelectedIndex;
+            try
+            {
+                if (index != -1)
+                {
+                    //Carica nelle caselle di testo
+                    CControllore cc = (CControllore)DataGridControllori.SelectedItem;
+                    TB_Username_Controllore.Text = cc.Username;
+                    TB_Password_Controllore.Text = cc.Password;
+                    TB_Nome_Controllore.Text = cc.Nome;
+                    TB_Cognome_Controllore.Text = cc.Cognome;
+                    DP_Iscrizione_Controllore.SelectedDate = cc.Iscrizione;
+                }
+                else
+                {
+                    TB_Username_Controllore.Text = "";
+                    TB_Password_Controllore.Text = "";
+                    TB_Nome_Controllore.Text = "";
+                    TB_Cognome_Controllore.Text = "";
+                    DP_Iscrizione_Controllore.SelectedDate = null;
+                }
+            }
             catch (Exception)
             {
 
             }
+
         }
-    
-    
-    
-    
-    
+
+        ////AGGIUNTA CONTROLLORE ALLA LISTA
+        private void BT_CAggiungi_Click(object sender, RoutedEventArgs e)
+        {
+            string username = TB_Username_Controllore.Text;
+            string password = TB_Password_Controllore.Text;
+            string nome = TB_Nome_Controllore.Text;
+            string cognome = TB_Cognome_Controllore.Text;
+            DateTime iscrizione = DP_Iscrizione_Controllore.SelectedDate.Value;
+
+
+            /* Controlla che le caselle non siano vuote */
+            if (username == "" || password == "" || nome == ""
+            || cognome == "" || iscrizione == null)
+                MessageBox.Show("Inserire i dati richiesti e riprovare");
+            /* Controlla username esistente */
+            else if (db.CountControllori(TB_Username_Controllore.Text) >= 1)
+                MessageBox.Show("Username esistente!");
+            else
+            {
+                db.AggiungiControllore(new CControllore(0, username, password, nome, cognome, iscrizione));
+                UpdateControllori();
+            }
+
+        }
+
+        ////ELIMINA CONTROLLORE SELEZIONATO
+        private void BT_CElimina_Click(object sender, RoutedEventArgs e)
+        {
+            //Controlla se elemento selezionato
+            int index = DataGridControllori.SelectedIndex;
+            if (index != -1)
+            {
+                int id = ((CControllore)DataGridControllori.SelectedItem).ID;
+                db.DeleteControllore(id);
+                UpdateControllori();
+            }
+            else
+            {
+                MessageBox.Show("Nessun elemento selezionato!");
+            }
+        }
+
+        ////AGGIORNA CONTROLLORE SELEZIONATO
+        private void BT_CAggiorna_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string username = TB_Username_Controllore.Text;
+                string password = TB_Password_Controllore.Text;
+                string nome = TB_Nome_Controllore.Text;
+                string cognome = TB_Cognome_Controllore.Text;
+                DateTime iscrizione = DP_Iscrizione_Controllore.SelectedDate.Value;
+
+
+                /* Controlla che le caselle non siano vuote */
+                if (DataGridControllori.SelectedIndex == -1)
+                    MessageBox.Show("Nessun elemento selezionato!");
+                else if (username == "" || password == "" || nome == ""
+                    || cognome == "" || iscrizione == null)
+                    MessageBox.Show("Inserire i dati richiesti e riprovare");
+                /* Controlla username esistente */
+                else if (db.CountControllori(TB_Username_Controllore.Text) >= 1 && ((CControllore)DataGridControllori.SelectedItem).Username != username)
+                    MessageBox.Show("Username esistente!");
+                else 
+                {
+                    MessageBox.Show("Aggiornato");
+                    int id = ((CControllore)DataGridControllori.SelectedItem).ID;
+                    db.UpdateControllore(new CControllore(id, username, password, nome, cognome, iscrizione));
+                    UpdateControllori();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        ////ANNULLA SELEZIONE CONTROLLORE E RITORNA ALLA DASHBOARD
+        private void BT_CAnnulla_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateDashboard();
+        }
+
+
     }
 }

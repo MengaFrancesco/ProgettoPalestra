@@ -82,3 +82,15 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Pa
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\NodaTime.dll
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\NodaTime.pdb
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\NodaTime.xml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\AForge.dll
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\AForge.Video.dll
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.dll
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.presentation.dll
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\AForge.xml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\AForge.Video.xml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.xml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.presentation.xml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.QR_Reader.QR_Reader.resources
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\MessagingToolkit.QRCode.dll

@@ -1,4 +1,5 @@
 ﻿using Progetto_Palestra.Classi;
+using Progetto_Palestra.QR_Reader;
 using System;
 using System.Linq;
 using System.Windows;
@@ -25,12 +26,14 @@ namespace Progetto_Palestra.Interfacce
          */
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-            //Se la risposta del messaggio è "Yes"
-            if(MessageBox.Show("Sicuri di voler abbandonare la sessione?","Attenzione!",MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                this.Close();
-            }
-            
+            ////Se la risposta del messaggio è "Yes"
+            //if(MessageBox.Show("Sicuri di voler abbandonare la sessione?","Attenzione!",MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            //{
+            //    this.Close();
+            //}
+
+            QR_Reader.QR_Reader qr = new QR_Reader.QR_Reader();
+            qr.ShowDialog();
         }
 
         /**

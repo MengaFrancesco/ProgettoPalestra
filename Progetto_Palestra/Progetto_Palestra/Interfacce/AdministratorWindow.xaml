@@ -18,7 +18,7 @@
         <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="777,7,0,0" VerticalAlignment="Top" Width="364" Foreground="#FF7D7C83"/>
 
 
-        <Grid x:Name="GridDashboard" HorizontalAlignment="Left" Visibility="Visible" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837">
+        <Grid x:Name="GridDashboard" HorizontalAlignment="Left" Visibility="Hidden" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837">
             <Label Content="Home / Dashboard" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="135" Foreground="#FF7D7C83"/>
             <materialDesign:Card HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="90" Width="169">
                 <materialDesign:Card.Background>
@@ -113,8 +113,25 @@
             <Button x:Name="BT_AggiornaOrario" Content="Aggiorna Orario" HorizontalAlignment="Left" Margin="169,222,0,0" VerticalAlignment="Top" Width="160" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_AggiornaOrario_Click"/>
         </Grid>
 
-        <Grid x:Name="GridControllore" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
+        <Grid x:Name="GridControllore" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Visible">
             <Label Content="Home / Modifiche Controllore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+            <DataGrid x:Name="DataGridControllori" IsReadOnly="True" HorizontalAlignment="Left" Height="432" Margin="10,89,0,0" VerticalAlignment="Top" Width="494" Initialized="DataGridControllori_Initialized" SelectionChanged="DataGridControllori_SelectionChanged"/>
+            <Label Content="Elenco amministratori:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
+            <Label Content="Username:" HorizontalAlignment="Left" Margin="509,89,0,0" VerticalAlignment="Top" Width="91" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Password:" HorizontalAlignment="Left" Margin="509,118,0,0" VerticalAlignment="Top" Width="91" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Nome:" HorizontalAlignment="Left" Margin="509,147,0,0" VerticalAlignment="Top" Width="91" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Cognome:" HorizontalAlignment="Left" Margin="509,176,0,0" VerticalAlignment="Top" Width="91" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <Label Content="Data Iscrizione:" HorizontalAlignment="Left" Margin="509,205,0,0" VerticalAlignment="Top" Width="91" Foreground="#FF7D7C83" HorizontalContentAlignment="Right"/>
+            <TextBox x:Name="TB_Username_Controllore" HorizontalAlignment="Left" Height="24" Margin="605,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+            <TextBox x:Name="TB_Password_Controllore" HorizontalAlignment="Left" Height="24" Margin="605,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+            <TextBox x:Name="TB_Nome_Controllore" HorizontalAlignment="Left" Height="24" Margin="605,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+            <TextBox x:Name="TB_Cognome_Controllore" HorizontalAlignment="Left" Height="24" Margin="605,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+            <DatePicker x:Name="DP_Iscrizione_Controllore" HorizontalAlignment="Left" Margin="605,205,0,0" VerticalAlignment="Top" Width="222"/>
+            <Button x:Name="BT_CAggiungi" Content="Aggiungi record" HorizontalAlignment="Left" Margin="605,261,0,0" VerticalAlignment="Top" Width="222" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_CAggiungi_Click" />
+            <Button x:Name="BT_CAggiorna" Content="Aggiorna record" HorizontalAlignment="Left" Margin="605,298,0,0" VerticalAlignment="Top" Width="222" BorderBrush="#FF0066FF" Background="#FF0066FF" Click="BT_CAggiorna_Click" />
+            <Button x:Name="BT_CElimina" Content="Elimina selezionato" HorizontalAlignment="Left" Margin="605,335,0,0" VerticalAlignment="Top" Width="222" BorderBrush="#FF0066FF" Background="#FF0066FF" Click="BT_CElimina_Click"/>
+            <Button x:Name="BT_CAnnulla" Content="Annulla selezione" HorizontalAlignment="Left" Margin="605,372,0,0" VerticalAlignment="Top" Width="222" Background="White" BorderBrush="White" Foreground="#FF7D7C83" Click="BT_CAnnulla_Click"/>
+
         </Grid>
 
         <Grid x:Name="GridAttrezzi" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">

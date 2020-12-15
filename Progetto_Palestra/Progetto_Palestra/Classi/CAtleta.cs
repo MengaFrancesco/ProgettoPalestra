@@ -68,7 +68,7 @@ namespace Progetto_Palestra.Classi
         /**
          * @brief Metodo che converte tutte le properties nella QUERY di inserimento
          */
-        public string InsertQuery()
+        public string ToInsertQuery()
         {
             string s = "INSERT INTO `atleti` (`ID_Atleta`, `Username`, `Password`, `Nome`, `Cognome`, `Residenza`, `Data_Iscrizione`, `Data_nascita`, `Sesso`, `Scadenza_abbonamento`)"
                 + " VALUES(NULL, '"+Username+"', '"+Password+"', '"+Nome+ "', '" + Cognome + "', '" + Residenza + "', '"+DataIscrizione.Year+ "-" + DataIscrizione.Month + "-" + DataIscrizione.Day + "', '" + DataNascita.Year + "-" + DataNascita.Month + "-" + DataNascita.Day + "', '" + Sesso + "', '" + DataScadenza.Year + "-" + DataScadenza.Month + "-" + DataScadenza.Day + "')";
