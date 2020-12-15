@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 15, 2020 alle 00:35
+-- Creato il: Dic 15, 2020 alle 11:55
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -168,6 +168,14 @@ CREATE TABLE `elenco_allenamenti` (
   `Ora_fine` time NOT NULL,
   `Atleta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `elenco_allenamenti`
+--
+
+INSERT INTO `elenco_allenamenti` (`ID_Allenamento`, `Data`, `Ora_inizio`, `Ora_fine`, `Atleta`) VALUES
+(1, '2020-12-14', '09:10:00', '10:00:00', 1),
+(2, '2020-12-14', '10:10:00', '11:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -344,7 +352,7 @@ ALTER TABLE `controllori`
 -- AUTO_INCREMENT per la tabella `elenco_allenamenti`
 --
 ALTER TABLE `elenco_allenamenti`
-  MODIFY `ID_Allenamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Allenamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `elenco_segnalazioni`
