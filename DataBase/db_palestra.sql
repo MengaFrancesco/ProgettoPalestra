@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 15, 2020 alle 11:55
+-- Creato il: Dic 16, 2020 alle 21:39
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -144,14 +144,14 @@ CREATE TABLE `controllori` (
   `Password` text NOT NULL,
   `Nome` text NOT NULL,
   `Cognome` text NOT NULL,
-  `Data Iscrizione` date NOT NULL
+  `Data_Iscrizione` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `controllori`
 --
 
-INSERT INTO `controllori` (`ID_Controllore`, `Username`, `Password`, `Nome`, `Cognome`, `Data Iscrizione`) VALUES
+INSERT INTO `controllori` (`ID_Controllore`, `Username`, `Password`, `Nome`, `Cognome`, `Data_Iscrizione`) VALUES
 (1, 'controllore', '5f4dcc3b5aa765d61d8327deb882cf99', 'Mario', 'Rossi', '2020-12-15'),
 (2, 'maik80', '180eb41a8704236cf0fbb79e464526ff', 'Matteo', 'Serroni', '2020-12-15');
 
@@ -203,6 +203,20 @@ CREATE TABLE `elenco_visite` (
   `Ingresso` time NOT NULL,
   `Uscita` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `elenco_visite`
+--
+
+INSERT INTO `elenco_visite` (`ID_Visita`, `ID_Atleta`, `Data`, `Ingresso`, `Uscita`) VALUES
+(3, 1, '2020-12-14', '08:00:00', 1),
+(4, 1, '2020-12-15', '08:00:00', 1),
+(5, 1, '2020-12-16', '08:00:00', 1),
+(6, 4, '2020-12-16', '18:35:00', 1),
+(7, 4, '2020-12-16', '18:42:54', 1),
+(8, 4, '2020-12-16', '18:43:09', 1),
+(9, 4, '2020-12-16', '18:47:07', 1),
+(10, 1, '2020-12-16', '18:49:08', 1);
 
 -- --------------------------------------------------------
 
@@ -346,7 +360,7 @@ ALTER TABLE `attrezzatura`
 -- AUTO_INCREMENT per la tabella `controllori`
 --
 ALTER TABLE `controllori`
-  MODIFY `ID_Controllore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Controllore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `elenco_allenamenti`
@@ -364,7 +378,7 @@ ALTER TABLE `elenco_segnalazioni`
 -- AUTO_INCREMENT per la tabella `elenco_visite`
 --
 ALTER TABLE `elenco_visite`
-  MODIFY `ID_Visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `meccanici`

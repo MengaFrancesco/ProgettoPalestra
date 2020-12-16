@@ -94,3 +94,4 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.prese
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.QR_Reader.QR_Reader.resources
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\MessagingToolkit.QRCode.dll
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csprojAssemblyReference.cache
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\QRCoder.dll

@@ -11,35 +11,23 @@ namespace Progetto_Palestra.Interfacce
     /// </summary>
     public partial class MainWindow : Window
     {
-        /**
-         * @brief Costruttore senza parametri 
-         * @details Inizializza la classe \c MainWindow
-         */
+        ////COSTRUTTORE SENZA PARAMETRI
         public MainWindow()
         {
             InitializeComponent(); //Inizializza componenti 
         }
 
-        /**
-         * @brief   Metodo eseguito quando si preme il bottone "Esci"
-         * @details Chiude la finestra principale
-         */
+        ////BOTTONE ESCI
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-            ////Se la risposta del messaggio è "Yes"
-            //if(MessageBox.Show("Sicuri di voler abbandonare la sessione?","Attenzione!",MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            //{
-            //    this.Close();
-            //}
-
-            QR_Reader.QR_Reader qr = new QR_Reader.QR_Reader();
-            qr.ShowDialog();
+            //Se la risposta del messaggio è "Yes"
+            if (MessageBox.Show("Sicuri di voler abbandonare la sessione?", "Attenzione!", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
 
-        /**
-         * @brief   Metodo eseguito quando si preme il bottone "Accedi"
-         * @details Apre la finestra di login per eseguire l'accesso
-         */
+        ////BOTTONE ACCEDI
         private void ButtonAccedi_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden; //Nasconde finestra principale
@@ -67,6 +55,8 @@ namespace Progetto_Palestra.Interfacce
                     case "Controllore":
                         ControlloreWindow cw = new ControlloreWindow(lw.Username);
                         cw.ShowDialog();
+                        if (!cw.Logout) this.Close();
+                        else
                         this.Visibility = Visibility.Visible; //Visualizza finestra principale
                         break;
                     case "Meccanico":
@@ -85,10 +75,7 @@ namespace Progetto_Palestra.Interfacce
         
         }
 
-        /**
-         * @brief Metodo eseguito quando si preme il bottone "Registrati"
-         * @details Apre la finestra di registrazione per effettuare la registrazione
-         */
+        ////BOTTONE REGISTRA
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
@@ -101,6 +88,7 @@ namespace Progetto_Palestra.Interfacce
 
         }
 
+        ////BOTTONE CONVERTE IN AMMINISTRATORE
         private CAmministratore ToAmministratore(string s)
         {
             string[] list = s.Split(';');

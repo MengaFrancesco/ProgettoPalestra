@@ -8,8 +8,8 @@
         Height="423" Width="454.625">
     <Grid>
         <Button x:Name="ButtonEsci" Content="Esci" HorizontalAlignment="Left" Margin="266,335,0,0" VerticalAlignment="Top" Width="112" Height="38" Click="Button_Click" Background="White" BorderBrush="White" Foreground="#DD000000"/>
-        <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Height="29" Margin="162,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" CaretBrush="#FF0066FF"/>
-        <PasswordBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="162,184,0,0" VerticalAlignment="Top" Width="216" Height="29" CaretBrush="#FF0066FF"/>
+        <TextBox x:Name="TextUsername" HorizontalAlignment="Left" Height="29" Margin="162,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="216" CaretBrush="#FF0066FF" SelectionBrush="#FF0066FF"/>
+        <PasswordBox x:Name="TextPassword" HorizontalAlignment="Left" Margin="162,184,0,0" VerticalAlignment="Top" Width="216" Height="29" CaretBrush="#FF0066FF" SelectionBrush="#FF0066FF"/>
         <Label Content="Usename:" HorizontalAlignment="Left" Margin="52,121,0,0" VerticalAlignment="Top" Width="96" FontSize="16" HorizontalContentAlignment="Right"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="52,184,0,0" VerticalAlignment="Top" Width="96" FontSize="16" HorizontalContentAlignment="Right"/>
         <ComboBox x:Name="ComboTipo" HorizontalAlignment="Left" Margin="162,244,0,0" VerticalAlignment="Top" Width="216" Height="29"/>
