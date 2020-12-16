@@ -1,16 +1,10 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using AForge;
-using AForge.Video;
+﻿using AForge.Video;
 using AForge.Video.DirectShow;
-using ZXing;
-using ZXing.QrCode;
-using MessagingToolkit.QRCode.Codec;
-using MessagingToolkit.QRCode.Codec.Data;
-using System.IO;
+using System;
+using System.Drawing;
 using System.Timers;
-using ZXing.Aztec.Internal;
+using System.Windows.Forms;
+using ZXing;
 
 namespace Progetto_Palestra.QR_Reader
 {

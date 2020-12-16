@@ -43,10 +43,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Hidden;
 
             //AGGIORNA DATI
             int num = db.GetNumAtleti();
@@ -67,10 +65,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Visible;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Hidden;
 
             //Carica dati atleti
             DataGridAtleti.ItemsSource = db.GetInfoAtleti();
@@ -84,10 +80,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Visible;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Hidden;
 
             //Aggiorna datagrid
             List<COrario> orario = new List<COrario>();
@@ -104,10 +98,7 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Visible;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Hidden;
-            GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Hidden;
 
             //Aggiorna datagrid
             try
@@ -131,10 +122,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Visible;
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Hidden;
         }
 
         ////AGGIORNA VISUALIZZAZIONE MECCANICI
@@ -145,10 +134,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Visible;
             GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Hidden;
         }
 
         ////AGGIORNA VISUALIZZAZIONE AMMINISTRATORI
@@ -159,10 +146,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
-            GridAdmin.Visibility = Visibility.Visible;
         }
 
         ////AGGIORNA VISUALIZZAZIONE LOGOUT
@@ -173,10 +158,8 @@ namespace Progetto_Palestra.Interfacce
             GridAtleti.Visibility = Visibility.Hidden;
             GridOrario.Visibility = Visibility.Hidden;
             GridControllore.Visibility = Visibility.Hidden;
-            GridAttrezzi.Visibility = Visibility.Hidden;
             GridMeccanici.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Visible;
-            GridAdmin.Visibility = Visibility.Hidden;
         }
 
         ////LIST VIEW DASHBOARD

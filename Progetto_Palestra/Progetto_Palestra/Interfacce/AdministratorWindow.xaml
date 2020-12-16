@@ -134,9 +134,7 @@
 
         </Grid>
 
-        <Grid x:Name="GridAttrezzi" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
-            <Label Content="Home / Modifiche Attrezzi" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
-        </Grid>
+        
 
         <Grid x:Name="GridMeccanici" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
             <Label Content="Home / Modifiche Meccanici" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="180" Foreground="#FF7D7C83"/>
@@ -151,9 +149,7 @@
             <Image HorizontalAlignment="Left" Height="207" Margin="432,103,0,0" VerticalAlignment="Top" Width="236" Source="/Progetto_Palestra;component/Immagini/close-window.png"/>
         </Grid>
 
-        <Grid x:Name="GridAdmin" HorizontalAlignment="Left" Height="531" Margin="294,37,0,0" VerticalAlignment="Top" Width="837"  Visibility="Hidden">
-            <Label Content="Home / Modifiche amministratori" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="150" Foreground="#FF7D7C83"/>
-        </Grid>
+       
 
         <Grid x:Name="GridMenu" Width="294" HorizontalAlignment="Left" Background="#FF0066FF" RenderTransformOrigin="0.5,0.5" Margin="0,37,0,0">
             <Grid.RenderTransform>
@@ -190,22 +186,10 @@
                             <TextBlock Margin="10" Foreground="White"><Run Text="Modifiche Controllor"/><Run Text="i"/></TextBlock>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LWAttrezzi" Height="45" Padding="0" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWAttrezzi_MouseLeftButtonUp">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/barbel.png"/>
-                            <TextBlock Text="Modifiche Attrezzi" Margin="10" Foreground="White"/>
-                        </StackPanel>
-                    </ListViewItem>
                     <ListViewItem x:Name="LWMeccanici" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWMeccanici_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/wrench.png"/>
                             <TextBlock Text="Modifiche Meccanici" Margin="10" Foreground="White"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="LWAmministratori" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWAmministratori_MouseLeftButtonUp">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/management.png"/>
-                            <TextBlock Text="Modifiche Amministratori" Margin="10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="LWLogout" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWLogout_MouseLeftButtonUp">
