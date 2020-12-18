@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 16, 2020 alle 21:39
+-- Creato il: Dic 19, 2020 alle 00:09
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -68,7 +68,7 @@ CREATE TABLE `atleti` (
 --
 
 INSERT INTO `atleti` (`ID_Atleta`, `Username`, `Password`, `Nome`, `Cognome`, `Residenza`, `Data_Iscrizione`, `Data_nascita`, `Sesso`, `Scadenza_abbonamento`) VALUES
-(1, 'Waye1980', 'db73f93218febe86219325415703c8cd', 'Rufino', 'Rossi', 'Tavarnelle Val Di Pesa', '2020-12-14', '1980-09-21', 'M', '2020-12-17'),
+(1, 'Waye1980', 'db73f93218febe86219325415703c8cd', 'Rufino', 'Rossi', 'Tavarnelle Val Di Pesa', '2020-12-14', '1980-09-21', 'M', '2021-03-18'),
 (2, 'Zably1994', '229017f52cef53b783832b75891d7023', 'Giovanna', 'Endrizzi', 'Laveno Mombello', '2020-12-14', '1994-11-01', 'F', '2020-12-18'),
 (3, 'Untake', 'ea3b6e450ca0c990bc6cd150d663b667', 'Ernesto', 'Pinti', 'Catania', '2020-12-14', '1995-10-24', 'M', '2020-12-09'),
 (4, 'Barries', 'db73f93218febe86219325415703c8cd', 'Silvestro', 'Manna', 'Castel Focognano', '2020-12-14', '1980-02-07', 'M', '2020-12-10'),
@@ -86,8 +86,7 @@ CREATE TABLE `attrezzatura` (
   `Tipologia` text NOT NULL,
   `Modello` text NOT NULL,
   `Utilizzato` tinyint(1) NOT NULL,
-  `Manutenzione Richiesta` tinyint(1) NOT NULL,
-  `Manutenzione In Corso` tinyint(1) NOT NULL,
+  `Manutenzione_Richiesta` tinyint(1) NOT NULL,
   `Link Foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -95,42 +94,28 @@ CREATE TABLE `attrezzatura` (
 -- Dump dei dati per la tabella `attrezzatura`
 --
 
-INSERT INTO `attrezzatura` (`ID_Attrezzo`, `Nome`, `Tipologia`, `Modello`, `Utilizzato`, `Manutenzione Richiesta`, `Manutenzione In Corso`, `Link Foto`) VALUES
-(1, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
-(2, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
-(3, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
-(4, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
-(5, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
-(6, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(7, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(8, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(9, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(10, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(11, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
-(12, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
-(13, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
-(14, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
-(15, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
-(16, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
-(17, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
-(18, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
-(19, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
-(20, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
-(21, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `attrezzi_in_uso`
---
-
-CREATE TABLE `attrezzi_in_uso` (
-  `ID` int(11) NOT NULL,
-  `ID_Atleta` int(32) NOT NULL,
-  `ID_Attrezzo` int(32) NOT NULL,
-  `Orario_inizio` time NOT NULL,
-  `Orario_fine` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `attrezzatura` (`ID_Attrezzo`, `Nome`, `Tipologia`, `Modello`, `Utilizzato`, `Manutenzione_Richiesta`, `Link Foto`) VALUES
+(1, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
+(2, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
+(3, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
+(4, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
+(5, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
+(6, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(7, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(8, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(9, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(10, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(11, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
+(12, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
+(13, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
+(14, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
+(15, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
+(16, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
+(17, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
+(18, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
+(19, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
+(20, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg'),
+(21, 'Bilanciere 30 kg', 'Bicipiti, schiena, tricipiti, spalle', 'vidaXL Set Bilanciere con 2 Manubri 30,5 kg', 0, 0, 'https://vdxl.im/8718475844204_a_en_r458.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,7 +160,11 @@ CREATE TABLE `elenco_allenamenti` (
 
 INSERT INTO `elenco_allenamenti` (`ID_Allenamento`, `Data`, `Ora_inizio`, `Ora_fine`, `Atleta`) VALUES
 (1, '2020-12-14', '09:10:00', '10:00:00', 1),
-(2, '2020-12-14', '10:10:00', '11:00:00', 2);
+(2, '2020-12-14', '10:10:00', '11:00:00', 2),
+(3, '2020-12-16', '09:10:00', '10:00:00', 5),
+(4, '2020-12-18', '19:33:00', '19:33:33', 1),
+(5, '2020-12-18', '19:40:00', '19:40:40', 1),
+(6, '2020-12-18', '19:40:40', '19:41:41', 1);
 
 -- --------------------------------------------------------
 
@@ -187,7 +176,8 @@ CREATE TABLE `elenco_segnalazioni` (
   `ID_Segnalazione` int(11) NOT NULL,
   `ID_Atleta` int(11) NOT NULL,
   `ID_Attrezzo` int(11) NOT NULL,
-  `Riparazione Terminata` tinyint(1) NOT NULL
+  `Riparazione_In_Corso` int(11) NOT NULL,
+  `Riparazione_Terminata` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -286,14 +276,6 @@ ALTER TABLE `attrezzatura`
   ADD PRIMARY KEY (`ID_Attrezzo`);
 
 --
--- Indici per le tabelle `attrezzi_in_uso`
---
-ALTER TABLE `attrezzi_in_uso`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `Rel_ID_Atleta` (`ID_Atleta`),
-  ADD KEY `Rel_ID_Attrezzo` (`ID_Attrezzo`);
-
---
 -- Indici per le tabelle `controllori`
 --
 ALTER TABLE `controllori`
@@ -325,8 +307,7 @@ ALTER TABLE `elenco_visite`
 -- Indici per le tabelle `meccanici`
 --
 ALTER TABLE `meccanici`
-  ADD PRIMARY KEY (`ID_Meccanico`),
-  ADD KEY `Rel_Attrezzo` (`ID_Attrezzo`);
+  ADD PRIMARY KEY (`ID_Meccanico`);
 
 --
 -- Indici per le tabelle `orari`
@@ -366,7 +347,7 @@ ALTER TABLE `controllori`
 -- AUTO_INCREMENT per la tabella `elenco_allenamenti`
 --
 ALTER TABLE `elenco_allenamenti`
-  MODIFY `ID_Allenamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Allenamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `elenco_segnalazioni`
@@ -395,13 +376,6 @@ ALTER TABLE `orari`
 --
 -- Limiti per le tabelle scaricate
 --
-
---
--- Limiti per la tabella `attrezzi_in_uso`
---
-ALTER TABLE `attrezzi_in_uso`
-  ADD CONSTRAINT `Rel_ID_Atleta` FOREIGN KEY (`ID_Atleta`) REFERENCES `atleti` (`ID_Atleta`),
-  ADD CONSTRAINT `Rel_ID_Attrezzo` FOREIGN KEY (`ID_Attrezzo`) REFERENCES `atleti` (`ID_Atleta`);
 
 --
 -- Limiti per la tabella `elenco_allenamenti`

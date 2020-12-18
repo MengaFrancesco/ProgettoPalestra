@@ -30,43 +30,43 @@
             </Grid.RenderTransform>
             <StackPanel>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
-                    <ListViewItem x:Name="LWDashboard" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LWDashboard" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWDashboard_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/dashboard.png"/>
                             <TextBlock Text="Dashboard" Margin="10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LVInfo" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LVInfo" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LVInfo_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/user.png"/>
                             <TextBlock Margin="10" Foreground="White"><Run Text="Informazioni personali"/></TextBlock>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LVAbbonamento" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LVAbbonamento" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LVAbbonamento_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/subscription.png"/>
                             <TextBlock Text="Gestione Abbonamento" Margin="10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LVAllenamento" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LVAllenamento" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LVAllenamento_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/barbel.png"/>
                             <TextBlock Text="Nuovo Allenamento" Margin="10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LVAllenamentoPrec" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LVAllenamentoPrec" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LVAllenamentoPrec_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/calendar.png"/>
                             <TextBlock Text="Allenamenti precedenti" Margin="10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LVSegnala" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LVSegnala" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LVSegnala_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/flag.png"/>
                             <TextBlock Text="Segnala attrezzo" Margin="10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="LVLogout" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83">
+                    <ListViewItem x:Name="LVLogout" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LVLogout_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/logout.png"/>
                             <TextBlock Text="Logout" Margin="10" Foreground="White"/>
@@ -75,7 +75,8 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridDashboard" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593">
+
+        <Grid x:Name="GridDashboard" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
             <Label Content="Atleta / Dashboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
             <materialDesign:Card HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Height="90" Width="169">
                 <materialDesign:Card.Background>
@@ -115,6 +116,41 @@
             <Label x:Name="LabelNumVisiteW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="406,104,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
         </Grid>
 
+        <Grid x:Name="GridProfilo" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+            <Label Content="Atleta / Gestione profilo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridAbbonamento" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+            <Label Content="Atleta / Gestione Abbonamento" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="187" Foreground="#FF7D7C83"/>
+            <Label x:Name="LabelAbbonamento" Content="Scadenza abbonamento: " HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="142" Foreground="#FF7D7C83" Height="27"/>
+            <Button x:Name="BT_Rinnova" Content="Rinnova abbonamento" HorizontalAlignment="Left" Margin="367,87,0,0" VerticalAlignment="Top" Width="216" Height="32" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Rinnova_Click"/>
+            <TextBox x:Name="TB_Scadenza" HorizontalAlignment="Left" Height="27" Margin="196,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        </Grid>
+
+        <Grid x:Name="GridAllenamento" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+            <Label Content="Atleta / Dashboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+            <Button x:Name="BT_Inizia" Content="Inizia allenamento" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="180" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Inizia_Click"/>
+            <Button x:Name="BT_Termina" Content="Termina allenamento" HorizontalAlignment="Left" Margin="202,39,0,0" VerticalAlignment="Top" Width="180" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Termina_Click"/>
+            <Button x:Name="BT_Seleziona" Content="Seleziona attrezzo" HorizontalAlignment="Left" Margin="403,108,0,0" VerticalAlignment="Top" Width="180" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Seleziona_Click"/>
+            <Button x:Name="BT_Rilascia" Content="Rilascia attrezzo" HorizontalAlignment="Left" Margin="403,146,0,0" VerticalAlignment="Top" Width="180" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Rilascia_Click"/>
+            <DataGrid x:Name="DG_Attrezzi" IsReadOnly="True" HorizontalAlignment="Left" Height="340" Margin="10,108,0,0" VerticalAlignment="Top" Width="372" SelectionChanged="DG_Attrezzi_SelectionChanged"/>
+            <Label Content="Selezionato:" HorizontalAlignment="Left" Margin="403,183,0,0" VerticalAlignment="Top" Width="109"/>
+            <TextBox x:Name="TB_Attrezzo" IsReadOnly="True" HorizontalAlignment="Left" Height="43" Margin="403,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" CaretBrush="#FF0066FF"/>
+            <Image x:Name="ImageLink" HorizontalAlignment="Left" Height="170" Margin="403,260,0,0" VerticalAlignment="Top" Width="180"/>
+        </Grid>
+
+        <Grid x:Name="GridAllenamPrec" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+            <Label Content="Atleta / Allenamenti precedenti" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" Foreground="#FF7D7C83"/>
+            <DataGrid x:Name="DG_Allenamenti" HorizontalAlignment="Left" Height="409" Margin="10,39,0,0" VerticalAlignment="Top" Width="573"/>
+        </Grid>
+
+        <Grid x:Name="GridSegnala" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+            <Label Content="Atleta / Segnala" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
+
+        <Grid x:Name="GridLogout" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+            <Label Content="Atleta / Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+        </Grid>
 
     </Grid>
 </Window>

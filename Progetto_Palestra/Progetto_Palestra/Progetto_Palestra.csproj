@@ -178,6 +178,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classi\CAllenamento.cs" />
+    <Compile Include="Classi\CAttrezzo.cs" />
     <Compile Include="Classi\ConvertImage.cs" />
     <Compile Include="Classi\CVisita.cs" />
     <Compile Include="Classi\CAmministratore.cs" />
@@ -197,6 +199,9 @@
       <DependentUpon>MeccanicoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classi\PasswordStrength.cs" />
+    <Compile Include="Interfacce\PagamentoWindow.xaml.cs">
+      <DependentUpon>PagamentoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfacce\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
@@ -235,6 +240,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Interfacce\MeccanicoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfacce\PagamentoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

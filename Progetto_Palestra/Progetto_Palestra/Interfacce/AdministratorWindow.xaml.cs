@@ -111,7 +111,7 @@ namespace Progetto_Palestra.Interfacce
 
                 DataGridControllori.ItemsSource = cc;
             }
-            catch (Exception ex) { };
+            catch (Exception) { };
         }
 
         ////AGGIORNA VISUALIZZAZIONE ATTREZZI
@@ -569,7 +569,7 @@ namespace Progetto_Palestra.Interfacce
                 /* Mantiene datagrid e combobox sincronizzati */
                 DataGridOrario.SelectedIndex = CB_Giorni.SelectedIndex;
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
         }
 
         ////INIZIALIZZAZIONE DATAGRID CONTROLLORI
@@ -587,7 +587,7 @@ namespace Progetto_Palestra.Interfacce
 
                 DataGridControllori.ItemsSource = cc;
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
         }
 
         ////CAMBIO SELEZIONATO DATAGRID CONTROLLORI

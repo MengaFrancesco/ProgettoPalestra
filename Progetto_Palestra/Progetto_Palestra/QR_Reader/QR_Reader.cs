@@ -11,14 +11,16 @@ namespace Progetto_Palestra.QR_Reader
 
 
     public partial class QR_Reader : Form
-    {
+    {   
+        ////ATTRIBUTI
         public FilterInfoCollection capturedev;
         public VideoCaptureDevice finalframe;
-
         private static System.Timers.Timer aTimer;
 
+        ////PROPERTIES
         public string QR_code { get; set; }
 
+        ////COSTRUTTORE SENZA PARAMETRI
         public QR_Reader()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace Progetto_Palestra.QR_Reader
             {
                 pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -97,7 +99,7 @@ namespace Progetto_Palestra.QR_Reader
                 }
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             { }
         }
 

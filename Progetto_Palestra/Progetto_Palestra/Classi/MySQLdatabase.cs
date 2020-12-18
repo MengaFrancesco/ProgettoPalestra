@@ -11,6 +11,7 @@ namespace Progetto_Palestra
 {
     class MySQLdatabase
     {
+
         ////OGGETTO MYSQLCONNECTION CHE PERMETTE LA CONNESSIONE
         private MySqlConnection connection;
 
@@ -59,6 +60,7 @@ namespace Progetto_Palestra
         }
 
 
+
         ////QUERY ATLETI
 
         ////SELECT USERNAME E PASSWORD DI TUTTI GLI ATLETI
@@ -84,6 +86,32 @@ namespace Progetto_Palestra
             else
             {
                 return lista; //Ritorna la lista vuota
+            }
+        }
+
+        ////SELECT DELLA SCADENZA DI UN ATLETA
+        public string SelectScadenza(string username)
+        {
+            string query = "SELECT Scadenza_abbonamento FROM Atleti WHERE Username='"+username+"'"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string ris = dataReader[0] + "";
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                string ris = "";
+                return ris; //Ritorna la lista vuota
             }
         }
 
@@ -176,6 +204,28 @@ namespace Progetto_Palestra
             }
             else
                 return null;
+        }
+
+
+        ////UPDATE SCADENZA DI UN ATLETA E DATA PARAMETRO
+        public void UpdateScadenza(string username, DateTime scadenza)
+        {
+            string query = "UPDATE `atleti` SET `Scadenza_abbonamento` = '"+scadenza.Year+"-"+ scadenza.Month + "-" +scadenza.Day + "' WHERE `atleti`.`Username` ='" +username+"';";
+
+            try
+            {
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Impossibile aggiornare il record");
+            }
         }
 
         ////SELECT COUNT DI TUTTI GLI ALLENAMENTI DALL'ID PARAMETRO
@@ -571,6 +621,7 @@ namespace Progetto_Palestra
         }
 
 
+
         ////QUERY AMMINISTRATORI
 
         ////SELECT DI USERNAME E PASSWORD DI TUTTI GLI AMMINISTRATORI
@@ -624,6 +675,7 @@ namespace Progetto_Palestra
                 return ris; //Ritorna la lista vuota
             }
         }
+
 
 
         ////QUERY ORARIO
@@ -727,6 +779,7 @@ namespace Progetto_Palestra
             s += orario.Minute + ":00.000000";
             return s;
         }
+
 
 
         ////QUERY CONTROLLORI
@@ -912,6 +965,7 @@ namespace Progetto_Palestra
         }
 
         
+
         ////QUERY ELENCO_VISITE
         
         ////SELECT VISITE
@@ -1006,9 +1060,148 @@ namespace Progetto_Palestra
             }
         }
 
+
+
+        ////QUERY ATTREZZI
+        
+        ////SELECT ATTREZZI
+        public List<CAttrezzo> SelectAttrezziDisp()
+        {
+            List<CAttrezzo> ris = new List<CAttrezzo>();
+
+            try
+            {
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    string query = "SELECT * FROM attrezzatura WHERE Utilizzato=0 AND Manutenzione_Richiesta=0";
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    while (dataReader.Read()) //Fino a quando c'è da leggere
+                    {
+                        string row = "";
+                        int columns = dataReader.FieldCount; //Calcola numero colonne
+                        for (int i = 0; i < columns; i++)
+                        {
+                            row += dataReader[i] + ";"; //Legge colonna
+                        }
+                        ris.Add(new CAttrezzo(row)); //Aggiunge colonna alla lista
+                    }
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ris;
+            }
+
+            return ris;
+        }
+          
+        ////UPDATE ATTREZZO A SELEZIONATO
+        public void UpdateAttrezzoSeleziona(int ID_Attrezzo)
+        {
+            try
+            {
+                string query = "UPDATE `attrezzatura` SET `Utilizzato` = '1' WHERE `attrezzatura`.`ID_Attrezzo` = " + ID_Attrezzo + ";";
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
+        }
+
+        ////UPDATE ATTREZZO A RILASCIATO
+        public void UpdateAttrezzoRilascia(int ID_Attrezzo)
+        {
+            try
+            {
+                string query = "UPDATE `attrezzatura` SET `Utilizzato` = '0' WHERE `attrezzatura`.`ID_Attrezzo` = " + ID_Attrezzo + ";";
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
         
 
 
+        /* QUERY ALLENAMENTI */
+
+        ////SELECT ALLENAMENTI ATLETA ID PARAMETRO
+        public List<CAllenamento> SelectAllenamentiAtleta(int ID)
+        {
+            List<CAllenamento> ris = new List<CAllenamento>();
+
+            try
+            {
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    string query = "SELECT * FROM elenco_allenamenti WHERE Atleta="+ID;
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    while (dataReader.Read()) //Fino a quando c'è da leggere
+                    {
+                        string row = "";
+                        int columns = dataReader.FieldCount; //Calcola numero colonne
+                        for (int i = 0; i < columns; i++)
+                        {
+                            row += dataReader[i] + ";"; //Legge colonna
+                            
+                        }
+                        ris.Add(new CAllenamento(row)); //Aggiunge colonna alla lista
+                    }
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ris;
+            }
+
+            return ris;
+        }
+
+        ////INSERT ALLENAMENTO
+        public void InsertAllenamento(CAllenamento allenamento)
+        {
+            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(allenamento.ToQueryInsert(), connection);
+                cmd.ExecuteNonQuery(); //Execute command
+                this.CloseConnection(); //close connection
+            }
+        }
     }
 }
 

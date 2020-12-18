@@ -41,7 +41,7 @@ namespace Progetto_Palestra.Classi
                 Cognome = lista[4];
                 Iscrizione = ToDateTime(lista[5]);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
