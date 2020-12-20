@@ -67,7 +67,6 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.Thre
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.ValueTuple.xml
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.xml
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\zxing.presentation.xml
-C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csprojAssemblyReference.cache
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.exe.config
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\AdministratorWindow.g.cs
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\ControlloreWindow.g.cs
@@ -111,3 +110,4 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.Xml.
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\WindowsBase.dll
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\PagamentoWindow.g.cs
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\PagamentoWindow.baml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csprojAssemblyReference.cache

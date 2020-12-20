@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 19, 2020 alle 00:09
+-- Creato il: Dic 20, 2020 alle 19:17
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -102,8 +102,8 @@ INSERT INTO `attrezzatura` (`ID_Attrezzo`, `Nome`, `Tipologia`, `Modello`, `Util
 (5, 'Tapis Roulant', 'Corsa', 'F75 TAPIS ROULANT', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/f75/gallery/default/100.jpg'),
 (6, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
 (7, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(8, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
-(9, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(8, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 1, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
+(9, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 1, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
 (10, 'Cyclette', 'Bici', 'SX500 BICI DA INTERNO', 0, 0, 'https://www.sports-tech.it/products/sportstech/IT/sx500/gallery/default/100.jpg'),
 (11, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
 (12, 'Panca Piana', 'Petto e tricipiti', 'Panca con Bilanciere Pieghevole Benzoni Gym ', 0, 0, 'https://media.giordanoshop.com/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/A/9/A91-008-1/www.giordanoshop.com-benzoni-185433-11.jpg'),
@@ -176,9 +176,23 @@ CREATE TABLE `elenco_segnalazioni` (
   `ID_Segnalazione` int(11) NOT NULL,
   `ID_Atleta` int(11) NOT NULL,
   `ID_Attrezzo` int(11) NOT NULL,
-  `Riparazione_In_Corso` int(11) NOT NULL,
+  `Riparazione_In_Corso` tinyint(1) NOT NULL,
   `Riparazione_Terminata` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `elenco_segnalazioni`
+--
+
+INSERT INTO `elenco_segnalazioni` (`ID_Segnalazione`, `ID_Atleta`, `ID_Attrezzo`, `Riparazione_In_Corso`, `Riparazione_Terminata`) VALUES
+(4, 3, 20, 1, 1),
+(5, 1, 4, 1, 1),
+(6, 1, 9, 1, 1),
+(7, 1, 21, 1, 1),
+(8, 1, 1, 1, 1),
+(9, 1, 4, 1, 1),
+(10, 1, 8, 0, 0),
+(11, 1, 9, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -219,10 +233,15 @@ CREATE TABLE `meccanici` (
   `Nome` text NOT NULL,
   `Cognome` text NOT NULL,
   `Username` text NOT NULL,
-  `Password` text NOT NULL,
-  `Occupato` tinyint(1) NOT NULL,
-  `ID_Attrezzo` int(11) NOT NULL
+  `Password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `meccanici`
+--
+
+INSERT INTO `meccanici` (`ID_Meccanico`, `Nome`, `Cognome`, `Username`, `Password`) VALUES
+(3, 'meccanico', 'meccanico', 'meccanico', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
@@ -353,7 +372,7 @@ ALTER TABLE `elenco_allenamenti`
 -- AUTO_INCREMENT per la tabella `elenco_segnalazioni`
 --
 ALTER TABLE `elenco_segnalazioni`
-  MODIFY `ID_Segnalazione` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Segnalazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `elenco_visite`
@@ -365,7 +384,7 @@ ALTER TABLE `elenco_visite`
 -- AUTO_INCREMENT per la tabella `meccanici`
 --
 ALTER TABLE `meccanici`
-  MODIFY `ID_Meccanico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Meccanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `orari`
@@ -395,12 +414,6 @@ ALTER TABLE `elenco_segnalazioni`
 --
 ALTER TABLE `elenco_visite`
   ADD CONSTRAINT `Rel_id_atleta_visita` FOREIGN KEY (`ID_Atleta`) REFERENCES `atleti` (`ID_Atleta`);
-
---
--- Limiti per la tabella `meccanici`
---
-ALTER TABLE `meccanici`
-  ADD CONSTRAINT `Rel_Attrezzo` FOREIGN KEY (`ID_Attrezzo`) REFERENCES `attrezzatura` (`ID_Attrezzo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

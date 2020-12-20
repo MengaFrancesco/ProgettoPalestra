@@ -16,6 +16,7 @@ namespace Progetto_Palestra.Classi
         public LocalTime OraFine { get; set; }
         public int Atleta { get; set; }
 
+        ////COSTRUTTORE DI DEFAULT
         public CAllenamento()
         {
             ID_Allenamento = 0;
@@ -24,8 +25,6 @@ namespace Progetto_Palestra.Classi
             OraFine = new LocalTime() ;
             Atleta = 0;
         }
-
-
 
         ////COSTRUTTORE CON PARAMETRI
         public CAllenamento(int iD_Allenamento, DateTime data, LocalTime ora_Inizio, LocalTime oraFine, int atleta)

@@ -99,7 +99,7 @@
             <Button x:Name="BT_Save_QR" Content="Salva codice" HorizontalAlignment="Left" Margin="246,126,0,0" VerticalAlignment="Top" Width="210" Click="BT_Save_QR_Click" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
         </Grid>
 
-        <Grid  x:Name="GridProfile" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="594" Visibility="Visible" >
+        <Grid  x:Name="GridProfile" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="594" Visibility="Hidden" >
             <Label Content="Controllore / Profilo Personale" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Foreground="#FF7D7C83"/>
             <Button x:Name="BT_Salva_Modifiche" Content="Salva modifiche" HorizontalAlignment="Left" Margin="195,246,0,0" VerticalAlignment="Top" Width="194" Click="BT_Salva_Modifiche_Click" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
             <Button Content="Annulla" HorizontalAlignment="Left" Margin="394,246,0,0" VerticalAlignment="Top" Width="119" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
@@ -113,7 +113,7 @@
             <TextBox x:Name="TB_Cognome" HorizontalAlignment="Left" Height="33" Margin="195,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" CaretBrush="#FF0066FF"/>
         </Grid>
 
-        <Grid  x:Name="GridLogout" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="594" Visibility="Hidden" >
+        <Grid  x:Name="GridLogout" HorizontalAlignment="Left" Height="404" Margin="294,37,0,0" VerticalAlignment="Top" Width="594" Visibility="Visible" >
             <Label Content="Controllore / Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
             <Button x:Name="BT_Logout" Content="Disconnettiti" HorizontalAlignment="Left" Margin="22,240,0,0" VerticalAlignment="Top" Width="208" Height="56" FontSize="24" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Logout_Click"/>
             <Button x:Name="BT_Close" Content="Chiudi programma" HorizontalAlignment="Left" Margin="276,240,0,0" VerticalAlignment="Top" Width="274" Height="56" FontSize="24" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Close_Click"/>

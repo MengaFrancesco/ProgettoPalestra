@@ -16,6 +16,7 @@ namespace Progetto_Palestra.Interfacce
         private CAtleta atleta { get; set; }
         private CAllenamento allenamento { get; set; }
         private MySQLdatabase db;
+        public bool Logout { get; set; }
 
         ////COSTRUTTORE CON PARAMETRI
         public UserWindow(string Username)
@@ -84,23 +85,32 @@ namespace Progetto_Palestra.Interfacce
         ////AGGIORNA VISUALIZZAZIONE ALLENAMENTO
         public void UpdateAlleamento()
         {
-            GridDashboard.Visibility = Visibility.Hidden;
-            GridProfilo.Visibility = Visibility.Hidden;
-            GridAbbonamento.Visibility = Visibility.Hidden;
-            GridAllenamento.Visibility = Visibility.Visible;
-            GridAllenamPrec.Visibility = Visibility.Hidden;
-            GridSegnala.Visibility = Visibility.Hidden;
-            GridLogout.Visibility = Visibility.Hidden;
+            if(!db.CheckAccesso(atleta.ID)) //Se accesso non eseguito
+            {
+                MessageBox.Show("L'accesso in palestra non è stato eseguito!");
+                UpdateDashboard();
+                LV_Menu.SelectedIndex = 0;
+            }
+            else //Altrimenti visualizza grid allenamento
+            {
+                GridDashboard.Visibility = Visibility.Hidden;
+                GridProfilo.Visibility = Visibility.Hidden;
+                GridAbbonamento.Visibility = Visibility.Hidden;
+                GridAllenamento.Visibility = Visibility.Visible;
+                GridAllenamPrec.Visibility = Visibility.Hidden;
+                GridSegnala.Visibility = Visibility.Hidden;
+                GridLogout.Visibility = Visibility.Hidden;
 
-            //Inserisce dati nella datagrid
-            DG_Attrezzi.ItemsSource = db.SelectAttrezziDisp();
+                //Inserisce dati nella datagrid
+                DG_Attrezzi.ItemsSource = db.SelectAttrezziDisp();
 
-            //Aggiornaselezione bottoni
-            GridMenu.IsEnabled = true;
-            BT_Inizia.IsEnabled = true;
-            BT_Termina.IsEnabled = false;
-            BT_Seleziona.IsEnabled = false;
-            BT_Rilascia.IsEnabled = false;
+                //Aggiornaselezione bottoni
+                GridMenu.IsEnabled = true;
+                BT_Inizia.IsEnabled = true;
+                BT_Termina.IsEnabled = false;
+                BT_Seleziona.IsEnabled = false;
+                BT_Rilascia.IsEnabled = false;
+            }
         }
 
         ////AGGIORNA VISUALIZZAZIONE ALLENAMENTO PRECEDENTE
@@ -116,11 +126,14 @@ namespace Progetto_Palestra.Interfacce
 
             //INSERISCE DATI NELLA DATAGRID
             DG_Allenamenti.ItemsSource = db.SelectAllenamentiAtleta(atleta.ID);
+            DG_Allenamenti.Columns[0].Visibility = Visibility.Collapsed;
+            DG_Allenamenti.Columns[4].Visibility = Visibility.Collapsed;
         }
 
         ////AGGIORNA VISUALIZZAZIONE SEGNALA
         public void UpdateSegnala()
         {
+            //Visualizza solo grid segnala
             GridDashboard.Visibility = Visibility.Hidden;
             GridProfilo.Visibility = Visibility.Hidden;
             GridAbbonamento.Visibility = Visibility.Hidden;
@@ -128,6 +141,11 @@ namespace Progetto_Palestra.Interfacce
             GridAllenamPrec.Visibility = Visibility.Hidden;
             GridSegnala.Visibility = Visibility.Visible;
             GridLogout.Visibility = Visibility.Hidden;
+
+            //Inserisce dati nella datagrid
+            DG_Segnala.ItemsSource = db.SelectAttrezziDisp();
+            if (DG_Segnala.Items.Count > 0)
+                DG_Segnala.SelectedIndex = 0;
         }
 
         ////AGGIORNA VISUALIZZAZIONE LOGOUT
@@ -322,6 +340,43 @@ namespace Progetto_Palestra.Interfacce
 
             //Update datagrid
             DG_Attrezzi.ItemsSource = db.SelectAttrezziDisp();
+        }
+
+        ////BOTTONE SEGNALA ATTREZZO    
+        private void BT_Segnala_Click(object sender, RoutedEventArgs e)
+        {
+            //Controlla elemento selezionato
+            if (DG_Segnala.SelectedIndex == -1)
+                MessageBox.Show("Nessun attrezzo selezionato!");
+            else
+            {
+                MessageBox.Show("Segnalazione aggiunta");
+                int selezionato = ((CAttrezzo)DG_Segnala.SelectedItem).ID_Attrezzo;
+                db.UpdateAttrezzoSegnalato(selezionato);//Modifica valore attrezzo per non essere utilizzato
+                db.InsertSegnalazione(selezionato, atleta.ID);  //Aggiunta segnalazione
+                //Ritorna alla dashboard
+                UpdateDashboard();
+                LV_Menu.SelectedIndex = 0;
+            }
+        }
+
+        ////BOTTONE ANNULLA SEGNALAZIONE
+        private void BT_Segnala_Annulla_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Segnalazione annullata");
+            UpdateDashboard();
+            LV_Menu.SelectedIndex = 0;
+        }
+
+        private void BT_Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Logout = true;
+            this.Close();
+        }
+
+        private void BT_Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

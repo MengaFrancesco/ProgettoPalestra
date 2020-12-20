@@ -29,7 +29,7 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <StackPanel>
-                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                <ListView x:Name="LV_Menu" Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
                     <ListViewItem x:Name="LWDashboard" Height="45" Padding="0" BorderThickness="0.2" BorderBrush="#FF7D7C83" MouseLeftButtonUp="LWDashboard_MouseLeftButtonUp">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <Image Height="35" Width="35" Source="/Progetto_Palestra;component/Immagini/dashboard.png"/>
@@ -139,17 +139,25 @@
             <Image x:Name="ImageLink" HorizontalAlignment="Left" Height="170" Margin="403,260,0,0" VerticalAlignment="Top" Width="180"/>
         </Grid>
 
-        <Grid x:Name="GridAllenamPrec" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+        <Grid x:Name="GridAllenamPrec" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
             <Label Content="Atleta / Allenamenti precedenti" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" Foreground="#FF7D7C83"/>
-            <DataGrid x:Name="DG_Allenamenti" HorizontalAlignment="Left" Height="409" Margin="10,39,0,0" VerticalAlignment="Top" Width="573"/>
+            <DataGrid x:Name="DG_Allenamenti" CanUserAddRows="false" IsReadOnly="True" HorizontalAlignment="Left" Height="409" Margin="10,39,0,0" VerticalAlignment="Top" Width="573"/>
         </Grid>
 
         <Grid x:Name="GridSegnala" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
             <Label Content="Atleta / Segnala" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+            <DataGrid x:Name="DG_Segnala" IsReadOnly="True" HorizontalAlignment="Left" Height="368" Margin="10,39,0,0" VerticalAlignment="Top" Width="573"/>
+            <Button x:Name="BT_Segnala" Content="Segnala attrezzo" HorizontalAlignment="Left" Margin="59,412,0,0" VerticalAlignment="Top" Width="201" Height="36" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Segnala_Click"/>
+            <Button x:Name="BT_Segnala_Annulla" Content="Annulla segnalazione" HorizontalAlignment="Left" Margin="333,412,0,0" VerticalAlignment="Top" Width="201" Height="36" Foreground="#FF0066FF" Background="White" BorderBrush="White" Click="BT_Segnala_Annulla_Click"/>
         </Grid>
 
-        <Grid x:Name="GridLogout" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+        <Grid x:Name="GridLogout" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
             <Label Content="Atleta / Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+            <Button x:Name="BT_Logout" Content="Disconnettiti" HorizontalAlignment="Left" Margin="64,293,0,0" VerticalAlignment="Top" Width="180" Height="45" FontSize="24" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Logout_Click"/>
+            <Button x:Name="BT_Close" Content="Chiudi programma" HorizontalAlignment="Left" Margin="284,293,0,0" VerticalAlignment="Top" Width="237" Height="45" FontSize="24" FontWeight="Light" Background="#FF0066FF" BorderBrush="#FF0066FF" Click="BT_Close_Click"/>
+            <Image HorizontalAlignment="Left" Height="102" Margin="102,167,0,0" VerticalAlignment="Top" Width="109" Source="/Progetto_Palestra;component/Immagini/logout(1).png"/>
+            <Image HorizontalAlignment="Left" Height="102" Margin="343,167,0,0" VerticalAlignment="Top" Width="124" Source="/Progetto_Palestra;component/Immagini/close-window.png"/>
+
         </Grid>
 
     </Grid>

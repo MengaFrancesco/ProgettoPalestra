@@ -131,7 +131,19 @@ namespace Progetto_Palestra.Interfacce
                         }
                         
                         break;
-                    case "Meccanico": break;
+                    case "Meccanico":
+                        if (db.CheckMeccanico(Username, Password))
+                        {
+                            MessageBox.Show("Login effettuato con successo!", "Attenzione!", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Login = true;
+                            this.Close();
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username e password non corrispondono!");
+                        }
+                        break;
                 }
                 
             }

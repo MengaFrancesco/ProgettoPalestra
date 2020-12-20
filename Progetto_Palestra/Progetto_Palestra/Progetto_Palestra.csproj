@@ -181,6 +181,7 @@
     <Compile Include="Classi\CAllenamento.cs" />
     <Compile Include="Classi\CAttrezzo.cs" />
     <Compile Include="Classi\ConvertImage.cs" />
+    <Compile Include="Classi\CSegnalazione.cs" />
     <Compile Include="Classi\CVisita.cs" />
     <Compile Include="Classi\CAmministratore.cs" />
     <Compile Include="Classi\CControllore.cs" />

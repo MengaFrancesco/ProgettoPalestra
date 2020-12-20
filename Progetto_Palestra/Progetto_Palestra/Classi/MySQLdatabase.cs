@@ -177,6 +177,8 @@ namespace Progetto_Palestra
             }
         }
 
+        
+
         ////SELECT TUTTE LE COLONNE DELL'ATLETA DALL'USERNAME
         public CAtleta GetAtleta(string Username)
         {
@@ -1148,7 +1150,54 @@ namespace Progetto_Palestra
 
 
         }
-        
+
+        ////UPDATE ATTREZZO A SEGNALATO
+        public void UpdateAttrezzoSegnalato(int ID_Attrezzo)
+        {
+            try
+            {
+                string query = "UPDATE `attrezzatura` SET `Manutenzione_Richiesta` = '1' WHERE `attrezzatura`.`ID_Attrezzo` = " + ID_Attrezzo + ";";
+
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+
+        ////UPDATE ATTREZZO A RIPARATO
+        public void UpdateAttrezzoRiparato(int ID_Attrezzo)
+        {
+            try
+            {
+                string query = "UPDATE `attrezzatura` SET `Manutenzione_Richiesta` = '0' WHERE `attrezzatura`.`ID_Attrezzo` = " + ID_Attrezzo + ";";
+
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
 
 
         /* QUERY ALLENAMENTI */
@@ -1200,6 +1249,149 @@ namespace Progetto_Palestra
                 MySqlCommand cmd = new MySqlCommand(allenamento.ToQueryInsert(), connection);
                 cmd.ExecuteNonQuery(); //Execute command
                 this.CloseConnection(); //close connection
+            }
+        }
+        
+
+        /* QUERY SEGNALAZIONI */
+
+        ////SELECT SEGNALAZIONI NON INIZIATE
+        public List<CSegnalazione> SelectSegnalazioniDisp()
+        {
+            List<CSegnalazione> ris = new List<CSegnalazione>();
+
+            try
+            {
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    string query = "SELECT * FROM elenco_segnalazioni WHERE Riparazione_In_Corso=0 AND Riparazione_Terminata=0";
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    while (dataReader.Read()) //Fino a quando c'è da leggere
+                    {
+                        string row = "";
+                        int columns = dataReader.FieldCount; //Calcola numero colonne
+                        for (int i = 0; i < columns; i++)
+                        {
+                            row += dataReader[i] + ";"; //Legge colonna
+
+                        }
+                        ris.Add(new CSegnalazione(row)); //Aggiunge colonna alla lista
+                    }
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ris;
+            }
+
+            return ris;
+        }
+
+        ////INSERT SEGNALAZIONE DI ATTREZZO DA ATLETA PARAMETRO
+        public void InsertSegnalazione(int ID_Attrezzo, int ID_Atleta)
+        {
+            string query = "INSERT INTO `elenco_segnalazioni` (`ID_Segnalazione`, `ID_Atleta`, `ID_Attrezzo`, `Riparazione_In_Corso`, `Riparazione_Terminata`) VALUES (NULL, '";
+            query += ID_Atleta+ "', '"+ ID_Attrezzo +"', '0', '0')";
+
+            if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery(); //Execute command
+                this.CloseConnection(); //close connection
+            }
+        }
+
+        ////UPDATE SEGNALAZIONE IN RIPARAZIONE
+        public void UpdateSegnalazioneIniziata(int ID_Segnalazione)
+        {
+            try
+            {
+                string query = "UPDATE `elenco_segnalazioni` SET `Riparazione_In_Corso` = '1' WHERE `elenco_segnalazioni`.`ID_Segnalazione` = " + ID_Segnalazione + ";";
+
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+
+        ////UPDATE SEGNALAZIONE FINE RIPARAZIONE
+        public void UpdateSegnalazioneTerminata(int ID_Segnalazione)
+        {
+            try
+            {
+                string query = "UPDATE `elenco_segnalazioni` SET `Riparazione_Terminata` = '1' WHERE `elenco_segnalazioni`.`ID_Segnalazione` = " + ID_Segnalazione + ";";
+
+
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+        
+        
+        /* QUERY MECCANICI */
+
+        ////CONTROLLA SE USERNAME E PASSWORD DEL MECCANICO SONO CORRETTI
+        public bool CheckMeccanico(string username, string password)
+        {
+            bool ris = false;
+
+            try
+            {
+                string query = "SELECT COUNT(*) FROM meccanici WHERE Username=\'" + username + "\' AND Password=\'" + password + "\'";
+                
+                if (this.OpenConnection() == true) //Apre la connessione e se resta aperta continua
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    dataReader.Read(); //Fino a quando c'è da leggere
+
+                    string s = (dataReader[0] + "");
+                    if (s != "0")
+                        ris = true;      //Legge colonna
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+
+
+                    return ris;
+                }
+                else
+                    return ris;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+                return false;
             }
         }
     }
