@@ -110,4 +110,5 @@ C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\System.Xml.
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\WindowsBase.dll
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\PagamentoWindow.g.cs
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Interfacce\PagamentoWindow.baml
+C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\bin\Debug\DotNetProjects.DataVisualization.Toolkit.dll
 C:\Users\stefa\Desktop\Progetto_Palestra\Progetto_Palestra\obj\Debug\Progetto_Palestra.csprojAssemblyReference.cache

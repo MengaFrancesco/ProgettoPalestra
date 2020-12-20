@@ -18,13 +18,13 @@ namespace Progetto_Palestra.Interfacce
     /// </summary>
     public partial class ControlloreWindow : Window
     {
-        //Properties
+        //PROPERTIES
         public string Username { get; set; }
         public CControllore Controllore { get; set; }
         private MySQLdatabase db { get; set; }
         public bool Logout { get; set; }
 
-        ////Costruttore con parametri
+        ////COSTRUTTORE CON PARAMETRO USERNAME
         public ControlloreWindow(string Username)
         {
             InitializeComponent();
@@ -38,6 +38,8 @@ namespace Progetto_Palestra.Interfacce
 
             Logout = false;
         }
+
+        #region METODI UPDATE VISUALIZZAZIONE
 
         ////AGGIORNA VISUALIZZAZIONE DASHBOARD
         public void UpdateDashboard()
@@ -115,6 +117,10 @@ namespace Progetto_Palestra.Interfacce
             GridProfile.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Visible;
         }
+
+        #endregion
+
+        #region METODI COMPONENTI
 
         ////BOTTONE CHE APRE LA FINESTRA SCANNER
         private void BT_Scansiona_Click(object sender, RoutedEventArgs e)
@@ -257,25 +263,6 @@ namespace Progetto_Palestra.Interfacce
 
         }
 
-        ////METODI PER SALVARE IMMAGINE PNG
-        void SaveToPng(FrameworkElement visual, string fileName)
-        {
-            var encoder = new PngBitmapEncoder();
-            SaveUsingEncoder(visual, fileName, encoder);
-        }
-        void SaveUsingEncoder(FrameworkElement visual, string fileName, BitmapEncoder encoder)
-        {
-            RenderTargetBitmap bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            bitmap.Render(visual);
-            BitmapFrame frame = BitmapFrame.Create(bitmap);
-            encoder.Frames.Add(frame);
-
-            using (var stream = File.Create(fileName))
-            {
-                encoder.Save(stream);
-            }
-        }
-
         ////METODO PER IL BOTTONE DISCONNETTI
         private void BT_Logout_Click(object sender, RoutedEventArgs e)
         {
@@ -289,29 +276,11 @@ namespace Progetto_Palestra.Interfacce
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        ////CONVERTE STRINGA IN MD5
-        private string ConvertMD5(string Password)
-        {
-            StringBuilder hash = new StringBuilder(); //Crea hash da impostare
-            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
-            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(Password));
-            for (int i = 0; i < bytes.Length; i++)
-                hash.Append(bytes[i].ToString("x2"));
-
-            //Converte l'hash in stringa
-            return hash.ToString();
-        }
-
         ////AGGIORNA INFORMAZIONI CONTROLLORE
         private void BT_Salva_Modifiche_Click(object sender, RoutedEventArgs e)
         {
             ////AGGIORNA INFO CONTROLLORE
-            if(TB_Password.Text!="") //Se cambio password
+            if (TB_Password.Text != "") //Se cambio password
                 Controllore.Password = ConvertMD5(TB_Password.Text);
             if (TB_Nome.Text != "") //Se cambio nome
                 Controllore.Nome = TB_Nome.Text;
@@ -326,7 +295,49 @@ namespace Progetto_Palestra.Interfacce
                 MessageBox.Show("Il profilo è stato aggiornato!");
                 UpdateProfilo();
             }
-               
+
         }
+
+        #endregion
+                
+        #region METODI PER SALVARE IMMAGINE PNG
+
+        void SaveToPng(FrameworkElement visual, string fileName)
+        {
+            var encoder = new PngBitmapEncoder();
+            SaveUsingEncoder(visual, fileName, encoder);
+        }
+        
+        void SaveUsingEncoder(FrameworkElement visual, string fileName, BitmapEncoder encoder)
+        {
+            RenderTargetBitmap bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            bitmap.Render(visual);
+            BitmapFrame frame = BitmapFrame.Create(bitmap);
+            encoder.Frames.Add(frame);
+
+            using (var stream = File.Create(fileName))
+            {
+                encoder.Save(stream);
+            }
+        }
+
+        #endregion
+
+        #region ALTRI METODI
+        
+        ////CONVERTE STRINGA IN MD5
+        private string ConvertMD5(string Password)
+        {
+            StringBuilder hash = new StringBuilder(); //Crea hash da impostare
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(Password));
+            for (int i = 0; i < bytes.Length; i++)
+                hash.Append(bytes[i].ToString("x2"));
+
+            //Converte l'hash in stringa
+            return hash.ToString();
+        }
+
+        #endregion
     }
 }

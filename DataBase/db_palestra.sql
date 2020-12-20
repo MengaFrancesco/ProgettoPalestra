@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 20, 2020 alle 19:17
+-- Creato il: Dic 21, 2020 alle 00:33
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.2.34
 
@@ -68,9 +68,9 @@ CREATE TABLE `atleti` (
 --
 
 INSERT INTO `atleti` (`ID_Atleta`, `Username`, `Password`, `Nome`, `Cognome`, `Residenza`, `Data_Iscrizione`, `Data_nascita`, `Sesso`, `Scadenza_abbonamento`) VALUES
-(1, 'Waye1980', 'db73f93218febe86219325415703c8cd', 'Rufino', 'Rossi', 'Tavarnelle Val Di Pesa', '2020-12-14', '1980-09-21', 'M', '2021-03-18'),
-(2, 'Zably1994', '229017f52cef53b783832b75891d7023', 'Giovanna', 'Endrizzi', 'Laveno Mombello', '2020-12-14', '1994-11-01', 'F', '2020-12-18'),
-(3, 'Untake', 'ea3b6e450ca0c990bc6cd150d663b667', 'Ernesto', 'Pinti', 'Catania', '2020-12-14', '1995-10-24', 'M', '2020-12-09'),
+(1, 'Waye1980', 'db73f93218febe86219325415703c8cd', 'Rufino', 'Rossi', 'Tavarnelle Val Di Pesa', '2020-12-20', '1980-09-21', 'M', '2021-03-18'),
+(2, 'Zably1994', '229017f52cef53b783832b75891d7023', 'Giovanna', 'Endrizzi', 'Laveno Mombello', '2020-12-20', '1994-11-01', 'F', '2020-12-18'),
+(3, 'Untake', 'ea3b6e450ca0c990bc6cd150d663b667', 'Ernesto', 'Pinti', 'Catania', '2020-12-18', '1995-10-24', 'M', '2020-12-09'),
 (4, 'Barries', 'db73f93218febe86219325415703c8cd', 'Silvestro', 'Manna', 'Castel Focognano', '2020-12-14', '1980-02-07', 'M', '2020-12-10'),
 (5, 'Decithe1985', '37e4fdd78a0277d15d0e01d9978e7dd6', 'Gloria', 'Siciliano', 'Faenza', '2020-12-14', '1994-03-24', 'F', '2020-12-18');
 
@@ -220,7 +220,7 @@ INSERT INTO `elenco_visite` (`ID_Visita`, `ID_Atleta`, `Data`, `Ingresso`, `Usci
 (7, 4, '2020-12-16', '18:42:54', 1),
 (8, 4, '2020-12-16', '18:43:09', 1),
 (9, 4, '2020-12-16', '18:47:07', 1),
-(10, 1, '2020-12-16', '18:49:08', 1);
+(10, 1, '2020-12-20', '18:49:08', 1);
 
 -- --------------------------------------------------------
 
@@ -241,7 +241,7 @@ CREATE TABLE `meccanici` (
 --
 
 INSERT INTO `meccanici` (`ID_Meccanico`, `Nome`, `Cognome`, `Username`, `Password`) VALUES
-(3, 'meccanico', 'meccanico', 'meccanico', '5f4dcc3b5aa765d61d8327deb882cf99');
+(1, 'nome_meccanico', 'cognome_meccanico', 'meccanico', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
@@ -384,7 +384,7 @@ ALTER TABLE `elenco_visite`
 -- AUTO_INCREMENT per la tabella `meccanici`
 --
 ALTER TABLE `meccanici`
-  MODIFY `ID_Meccanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Meccanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `orari`
