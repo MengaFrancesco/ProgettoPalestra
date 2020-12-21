@@ -1,6 +1,7 @@
 ﻿using NodaTime;
 using Progetto_Palestra.Classi;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -33,6 +34,9 @@ namespace Progetto_Palestra.Interfacce
             UpdateDashboard();
         }
 
+
+        #region METODI AGGIORNAMENTO VISUALIZZAZIONE
+
         ////AGGIORNA VISUALIZZAZIONE DASHBOARD
         public void UpdateDashboard()
         {
@@ -53,6 +57,18 @@ namespace Progetto_Palestra.Interfacce
             int numAllW = db.GetNumAllenamentiW(atleta.ID);
             LabelNumAllenamenti.Content = numAll;
             LabelNumAllenamentiW.Content = numAllW + " questa settimana";
+            int segn = db.CountSegnalazioni(atleta.ID);
+            LabelSegnalazioni.Content = segn;
+            LabelNumVisite.Content = db.CountVisite(atleta.ID);
+            LabelNumVisiteW.Content = db.CountVisiteWeek(atleta.ID)+" questa settimana";
+
+            /* Inserisce dati nel calendario */
+            List<CAllenamento> allenamenti = db.SelectAllenamentiAtleta(atleta.ID);
+
+            foreach (var allenamento in allenamenti)
+            {
+                CalendarAllenamenti.SelectedDates.Add(allenamento.Data); //Inserisce data nell'array
+            }
         }
 
         ////AGGIORNA VISUALIZZAZIONE PROFILO
@@ -159,6 +175,10 @@ namespace Progetto_Palestra.Interfacce
             GridSegnala.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Visible;
         }
+
+        #endregion
+
+        #region METODI COMPONENTI
 
         ////SELEZIONE DASHBOARD
         private void LWDashboard_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -368,15 +388,45 @@ namespace Progetto_Palestra.Interfacce
             LV_Menu.SelectedIndex = 0;
         }
 
+        ////BOTTONE LOGOUT RITORNO ALLA HOME
         private void BT_Logout_Click(object sender, RoutedEventArgs e)
         {
             Logout = true;
             this.Close();
         }
 
+        ////BOTTONE CHIUDI PROGRAMMA
         private void BT_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        #endregion
+
+        private void CalendarAllenamenti_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            /* Inserisce dati nel calendario */
+            MySQLdatabase db = new MySQLdatabase();
+            List<CAllenamento> allenamenti = db.SelectAllenamentiAtleta(atleta.ID);
+            CalendarAllenamenti.SelectedDates.Clear();
+            foreach (var allenamento in allenamenti)
+            {
+                CalendarAllenamenti.SelectedDates.Add(allenamento.Data); //Inserisce data nell'array
+            }
+        }
+
+        private void CalendarAllenamenti_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            ///* Inserisce dati nel calendario */
+            //MySQLdatabase db = new MySQLdatabase();
+            //CalendarAllenamenti.SelectedDates.Clear();
+
+            //List<CAllenamento> allenamenti = db.SelectAllenamentiAtleta(atleta.ID);
+
+            //foreach (var allenamento in allenamenti)
+            //{
+            //    CalendarAllenamenti.SelectedDates.Add(allenamento.Data); //Inserisce data nell'array
+            //}
         }
     }
 }

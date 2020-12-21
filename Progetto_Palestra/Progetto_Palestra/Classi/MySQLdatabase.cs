@@ -1089,6 +1089,60 @@ namespace Progetto_Palestra
             }
         }
 
+        public int CountVisite(int ID)
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM elenco_visite WHERE ID_Atleta=\'"+ID+"\'"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
+        public int CountVisiteWeek(int ID)
+        {
+            int ris = 0;
+
+            string query = "SELECT COUNT(*) FROM elenco_visite WHERE ID_Atleta=\'" + ID + "\' AND YEARWEEK(Data)=YEARWEEK(NOW())"; //Crea stringa query
+
+
+            if (this.OpenConnection() == true) //Prova ad aprire la connessione
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                dataReader.Read(); //Read the data and store them in the list
+
+                string risS = dataReader["COUNT(*)"] + "";
+                ris = Int32.Parse(risS);
+
+                dataReader.Close();     //close Data Reader
+                this.CloseConnection(); //close Connection
+                return ris;             //Ritorna la lista con l'elenco degli amministratori
+            }
+            else
+            {
+                return ris; //Ritorna la lista vuota
+            }
+        }
+
         #endregion  
 
         #region QUERY ATTREZZI
@@ -1441,6 +1495,34 @@ namespace Progetto_Palestra
 
         }
 
+        ////COUNT SEGNALAZIONI DI UN UTENTE
+        public int CountSegnalazioni(int ID)
+        {
+            int count = 0;
+
+            try
+            {
+                if (this.OpenConnection() == true) //Prova ad aprire la connessione
+                {
+                    string query = "SELECT COUNT(*) FROM elenco_segnalazioni WHERE ID_Atleta=\'"+ID+"\'";
+                    MySqlCommand cmd = new MySqlCommand(query, connection); //Crea comando da eseguire
+                    MySqlDataReader dataReader = cmd.ExecuteReader();       //Esegue il comando
+
+                    dataReader.Read(); //Fino a quando c'è da leggere
+                    count = Int32.Parse(dataReader[0] + ""); //Legge colonna
+
+                    dataReader.Close();     //close Data Reader
+                    this.CloseConnection(); //close Connection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return count;
+            }
+
+            return count;
+        }
         #endregion
 
         #region QUERY MECCANICO
