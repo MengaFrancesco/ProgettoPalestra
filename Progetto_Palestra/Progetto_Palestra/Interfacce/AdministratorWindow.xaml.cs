@@ -303,7 +303,7 @@ namespace Progetto_Palestra.Interfacce
 
                     CAtleta atleta = new CAtleta(ID, Username, Password, Nome, Cognome, Residenza, DataIscrizione, Sesso, DataScadenza, DataNascita);
 
-                    db.AggiornaAtleta(atleta);
+                    db.UpdateAtleta(atleta);
                     UpdateAtleti();
                 }
             }

@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="PagamentoWindow" Height="595" Width="478.788">
     <Grid>
-        <RadioButton x:Name="RB_1mese" Content="Abbonamento +1 Mese,  19,99€" HorizontalAlignment="Left" Margin="46,72,0,0" VerticalAlignment="Top" Height="68" Width="349" FontSize="20" GroupName="AbbonamentoG"/>
-        <RadioButton x:Name="RB_3mesi" Content="Abbonamento +3 Mesi,  59,99€" HorizontalAlignment="Left" Margin="46,145,0,0" VerticalAlignment="Top" Height="68" Width="349" FontSize="20" GroupName="AbbonamentoG"/>
-        <RadioButton x:Name="RB_12mesi" Content="Abbonamento +12 Mesi,  239,99€" HorizontalAlignment="Left" Margin="46,218,0,0" VerticalAlignment="Top" Height="68" Width="349" FontSize="20" GroupName="AbbonamentoG"/>
+        <RadioButton x:Name="RB_1mese" Background="#FF0066FF" BorderBrush="#FF0066FF" Content="Abbonamento +1 Mese,  19,99€" HorizontalAlignment="Left" Margin="46,72,0,0" VerticalAlignment="Top" Height="68" Width="349" FontSize="20" GroupName="AbbonamentoG"/>
+        <RadioButton x:Name="RB_3mesi" Background="#FF0066FF" BorderBrush="#FF0066FF" Content="Abbonamento +3 Mesi,  59,99€" HorizontalAlignment="Left" Margin="46,145,0,0" VerticalAlignment="Top" Height="68" Width="349" FontSize="20" GroupName="AbbonamentoG"/>
+        <RadioButton x:Name="RB_12mesi" Background="#FF0066FF" BorderBrush="#FF0066FF" Content="Abbonamento +12 Mesi,  239,99€" HorizontalAlignment="Left" Margin="46,218,0,0" VerticalAlignment="Top" Height="68" Width="349" FontSize="20" GroupName="AbbonamentoG"/>
         <Label Content="Selezionare una tariffa:" HorizontalAlignment="Left" Margin="46,32,0,0" VerticalAlignment="Top" Width="262" FontSize="20"/>
         <TextBox x:Name="TB_Carta" HorizontalAlignment="Left" Height="38" Margin="46,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="387" FontSize="20"/>
         <Label Content="Inserire la carta di credito:" HorizontalAlignment="Left" Margin="46,308,0,0" VerticalAlignment="Top" Width="262" FontSize="20"/>
@@ -19,8 +19,8 @@
         <Label Content="/" HorizontalAlignment="Left" Margin="132,430,0,0" VerticalAlignment="Top" Width="23" FontSize="20"/>
         <Label Content="CVV:" HorizontalAlignment="Left" Margin="295,390,0,0" VerticalAlignment="Top" Width="174" FontSize="20"/>
         <TextBox x:Name="TB_CVV" HorizontalAlignment="Left" Height="38" Margin="295,430,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" FontSize="20"/>
-        <Button x:Name="BT_Rinnova" Content="Rinnova" HorizontalAlignment="Left" Margin="46,498,0,0" VerticalAlignment="Top" Width="164" Height="56" FontSize="20" Click="BT_Rinnova_Click"/>
-        <Button Content="Annulla" HorizontalAlignment="Left" Margin="269,498,0,0" VerticalAlignment="Top" Width="164" Height="56" FontSize="20" Click="Button_Click"/>
+        <Button x:Name="BT_Rinnova" Background="#FF0066FF" BorderBrush="#FF0066FF" Content="Rinnova" HorizontalAlignment="Left" Margin="46,498,0,0" VerticalAlignment="Top" Width="164" Height="56" FontSize="20" Click="BT_Rinnova_Click"/>
+        <Button Content="Annulla" Background="#FFFFFF" BorderBrush="#FFFFFF" Foreground="#FF0066FF" HorizontalAlignment="Left" Margin="269,498,0,0" VerticalAlignment="Top" Width="164" Height="56" FontSize="20" Click="Button_Click"/>
 
     </Grid>
 </Window>

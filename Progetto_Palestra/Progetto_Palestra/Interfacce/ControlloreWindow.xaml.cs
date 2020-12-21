@@ -34,6 +34,8 @@ namespace Progetto_Palestra.Interfacce
             this.Username = Username;
             Controllore = db.GetControllore(Username);
 
+            LabelBenvenuto.Content += " " + Username;
+
             UpdateDashboard(); ////Aggiorna dashboard
 
             Logout = false;

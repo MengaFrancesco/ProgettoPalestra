@@ -38,7 +38,7 @@ namespace Progetto_Palestra.Interfacce
             lw.ShowDialog();
 
             //Controllo login effettuato
-            if (lw.Login) 
+            if (lw.Login)
             {
                 MySQLdatabase db = new MySQLdatabase();
                 switch (lw.Tipologia)
@@ -81,6 +81,8 @@ namespace Progetto_Palestra.Interfacce
                         break;
                 }
             }
+            else
+                this.Visibility = Visibility.Visible;
         }
 
         ////BOTTONE REGISTRA

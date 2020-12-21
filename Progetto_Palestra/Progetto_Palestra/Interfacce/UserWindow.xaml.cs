@@ -2,6 +2,8 @@
 using Progetto_Palestra.Classi;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -60,7 +62,7 @@ namespace Progetto_Palestra.Interfacce
             int segn = db.CountSegnalazioni(atleta.ID);
             LabelSegnalazioni.Content = segn;
             LabelNumVisite.Content = db.CountVisite(atleta.ID);
-            LabelNumVisiteW.Content = db.CountVisiteWeek(atleta.ID)+" questa settimana";
+            LabelNumVisiteW.Content = db.CountVisiteWeek(atleta.ID) + " questa settimana";
 
             /* Inserisce dati nel calendario */
             List<CAllenamento> allenamenti = db.SelectAllenamentiAtleta(atleta.ID);
@@ -74,13 +76,26 @@ namespace Progetto_Palestra.Interfacce
         ////AGGIORNA VISUALIZZAZIONE PROFILO
         public void UpdateProfilo()
         {
+            //Visualizza solo sezione profilo
             GridDashboard.Visibility = Visibility.Hidden;
             GridProfilo.Visibility = Visibility.Visible;
             GridAbbonamento.Visibility = Visibility.Hidden;
             GridAllenamento.Visibility = Visibility.Hidden;
-            GridAllenamPrec.Visibility = Visibility.Hidden;
+            GridAllenamPrec.Visibility = Visibility.Hidden ;
             GridSegnala.Visibility = Visibility.Hidden;
             GridLogout.Visibility = Visibility.Hidden;
+
+
+            //Inserisce dati nelle textbox
+            TB_Password.Text = "";
+            TB_Nome.Text = atleta.Nome;
+            TB_Cognome.Text = atleta.Cognome;
+            TB_Residenza.Text = atleta.Residenza;
+            DP_Nascita.SelectedDate = atleta.DataNascita;
+            if (atleta.Sesso == "M")
+                RadioM.IsChecked = true;
+            else
+                RadioF.IsChecked = true;
         }
 
         ////AGGIORNA VISUALIZZAZIONE ABBONAMENTO
@@ -101,7 +116,7 @@ namespace Progetto_Palestra.Interfacce
         ////AGGIORNA VISUALIZZAZIONE ALLENAMENTO
         public void UpdateAlleamento()
         {
-            if(!db.CheckAccesso(atleta.ID)) //Se accesso non eseguito
+            if (!db.CheckAccesso(atleta.ID)) //Se accesso non eseguito
             {
                 MessageBox.Show("L'accesso in palestra non è stato eseguito!");
                 UpdateDashboard();
@@ -287,7 +302,7 @@ namespace Progetto_Palestra.Interfacce
             BT_Seleziona.IsEnabled = true;
             BT_Rilascia.IsEnabled = false;
             MessageBox.Show("Allenamento iniziato");
-            
+
             ////Inizializza oggetto CAllenamento
             allenamento = new CAllenamento();
             allenamento.Data = DateTime.Today;
@@ -401,8 +416,7 @@ namespace Progetto_Palestra.Interfacce
             this.Close();
         }
 
-        #endregion
-
+        ////PRESSIONE MOUSE SUL CALENDARIO
         private void CalendarAllenamenti_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             /* Inserisce dati nel calendario */
@@ -415,18 +429,59 @@ namespace Progetto_Palestra.Interfacce
             }
         }
 
-        private void CalendarAllenamenti_SelectedDatesChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        ////PRESSIONE BOTTONE ANNULLA
+        private void BT_Annulla_Click(object sender, RoutedEventArgs e)
         {
-            ///* Inserisce dati nel calendario */
-            //MySQLdatabase db = new MySQLdatabase();
-            //CalendarAllenamenti.SelectedDates.Clear();
-
-            //List<CAllenamento> allenamenti = db.SelectAllenamentiAtleta(atleta.ID);
-
-            //foreach (var allenamento in allenamenti)
-            //{
-            //    CalendarAllenamenti.SelectedDates.Add(allenamento.Data); //Inserisce data nell'array
-            //}
+            //Ritorna alla dashboard
+            UpdateDashboard();
         }
+
+        ////PRESSIONE BOTTONE CONFERMA
+        private void BT_Conferma_Click(object sender, RoutedEventArgs e)
+        {
+            //Controlla se i campi dati sono vuoti
+            if (TB_Nome.Text == "" || TB_Cognome.Text == ""
+                || TB_Residenza.Text == "" || DP_Nascita.SelectedDate == null)
+                MessageBox.Show("Alcuni campi sono vuoti. Inserire i parametri e riprovare");
+            else
+            {
+                if (TB_Password.Text != "")
+                {
+                    atleta.Password = ConvertMD5(TB_Password.Text);
+                }
+
+                atleta.Nome = TB_Nome.Text;
+                atleta.Cognome = TB_Cognome.Text;
+                atleta.Residenza = TB_Residenza.Text;
+                atleta.DataNascita = DP_Nascita.SelectedDate.Value;
+                if (RadioM.IsChecked == true)
+                    atleta.Sesso = "M";
+                else
+                    atleta.Sesso = "F";
+
+                db.UpdateAtleta(atleta);
+                UpdateDashboard();
+                MessageBox.Show("Informazioni atleta aggiornate.");
+            }
+        }
+
+        #endregion
+
+        #region ALTRI METODI
+
+        ////CONVERTE STRINGA INPUT IN MD5
+        private string ConvertMD5(string Password)
+        {
+            StringBuilder hash = new StringBuilder(); //Crea hash da impostare
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(Password));
+            for (int i = 0; i < bytes.Length; i++)
+                hash.Append(bytes[i].ToString("x2"));
+
+            //Converte l'hash in stringa
+            return hash.ToString();
+        }
+
+        #endregion
     }
 }

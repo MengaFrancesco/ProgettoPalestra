@@ -407,7 +407,7 @@ namespace Progetto_Palestra
         }
 
         ////UPDATE DELL'ATLETA PARAMETRO
-        public void AggiornaAtleta(CAtleta atleta)
+        public void UpdateAtleta(CAtleta atleta)
         {
             try
             {

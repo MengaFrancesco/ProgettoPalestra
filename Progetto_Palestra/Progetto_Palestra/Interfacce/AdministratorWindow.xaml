@@ -7,12 +7,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Progetto_Palestra.Interfacce.AdministratorWindow"
         mc:Ignorable="d" Height="598.75" Width="1148.75">
     <Grid>
-        <Button x:Name="ButtonRegistraControllore" Content="Registra Controllore" HorizontalAlignment="Left" Margin="138,-175,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
-        <Button Content="Modifica Controllore" HorizontalAlignment="Left" Margin="138,-136,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
-        <Button x:Name="ButtonModificaAttrezzatura" Content="Modifica Attrezzatura" HorizontalAlignment="Left" Margin="295,-175,0,0" VerticalAlignment="Top" Width="156" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
-        <Button x:Name="ButtonAggiungiAttrezzatura" Content="Aggiungi Attrezzatura" HorizontalAlignment="Left" Margin="295,-136,0,0" VerticalAlignment="Top" Width="156" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
-        <Button x:Name="ButtonRegistraMeccanico" Content="Registra Meccanico" HorizontalAlignment="Left" Margin="456,-175,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" TextOptions.TextHintingMode="Fixed" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
-        <Button x:Name="ButtonModificaMeccanico" Content="Modifica Meccanico" HorizontalAlignment="Left" Margin="456,-136,0,0" VerticalAlignment="Top" Width="152" FontFamily="/Progetto_Palestra;component/#Inter" FontWeight="Light" TextOptions.TextHintingMode="Fixed" BorderBrush="#FF0066FF" Background="#FF0066FF" Height="34"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="1148" StrokeThickness="0.5" Margin="-7,0,0,0"/>
         <Label Content="Amministratore" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
         <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="777,7,0,0" VerticalAlignment="Top" Width="364" Foreground="#FF7D7C83"/>

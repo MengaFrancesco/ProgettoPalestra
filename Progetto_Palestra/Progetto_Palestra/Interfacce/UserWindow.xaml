@@ -8,11 +8,6 @@
         mc:Ignorable="d"
         Title="UserWindow" Height="526.5" Width="896">
     <Grid>
-        <Button x:Name="ButtonRinnova" Content="Rinnova abbonamento" HorizontalAlignment="Left" Margin="0,-232,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="ButtonInizia" Content="Inizia Allenamento" HorizontalAlignment="Left" Margin="0,-194,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="ButtonSegnala" Content="Segnala Attrezzo" HorizontalAlignment="Left" Margin="0,-158,0,0" VerticalAlignment="Top" Width="179"/>
-        <Button x:Name="ButtonCambia" Content="Cambia Informazioni Personali" HorizontalAlignment="Left" Margin="0,-120,0,0" VerticalAlignment="Top" Width="233"/>
-        <Button x:Name="ButtonPassword" Content="Cambia Password" HorizontalAlignment="Left" Margin="0,-84,0,0" VerticalAlignment="Top" Width="179"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="37" Stroke="#FF7D7C83" VerticalAlignment="Top" Width="1148" StrokeThickness="0.5" Margin="-7,0,0,0"/>
         <Label Content="Atleta" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
         <Label x:Name="LabelBenvenuto" Content="Benvenuto/a " HorizontalAlignment="Left" Margin="295,7,0,0" VerticalAlignment="Top" Width="649" Foreground="#FF7D7C83"/>
@@ -76,7 +71,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="GridDashboard" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+        <Grid x:Name="GridDashboard" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
             <Label Content="Atleta / Dashboard" HorizontalAlignment="Left" Margin="15,4,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
             <materialDesign:Card HorizontalAlignment="Left" Margin="15,39,0,0" VerticalAlignment="Top" Height="90" Width="169">
                 <materialDesign:Card.Background>
@@ -114,11 +109,26 @@
             <Image HorizontalAlignment="Left" Height="55" Margin="504,45,0,0" VerticalAlignment="Top" Width="56" Source="/Progetto_Palestra;component/Immagini/visitor.png"/>
             <Label x:Name="LabelNumVisite" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="411,63,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" FontSize="20" Width="88"/>
             <Label x:Name="LabelNumVisiteW" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="411,98,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="159" Height="24"/>
-            <Calendar x:Name="CalendarAllenamenti"  HorizontalAlignment="Left" Margin="15,129,0,0" VerticalAlignment="Top" Height="323" Width="289" Foreground="#DD000000" SelectionMode="MultipleRange" MouseLeftButtonUp="CalendarAllenamenti_MouseLeftButtonUp" SelectedDatesChanged="CalendarAllenamenti_SelectedDatesChanged"/>
+            <Calendar x:Name="CalendarAllenamenti"  HorizontalAlignment="Left" Margin="15,129,0,0" VerticalAlignment="Top" Height="323" Width="289" Foreground="#DD000000" SelectionMode="MultipleRange" MouseLeftButtonUp="CalendarAllenamenti_MouseLeftButtonUp"/>
         </Grid>
 
-        <Grid x:Name="GridProfilo" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
+        <Grid x:Name="GridProfilo" Visibility="Visible" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
             <Label Content="Atleta / Gestione profilo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="152" Foreground="#FF7D7C83"/>
+            <TextBox x:Name="TB_Password" HorizontalAlignment="Left" Height="32" Margin="250,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontSize="16" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Nome" HorizontalAlignment="Left" Height="33" Margin="250,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontSize="16" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Cognome" HorizontalAlignment="Left" Height="32" Margin="250,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontSize="16" CaretBrush="#FF0066FF"/>
+            <TextBox x:Name="TB_Residenza" HorizontalAlignment="Left" Height="32" Margin="250,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontSize="16" CaretBrush="#FF0066FF"/>
+            <DatePicker x:Name="DP_Nascita" HorizontalAlignment="Left" Margin="250,297,0,0" VerticalAlignment="Top" Width="263" Height="33" FontSize="16"/>
+            <RadioButton x:Name="RadioM" Content="M" HorizontalAlignment="Left" Margin="311,337,0,0" VerticalAlignment="Top" Height="33" GroupName="Sesso" Width="51" FontSize="16" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
+            <RadioButton x:Name="RadioF" Content="F" HorizontalAlignment="Left" Margin="404,337,0,0" VerticalAlignment="Top" Height="33" GroupName="Sesso" Width="43" FontSize="16" Background="#FF0066FF" BorderBrush="#FF0066FF"/>
+            <Label Content="Password:" HorizontalAlignment="Left" Margin="54,140,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF7D7C83" HorizontalContentAlignment="Right" Height="33" FontSize="16"/>
+            <Label Content="Nome:" HorizontalAlignment="Left" Margin="54,178,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF7D7C83" HorizontalContentAlignment="Right" Height="33" FontSize="16"/>
+            <Label Content="Cognome:" HorizontalAlignment="Left" Margin="54,218,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF7D7C83" HorizontalContentAlignment="Right" Height="33" FontSize="16"/>
+            <Label Content="Residenza:" HorizontalAlignment="Left" Margin="54,258,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF7D7C83" HorizontalContentAlignment="Right" Height="33" FontSize="16"/>
+            <Label Content="Data di nascita:" HorizontalAlignment="Left" Margin="54,297,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF7D7C83" HorizontalContentAlignment="Right" Height="33" FontSize="16"/>
+            <Label Content="Sesso:" HorizontalAlignment="Left" Margin="54,337,0,0" VerticalAlignment="Top" Width="188" Foreground="#FF7D7C83" HorizontalContentAlignment="Right" Height="33" FontSize="16"/>
+            <Button x:Name="BT_Conferma" Content="Conferma modifiche" HorizontalAlignment="Left" Margin="250,397,0,0" VerticalAlignment="Top" Width="172" BorderBrush="#FF0066FF" Background="#FF0066FF" Click="BT_Conferma_Click"/>
+            <Button x:Name="BT_Annulla" Content="Annulla" HorizontalAlignment="Left" Margin="427,397,0,0" VerticalAlignment="Top" Width="86" Foreground="#FF0066FF" Background="White" BorderBrush="White" Click="BT_Annulla_Click"/>
         </Grid>
 
         <Grid x:Name="GridAbbonamento" Visibility="Hidden" HorizontalAlignment="Left" Height="458" Margin="295,37,0,0" VerticalAlignment="Top" Width="593" >
