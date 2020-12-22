@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 21, 2020 alle 00:33
--- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.2.34
+-- Creato il: Dic 22, 2020 alle 12:17
+-- Versione del server: 10.4.6-MariaDB
+-- Versione PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,7 +43,8 @@ CREATE TABLE `amministratori` (
 --
 
 INSERT INTO `amministratori` (`ID_Amministratore`, `Username`, `Password`, `Nome`, `Cognome`, `Iscrizione`, `Link_foto`) VALUES
-(1, 'admin1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Amministratore', 'Tecnico', '2020-12-05', 'https://www.laleggepertutti.it/wp-content/uploads/2019/02/Risalire-profilo-falso-360x240.jpg');
+(1, 'admin1', '5f4dcc3b5aa765d61d8327deb882cf99', 'Amministratore', 'Tecnico', '2020-12-05', 'https://www.laleggepertutti.it/wp-content/uploads/2019/02/Risalire-profilo-falso-360x240.jpg'),
+(3, 'Scimmia', 'caa55851ce62c1953362569e7d48bfa1', 'Stefano', 'Borgonovo', '2020-12-02', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mbnews.it%2F2018%2F01%2Fda-sindaco-a-candidato-al-senato-della-repubblica-riccardo-borgonovo%2F&psig=AOvVaw1dEufpqJ51pujs6R8TcP0I&ust=1608721736630000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiX9s-54e0CFQAAAAAdAAAAABAE');
 
 -- --------------------------------------------------------
 
@@ -241,7 +243,8 @@ CREATE TABLE `meccanici` (
 --
 
 INSERT INTO `meccanici` (`ID_Meccanico`, `Nome`, `Cognome`, `Username`, `Password`) VALUES
-(1, 'nome_meccanico', 'cognome_meccanico', 'meccanico', '5f4dcc3b5aa765d61d8327deb882cf99');
+(1, 'nome_meccanico', 'cognome_meccanico', 'meccanico', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(8, 'Mario', 'Delnero', 'Paperino', 'dc647eb65e6711e155375218212b3964');
 
 -- --------------------------------------------------------
 
@@ -342,7 +345,7 @@ ALTER TABLE `orari`
 -- AUTO_INCREMENT per la tabella `amministratori`
 --
 ALTER TABLE `amministratori`
-  MODIFY `ID_Amministratore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Amministratore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `atleti`
@@ -384,7 +387,7 @@ ALTER TABLE `elenco_visite`
 -- AUTO_INCREMENT per la tabella `meccanici`
 --
 ALTER TABLE `meccanici`
-  MODIFY `ID_Meccanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Meccanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `orari`
